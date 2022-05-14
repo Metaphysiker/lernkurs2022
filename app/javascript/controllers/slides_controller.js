@@ -9,29 +9,21 @@ export default class extends Controller {
     var self = this;
 
     $.ajax({
-      url: "slides/" + this.inputTarget.innerHTML + ".json",
+      url: "slides/" + "1" + ".json",
       context: document.body
     }).done(function(response) {
       self.outputTarget.innerHTML =
         `${response.content}`
     });
 
-    this.navigationButtonsTarget.innerHTML =
-      `    <button data-action="click->slides#replace">
-            Greet
-          </button>`
-
   }
 
-  replace() {
-
-    this.dispatch("replace", { detail: { content: "AYAYAYAY" } });
-
+  replace({ detail: { content } }) {
 
     var self = this;
 
     $.ajax({
-      url: "slides/" + "2" + ".json",
+      url: "slides/" + content + ".json",
       context: document.body
     }).done(function(response) {
       self.outputTarget.innerHTML =

@@ -1,42 +1,63 @@
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Philosophie.ch</a>
+    <span class="navbar-text me-auto">
+      500 Punkte
+    </span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">500 Punkte</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 <div class="container">
 
-  <div data-controller="clipboard effects" data-action="clipboard:copy->effects#flash">
-    PIN: <input data-clipboard-target="source" type="text" value="1234" readonly>
-    <button data-action="clipboard#copy">Copy to Clipboard</button>
-  </div>
+  <div data-controller="course slides" data-action="course:getPreviousSlide->slides#replace course:getNextSlide->slides#replace" >
+
+    <div class="card m-3">
+      <div class="card-body">
+        <div data-slides-target="output">
+
+        </div>
+      </div>
+    </div>
+
+<div class="my-2 text-center">
+  <button data-action="click->course#getPreviousSlide" class="btn btn-primary">
+    Previous
+  </button>
+   |
+  <button data-action="click->course#getNextSlide" class="btn btn-primary">
+    Next
+  </button>
+</div>
 
 
 
-  <div data-controller="slides points" data-action="slides:replace->points#replace">
-    <div data-slides-target="input">
+    <br>
+
+    previousSlideId:
+    <div data-course-target="previousSlideId">
       1
     </div>
 
-    <div data-slides-target="output">
-
-    </div>
-    <div data-points-target="output">
-
+    NextSlideId:
+    <div data-course-target="nextSlideId">
+      2
     </div>
 
-     <button data-action="slides:replace">Copy to Clipboard</button>
-
-    <div data-slides-target="navigationButtons">
-
-    </div>
-
-  </div>
-
-  <div data-controller="points">
-    <div data-points-target="user_id">
+    SlideId:
+    <div data-course-target="slideId">
       1
     </div>
 
-    <div data-points-target="output">
-
-    </div>
-
   </div>
-
 
 </div>
