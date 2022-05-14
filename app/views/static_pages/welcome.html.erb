@@ -1,15 +1,25 @@
 <div class="container">
   <div data-controller="hello">
-    <div class="input-group mb-3">
-      <span class="input-group-text" id="basic-addon1">@</span>
-      <input data-hello-target="name" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+
+    <div class="row">
+      <div class="col-6">
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">@</span>
+          <input data-hello-target="name" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+
+        <button data-action="click->hello#greet" class="btn btn-primary">
+          Greet
+        </button>
+      </div>
+      <div class="col-6">
+        
+        <span data-hello-target="output">
+        </span>
+      </div>
     </div>
 
-    <button data-action="click->hello#greet" class="btn btn-primary">
-      Greet
-    </button>
 
-    <span data-hello-target="output">
-    </span>
+
   </div>
 </div>
