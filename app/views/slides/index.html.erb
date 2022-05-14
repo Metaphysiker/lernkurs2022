@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Slides</h1>
+
+<div id="slides">
+  <% @slides.each do |slide| %>
+    <%= render slide %>
+    <p>
+      <%= link_to "Show this slide", slide %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New slide", new_slide_path %>

@@ -1,61 +1,50 @@
 <div class="container">
-  <div data-controller="hello">
+  <div data-controller="slide">
+    <div data-slide-target="input" style="display: none;">
+      1
+    </div>
+
+    <div data-slide-target="output">
+
+    </div>
+
     <div class="row">
       <div class="col-6">
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">@</span>
-          <input data-hello-target="name" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+          <input data-slide-target="input2" value="2" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
         </div>
 
-        <button data-action="click->hello#greet" class="btn btn-primary">
-          Greet
+        <button data-action="click->slide#replace"  class="btn btn-primary">
+          Replace
         </button>
       </div>
       <div class="col-6">
 
-        <span data-hello-target="output">
-        </span>
+
       </div>
     </div>
   </div>
 </div>
 
 <div class="container">
-  <div data-controller="quiz3">
-    <div data-quiz3-target="user_id">
-      15
+  <div data-controller="slide">
+    <div data-slide-target="input" style="display: none;">
+      1
     </div>
 
-    <div data-quiz3-target="quiz_id">
-      15
-    </div>
-
-    <div data-quiz3-target="quiz_id">
-      15
-    </div>
-
-    <div data-quiz3-target="data">
-      yolo freshmatic
-    </div>
-    <div data-quiz3-target="questions">
+    <div data-slide-target="output">
 
     </div>
-    <div class="row">
-      <div class="col-6">
+
         <div class="input-group mb-3">
           <span class="input-group-text" id="basic-addon1">@</span>
-          <input data-quiz3-target="name" type="text" value="" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+          <input data-slides-target="input" value="2" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
         </div>
 
-        <button data-action="click->quiz3#check" class="btn btn-primary">
-          Greet
+        <button data-action="click->slide#replace"  class="btn btn-primary">
+          Replace
         </button>
-      </div>
-      <div class="col-6">
 
-        <span data-quiz3-target="output">
-        </span>
-      </div>
-    </div>
   </div>
 </div>
