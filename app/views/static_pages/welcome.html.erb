@@ -1,9 +1,9 @@
 
   <div
-  data-controller="course slides points"
+  data-controller="course slides points navigation"
   data-action="
-    course:getPreviousSlide->slides#replace
-    course:getNextSlide->slides#replace
+    course:updateSlide->slides#updateSlide
+    course:updateSlide->navigation#updateButtons
   " >
 
   <nav class="navbar navbar-expand-lg bg-light">
@@ -36,16 +36,10 @@
       </div>
     </div>
 
-<div class="my-2 text-center">
-  <button data-action="click->course#getPreviousSlide" class="btn btn-primary">
-    Previous
-  </button>
-   |
-  <button data-action="click->course#getNextSlide" class="btn btn-primary">
-    Next
-  </button>
-</div>
 
+    <div data-navigation-target="output">
+
+    </div>
 
 
     <br>
@@ -61,7 +55,7 @@
     </div>
 
     SlideId:
-    <div data-course-target="slideId" data-slides-target="slideId" >
+    <div data-course-target="slideId" data-slides-target="slideId" data-navigation-target="slideId" data-value="1" >
       1
     </div>
 

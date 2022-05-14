@@ -1,17 +1,29 @@
 import { Controller } from "@hotwired/stimulus"
+import $ from "jquery"
 
 export default class extends Controller {
   static targets = [ "name", "output", "slideId", "nextSlideId", "previousSlideId" ]
 
-  getPreviousSlide() {
-    console.log("getPreviousSlide");
-    var slide_id = this.previousSlideIdTarget.innerHTML.trim();
-    this.dispatch("getPreviousSlide", { detail: { content: slide_id } });
+  connect(){
+    this.updateSlide();
   }
 
-  getNextSlide() {
-    console.log("getNextSlide");
-    var slide_id = this.nextSlideIdTarget.innerHTML.trim();
-    this.dispatch("getNextSlide", { detail: { content: slide_id } });
+  updateSlide(){
+
+    var slide_id = this.slideIdTarget.getAttribute('data-value');
+    console.log(slide_id)
+
+    var self = this;
+
+    $.ajax({
+      url: "slides/" + slide_id + ".json",
+      context: document.body
+    }).done(function(response) {
+
+      self.dispatch("updateSlide", { detail: { content: response } });
+
+    });
+
   }
+
 }
