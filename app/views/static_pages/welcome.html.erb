@@ -1,5 +1,13 @@
 <div class="container">
-  <div data-controller="slides">
+
+  <div data-controller="clipboard effects" data-action="clipboard:copy->effects#flash">
+    PIN: <input data-clipboard-target="source" type="text" value="1234" readonly>
+    <button data-action="clipboard#copy">Copy to Clipboard</button>
+  </div>
+
+
+
+  <div data-controller="slides points" data-action="slides:replace->points#replace">
     <div data-slides-target="input">
       1
     </div>
@@ -7,10 +15,28 @@
     <div data-slides-target="output">
 
     </div>
+    <div data-points-target="output">
+
+    </div>
+
+     <button data-action="slides:replace">Copy to Clipboard</button>
 
     <div data-slides-target="navigationButtons">
 
     </div>
 
   </div>
+
+  <div data-controller="points">
+    <div data-points-target="user_id">
+      1
+    </div>
+
+    <div data-points-target="output">
+
+    </div>
+
+  </div>
+
+
 </div>

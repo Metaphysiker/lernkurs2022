@@ -25,6 +25,9 @@ export default class extends Controller {
 
   replace() {
 
+    this.dispatch("replace", { detail: { content: "AYAYAYAY" } });
+
+
     var self = this;
 
     $.ajax({
