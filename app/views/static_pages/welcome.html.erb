@@ -1,6 +1,5 @@
 <div class="container">
   <div data-controller="hello">
-
     <div class="row">
       <div class="col-6">
         <div class="input-group mb-3">
@@ -13,13 +12,50 @@
         </button>
       </div>
       <div class="col-6">
-        
+
         <span data-hello-target="output">
         </span>
       </div>
     </div>
+  </div>
+</div>
 
+<div class="container">
+  <div data-controller="quiz3">
+    <div data-quiz3-target="user_id">
+      15
+    </div>
 
+    <div data-quiz3-target="quiz_id">
+      15
+    </div>
 
+    <div data-quiz3-target="quiz_id">
+      15
+    </div>
+
+    <div data-quiz3-target="data">
+      yolo freshmatic
+    </div>
+    <div data-quiz3-target="questions">
+
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">@</span>
+          <input data-quiz3-target="name" type="text" value="" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+
+        <button data-action="click->quiz3#check" class="btn btn-primary">
+          Greet
+        </button>
+      </div>
+      <div class="col-6">
+
+        <span data-quiz3-target="output">
+        </span>
+      </div>
+    </div>
   </div>
 </div>
