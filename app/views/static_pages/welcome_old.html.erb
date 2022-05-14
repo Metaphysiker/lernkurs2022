@@ -1,0 +1,45 @@
+<div class="container">
+  <div data-controller="slide">
+    <div data-slide-target="input" style="display: none;">
+      1
+    </div>
+
+    <div data-slide-target="output">
+
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">@</span>
+          <input data-slide-target="input2" value="2" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+
+        <button data-action="click->slide#replace"  class="btn btn-primary">
+          Replace
+        </button>
+      </div>
+      <div class="col-6">
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div data-controller="slides">
+    <div data-slides-target="input" style="display: none;">
+      1
+    </div>
+
+    <div data-slides-target="output">
+
+    </div>
+
+    <div data-slides-target="navigationButtons">
+
+    </div>
+
+  </div>
+</div>
