@@ -3,10 +3,6 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = [ "name", "output", "slideId", "nextSlideId", "previousSlideId" ]
 
-  connect() {
-
-  }
-
   getPreviousSlide() {
     console.log("getPreviousSlide");
     var slide_id = this.previousSlideIdTarget.innerHTML.trim();

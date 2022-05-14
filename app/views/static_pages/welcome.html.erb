@@ -1,25 +1,32 @@
-<nav class="navbar navbar-expand-lg bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Philosophie.ch</a>
-    <span class="navbar-text me-auto">
-      500 Punkte
-    </span>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="#">500 Punkte</a>
-        </li>
-      </ul>
+
+  <div
+  data-controller="course slides points"
+  data-action="
+    course:getPreviousSlide->slides#replace
+    course:getNextSlide->slides#replace
+  " >
+
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Philosophie.ch</a>
+      <span class="navbar-text me-auto">
+        <span data-points-target="output" >500</span> Punkte
+      </span>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Über uns</a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<div class="container">
+  <div class="container">
 
-  <div data-controller="course slides" data-action="course:getPreviousSlide->slides#replace course:getNextSlide->slides#replace" >
 
     <div class="card m-3">
       <div class="card-body">
@@ -54,7 +61,7 @@
     </div>
 
     SlideId:
-    <div data-course-target="slideId">
+    <div data-course-target="slideId" data-slides-target="slideId" >
       1
     </div>
 

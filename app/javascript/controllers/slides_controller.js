@@ -2,14 +2,14 @@ import { Controller } from "@hotwired/stimulus"
 import $ from "jquery"
 
 export default class extends Controller {
-  static targets = [ "input", "output", "navigationButtons" ]
+  static targets = [ "input", "slideId", "output", "navigationButtons" ]
 
   connect() {
 
     var self = this;
 
     $.ajax({
-      url: "slides/" + "1" + ".json",
+      url: "slides/" + this.slideIdTarget.innerHTML + ".json",
       context: document.body
     }).done(function(response) {
       self.outputTarget.innerHTML =
