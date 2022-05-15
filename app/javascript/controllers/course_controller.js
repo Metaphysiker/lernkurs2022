@@ -26,4 +26,22 @@ export default class extends Controller {
 
   }
 
+  updateNavigationButtons(){
+
+    var slide_id = this.slideIdTarget.getAttribute('data-value');
+    console.log(slide_id)
+
+    var self = this;
+
+    $.ajax({
+      url: "slides/" + slide_id + ".json",
+      context: document.body
+    }).done(function(response) {
+
+      self.dispatch("updateSlide", { detail: { content: response } });
+
+    });
+
+  }
+
 }
