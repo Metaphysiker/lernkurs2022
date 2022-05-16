@@ -26,7 +26,6 @@ export default class extends Controller {
     }).done(function(response) {
 
       self.setSlide(response.content);
-      console.log(response);
       self.setNavigationButtons(response.previous_slide_id, response.next_slide_id);
 
     });
@@ -56,7 +55,6 @@ export default class extends Controller {
 
       </div>
       `
-
   }
 
 }
