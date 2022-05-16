@@ -13,20 +13,18 @@
 
   <div data-controller="sortable">
 
-    <div data-sortable-target="element">
+    <div data-sortable-target="slides">
 
-      <ul id="items">
-      	<li>item 1</li>
-      	<li>item 2</li>
-      	<li>item 3</li>
-      </ul>
+      <% course.slides.order(:sort).each do |slide| %>
+        <div data-id="<%= slide.id %>">
+          <%= slide.sort %> - <%= raw slide.content %>
+        </div>
+      <% end %>
     </div>
 
-    <% course.slides.order(:sort).each do |slide| %>
-      <%= raw slide.content %>
-    <% end %>
 
-    <button data-action="click->sortable#greet">
+
+    <button data-action="click->sortable#updateOrder">
       Save
     </button>
 

@@ -1,24 +1,31 @@
-// hello_controller.js
 import $ from "jquery"
 import  Sortable  from "sortablejs"
 import { Controller } from "@hotwired/stimulus"
-
-
-
+let sortable = undefined;
 export default class extends Controller {
-  static targets = [ "element", "output" ]
+  static targets = [ "saveOrder", "slides", "output" ];
 
   connect() {
 
-    console.log("connect")
-    var el = document.getElementById('items')
-    var sortable = Sortable.create(el)
+    sortable = Sortable.create(this.slidesTarget)
 
   }
 
-  greet() {
-    this.outputTarget.textContent =
-      `Hello, ${this.nameTarget.value}!`
+  updateOrder(){
+    console.log(sortable.toArray());
+
+    $.ajax({
+      type: "POST",
+      url: "/slides/update_order",
+      data: {order: sortable.toArray()},
+      context: document.body
+    }).done(function(response) {
+
+      console.log(response);
+
+    });
   }
+
+
 
 }
