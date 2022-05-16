@@ -14,7 +14,10 @@
   <div>
     <%= form.label :content, style: "display: block" %>
     <%= form.text_area :content %>
+    <br>
+    <%= form.select :course_id, Course.all.map {|course| [course.name, course.id]}, {include_blank: true}, {class: "form-select"}  %>
   </div>
+
 
   <div>
     <%= form.submit %>
