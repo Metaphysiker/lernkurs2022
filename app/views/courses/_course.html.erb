@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <%= javascript_import_module_tag "sortablejs" %>
+<% end %>
+
 <div id="<%= dom_id course %>">
   <p>
     <strong>Name:</strong>
@@ -5,10 +9,29 @@
   </p>
 
   <h2>Slides</h2>
-
   <%= course.slides.count %>
-  <% course.slides.order(:sort).each do |slide| %>
-    <%= raw slide.content %>
-  <% end %>
+
+  <div data-controller="sortable">
+
+    <div data-sortable-target="element">
+
+      <ul id="items">
+      	<li>item 1</li>
+      	<li>item 2</li>
+      	<li>item 3</li>
+      </ul>
+    </div>
+
+    <% course.slides.order(:sort).each do |slide| %>
+      <%= raw slide.content %>
+    <% end %>
+
+    <button data-action="click->sortable#greet">
+      Save
+    </button>
+
+  </div>
+
+
 
 </div>
