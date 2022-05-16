@@ -2,6 +2,47 @@
   <%= javascript_import_module_tag "sortablejs" %>
 <% end %>
 
+
+  <div
+  data-controller="course"
+  >
+<%= render "layouts/course_navigation" %>
+
+  <div class="container">
+
+  <div data-course-target="slide">
+
+  </div>
+
+  <hr>
+
+  <div data-course-target="navigationButtons">
+
+  </div>
+
+
+    <br>
+
+    previousSlideId:
+    <div data-course-target="previousSlideId">
+      1
+    </div>
+
+    NextSlideId:
+    <div data-course-target="nextSlideId">
+      2
+    </div>
+
+    SlideId:
+    <div data-course-target="slideId" data-slides-target="slideId" data-navigation-target="slideId" data-value="<%= course.slides.first.id %>" >
+      <%= course.slides.first.id %>
+    </div>
+
+  </div>
+
+</div>
+
+
 <div id="<%= dom_id course %>">
   <p>
     <strong>Name:</strong>
@@ -17,7 +58,7 @@
 
       <% course.slides.order(:sort).each do |slide| %>
         <div data-id="<%= slide.id %>">
-          <%= slide.sort %> - <%= raw slide.content %>
+          <%= raw slide.content %>
         </div>
       <% end %>
     </div>
@@ -25,7 +66,7 @@
 
 
     <button data-action="click->sortable#updateOrder">
-      Save
+      updateOrder
     </button>
 
   </div>
