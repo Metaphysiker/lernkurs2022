@@ -1,5 +1,5 @@
 class SlidesController < ApplicationController
-  before_action :set_slide, only: %i[ show edit update destroy ]
+  before_action :set_slide, only: %i[ show edit update destroy navigation_buttons ]
 
   # GET /slides or /slides.json
   def index
@@ -62,6 +62,10 @@ class SlidesController < ApplicationController
       Slide.find(id).update(sort: index)
     end
     head :ok
+  end
+
+  def navigation_buttons
+    render partial: "slides/navigation_buttons", locals: {slide: @slide}, layout: false
   end
 
   private

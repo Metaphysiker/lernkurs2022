@@ -4,6 +4,9 @@ Rails.application.routes.draw do
     collection do
       post 'update_order'
     end
+    member do
+      get 'navigation_buttons'
+    end
   end
   root "static_pages#welcome"
   get 'static_pages/welcome'

@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = [ "slide", "name", "output", "slideId", "nextSlideId", "previousSlideId", "navigationButtons" ]
 
   connect(){
-    this.getSlide(this.slideIdTarget.getAttribute('data-value'));
+    //this.getSlide(this.slideIdTarget.getAttribute('data-value'));
   }
 
   getPreviousSlide(){
@@ -18,6 +18,7 @@ export default class extends Controller {
 
   getSlide(slide_id){
 
+    this.setNavigationButtons(slide_id);
     var self = this;
 
     $.ajax({
@@ -26,8 +27,6 @@ export default class extends Controller {
     }).done(function(response) {
 
       self.setSlide(response.content);
-      self.setNavigationButtons(response.previous_slide_id, response.next_slide_id);
-
     });
   }
 
@@ -35,26 +34,19 @@ export default class extends Controller {
     this.slideTarget.innerHTML = html;
   }
 
-  setNavigationButtons(previous_slide_id, next_slide_id){
+  setNavigationButtons(slide_id){
 
-    this.navigationButtonsTarget.innerHTML =
-      `
-      <div data-course-target="previousSlideId" data-value="${previous_slide_id}">
-      </div>
-      <div data-course-target="nextSlideId" data-value="${next_slide_id}">
-      </div>
+    var self = this;
 
-      <div class="my-2 text-center">
-        <button data-action="click->course#getPreviousSlide" class="${previous_slide_id < 0 ? "disabled" : ""} btn btn-primary">
-          Previous ${previous_slide_id}
-        </button>
-         |
-        <button data-action="click->course#getNextSlide" class="${next_slide_id < 0 ? "disabled" : ""} btn btn-primary">
-          Next ${next_slide_id}
-        </button>
+    $.ajax({
+      url: "/slides/" + slide_id + "/navigation_buttons/",
+      context: document.body
+    }).done(function(response) {
 
-      </div>
-      `
+      self.navigationButtonsTarget.innerHTML = response;
+
+    });
+
   }
 
 }

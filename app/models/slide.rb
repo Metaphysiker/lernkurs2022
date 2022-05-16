@@ -13,6 +13,7 @@ class Slide < ApplicationRecord
   end
 
   def next_slide_id
+    puts "AYAYAayayayaya"
     next_slide = self.course.slides.where(sort: self.sort + 1)
     if next_slide.empty?
       return -1

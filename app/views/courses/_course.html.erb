@@ -1,41 +1,43 @@
 <% content_for :head do %>
-  <%= javascript_import_module_tag "sortablejs" %>
+  <%= stylesheet_link_tag "course", "data-turbo-track": "reload" %>
 <% end %>
 
-
-  <div
+<div
   data-controller="course"
   >
+  <div data-course-target="slideId" data-slides-target="slideId" data-navigation-target="slideId" data-value="<%= course.slides.order(:sort).first.id %>" >
+  </div>
 <%= render "layouts/course_navigation" %>
 
   <div class="container">
 
-  <div data-course-target="slide">
+    <div class="row">
+
+      <div class="col-12 offset-sm-1 col-sm-10 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
+        <div data-course-target="slide" class="mt-3">
+          <%= render "slides/slide", slide: course.slides.order(:sort).first %>
+        </div>
+      </div>
+
+
+    </div>
+
+
 
   </div>
 
-  <hr>
+
+
+<hr>
 
   <div data-course-target="navigationButtons">
-
-  </div>
-
-  <div data-course-target="progress" class="text-center">
-    <div class="progress">
-      <div class="progress-bar" role="progressbar" style="width: <%= (course.slides.order(:sort).first.sort + 1).to_f / course.slides.count * 100 %>%" aria-valuenow="<%= (course.slides.order(:sort).first.sort + 1).to_f / course.slides.count * 100 %>" aria-valuemin="0" aria-valuemax="<%= course.slides.count %>"></div>
-    </div>
-
-    Seite <%= course.slides.order(:sort).first.sort + 1 %> von <%= course.slides.count %>
-  </div>
-
-    <div data-course-target="slideId" data-slides-target="slideId" data-navigation-target="slideId" data-value="<%= course.slides.order(:sort).first.id %>" >
-    </div>
-
+    <%= render "slides/navigation_buttons", slide: course.slides.order(:sort).first %>
   </div>
 
 </div>
 
 
+<% if true %>
 <hr>
 <div class="container">
 <div id="<%= dom_id course %>">
@@ -54,7 +56,9 @@
       <% course.slides.order(:sort).each do |slide| %>
       <div data-id="<%= slide.id %>" class="border rounded p-1 my-2">
         <div data-id="<%= slide.id %>">
-          <%= raw slide.content %>
+          <%= link_to edit_slide_path(slide) do %>
+            <%= raw slide.content %>
+          <% end %>
         </div>
       </div>
       <% end %>
@@ -72,3 +76,4 @@
 
 </div>
 </div>
+<% end %>

@@ -1,0 +1,19 @@
+<% total_slides_count = slide.course.slides.count %>
+<% slide_sort = slide.sort + 1 %>
+<div data-course-target="previousSlideId" data-value="<%= slide.previous_slide_id %>">
+</div>
+<div data-course-target="nextSlideId" data-value="<%= slide.next_slide_id %>">
+</div>
+
+<div class="my-2 text-center">
+  <button data-action="click->course#getPreviousSlide" class="<%= "disabled" if slide.previous_slide_id < 0 %> btn btn-primary">
+    Previous
+  </button>
+
+  <%= slide_sort %> / <%= total_slides_count %>
+
+  <button data-action="click->course#getNextSlide" class="<%= "disabled" if slide.next_slide_id < 0 %> btn btn-primary">
+    Next
+  </button>
+
+</div>

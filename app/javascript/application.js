@@ -2,6 +2,7 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import $ from "jquery"
+
 $(function(){
     $.ajaxSetup({
         beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))}
