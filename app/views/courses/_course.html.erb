@@ -4,4 +4,11 @@
     <%= course.name %>
   </p>
 
+  <h2>Slides</h2>
+
+  <%= course.slides.count %>
+  <% course.slides.order(:sort).each do |slide| %>
+    <%= raw slide.content %>
+  <% end %>
+
 </div>
