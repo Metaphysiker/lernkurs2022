@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   resources :quiz_questions
   resources :quizzes
-  resources :courses
+  resources :courses do
+    member do
+      get 'course_overview'
+    end
+  end
   resources :slides do
     collection do
       post 'update_order'

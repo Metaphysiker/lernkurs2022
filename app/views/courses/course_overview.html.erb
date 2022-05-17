@@ -1,0 +1,44 @@
+<% course = @course %>
+
+<div class="container">
+<div id="<%= dom_id course %>">
+  <p>
+    <strong>Name:</strong>
+    <%= course.name %>
+  </p>
+
+  <h2>Slides</h2>
+  <%= course.slides.count %>
+
+  <div data-controller="sortable">
+
+    <div data-sortable-target="slides">
+
+      <% course.slides.order(:sort).each do |slide| %>
+      <div data-id="<%= slide.id %>" class="border rounded p-1 my-2">
+        <div data-id="<%= slide.id %>">
+          <%= link_to edit_slide_path(slide) do %>
+            <%= ActionView::Base.full_sanitizer.sanitize(slide.content).truncate(50) %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+
+
+    <button data-action="click->sortable#updateOrder" class="btn btn-primary">
+      updateOrder
+    </button>
+
+  </div>
+
+
+
+</div>
+</div>
+
+<div class="container">
+<hr />
+<%= render "slides/form", slide: Slide.new(course_id: course.id) %>
+</div>
