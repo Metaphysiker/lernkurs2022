@@ -10,4 +10,6 @@ Role.roles.each do |role|
   Role.create(name: role)
 end
 
-User.create(email: "sandro.raess@philosophie.ch", password: "epikur", password_confirmation: "epikur")
+admin = User.create(email: "sandro.raess@philosophie.ch", password: "epikur", password_confirmation: "epikur")
+
+admin.roles << Role.find_by_name("admin")
