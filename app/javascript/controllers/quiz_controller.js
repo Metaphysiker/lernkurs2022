@@ -1,8 +1,8 @@
-// hello_controller.js
+import $ from "jquery"
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = [ "name", "output" ]
+  static targets = [ "button", "name", "output" ]
 
   disconnect(){
 
@@ -10,22 +10,26 @@ export default class extends Controller {
 
   check() {
 
+
     if(event.params.quizQuestionCorrectAnswer === "yes"){
 
-      const event = new CustomEvent('correct-answer', {
+      $(this.buttonTargets).addClass( "disabled" );
+      $(event.target).addClass("correct-answer");
+
+
+      const custom_event = new CustomEvent('correct-answer', {
             detail: {
               points: 100
             }
           })
 
-          console.log("dispatch");
-        window.dispatchEvent(event)
+        window.dispatchEvent(custom_event)
 
-      this.outputTarget.textContent =
-        `Correct!`
     } else {
-      this.outputTarget.textContent =
-        `False!`
+
+        $(event.target).addClass( "disabled" );
+        $(event.target).addClass("false-answer");
+
     }
 
   }

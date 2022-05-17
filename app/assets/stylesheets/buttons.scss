@@ -1,0 +1,31 @@
+.quiz-button {
+  //@extend .rounded !optional;
+  @extend .btn !optional;
+  @extend .btn-light !optional;
+  @extend .border !optional;
+  @extend .btn-lg !optional;
+  color: black;
+  font-size: 1rem;
+  //font-weight: bold;
+  @extend .my-2 !optional;
+  //@extend .text-e-color !optional;
+
+  &.correct-answer {
+    background-color: lightgreen;
+  }
+
+  &.false-answer {
+    background-color: Salmon;
+  }
+
+
+  &:hover{
+    background-color: lightgray;
+    color: black;
+    filter: brightness(1.1);
+    transform: scale(1.05);
+  }
+
+
+
+}

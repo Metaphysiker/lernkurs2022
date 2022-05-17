@@ -8,7 +8,7 @@
     <div data-controller="quiz">
       <% quiz.quiz_questions.each do |quiz_question| %>
       <div class="d-grid gap-2">
-        <button data-action="click->quiz#check" data-quiz-quiz-question-correct-answer-param="<%= quiz_question.correct_answer %>" data type="button" class="btn btn-outline-secondary my-2 border"><%= quiz_question.content %> - <%= quiz_question.correct_answer %></button>
+        <button data-quiz-target="button" data-action="click->quiz#check" data-quiz-quiz-question-correct-answer-param="<%= quiz_question.correct_answer %>" data type="button" class="quiz-button "><%= quiz_question.content %> - <%= quiz_question.correct_answer %></button>
       </div>
       <% end %>
 
