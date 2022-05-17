@@ -21,28 +21,25 @@
         <div data-course-target="slide" class="mt-3">
           <%= render "slides/slide", slide: course.slides.order(:sort).first %>
         </div>
+        <hr>
       </div>
-
 
     </div>
 
-
-
   </div>
 
-
-
-<hr>
-
-  <div data-course-target="navigationButtons">
-    <%= render "slides/navigation_buttons", slide: course.slides.order(:sort).first %>
+  <div class="navigation">
+    <div data-course-target="navigationButtons">
+      <%= render "slides/navigation_buttons", slide: course.slides.order(:sort).first %>
+    </div>
   </div>
+
 
 </div>
 <% end %>
 
 <% if true %>
-<hr>
+
 <div class="container">
 <div id="<%= dom_id course %>">
   <p>
@@ -79,5 +76,10 @@
 
 
 </div>
+</div>
+
+<div class="container">
+<hr />
+<%= render "slides/form", slide: Slide.new(course_id: course.id) %>
 </div>
 <% end %>
