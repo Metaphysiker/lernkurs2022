@@ -32,7 +32,6 @@ export default class extends Controller {
       context: document.body
     }).done(function(response) {
       self.slideTarget.innerHTML = response;
-
     });
   }
 
