@@ -2,10 +2,14 @@
   <%= stylesheet_link_tag "course", "data-turbo-track": "reload" %>
 <% end %>
 
+<% first_slide = course.slides.order(:sort).first %>
+
+<% unless first_slide.blank? %>
+
 <div
   data-controller="course"
   >
-  <div data-course-target="slideId" data-slides-target="slideId" data-navigation-target="slideId" data-value="<%= course.slides.order(:sort).first.id %>" >
+  <div data-course-target="slideId" data-slides-target="slideId" data-navigation-target="slideId" data-value="<%= first_slide.id %>" >
   </div>
 <%= render "layouts/course_navigation" %>
 
@@ -35,7 +39,7 @@
   </div>
 
 </div>
-
+<% end %>
 
 <% if true %>
 <hr>
