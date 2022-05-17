@@ -28,10 +28,10 @@ export default class extends Controller {
     var self = this;
 
     $.ajax({
-      url: "/slides/" + slide_id + ".json",
+      url: "/slides/" + slide_id + ".js",
       context: document.body
     }).done(function(response) {
-      self.slideTarget.innerHTML = response.content;
+      self.slideTarget.innerHTML = response;
 
     });
   }

@@ -2,7 +2,7 @@
   <%= stylesheet_link_tag "course", "data-turbo-track": "reload" %>
 <% end %>
 
-<% first_slide = course.slides.order(:sort).first %>
+<% first_slide = slide %>
 
 <% unless first_slide.blank? %>
 
@@ -23,9 +23,6 @@
           <%= render "slides/slide", slide: first_slide  %>
         </div>
         <hr>
-        <% if user_signed_in? %>
-          
-        <% end %>
       </div>
 
     </div>
@@ -48,4 +45,7 @@
 
 
 </div>
+<% end %>
+<% if policy(Slide.new(course_id: course.id)).create? %>
+  <%= link_to "Create Slide", new_slide_path(Slide.new(course_id: course.id)) %>
 <% end %>

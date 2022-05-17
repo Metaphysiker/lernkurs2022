@@ -4,7 +4,8 @@
 
 <div>
   <%= link_to "Edit this slide", edit_slide_path(@slide) %> |
-  <%= link_to "Back to slides", slides_path %>
+  <%= link_to "Back to slides", slides_path %> |
+  <%= link_to "Back to course", course_path(@slide.course) %>
 
   <%= button_to "Destroy this slide", @slide, method: :delete %>
 </div>

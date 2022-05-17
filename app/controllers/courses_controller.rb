@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: %i[ show edit update destroy course_overview]
+  before_action :set_course, only: %i[ show edit update destroy course_overview show_at_slide]
 
   # GET /courses or /courses.json
   def index
@@ -8,6 +8,12 @@ class CoursesController < ApplicationController
 
   # GET /courses/1 or /courses/1.json
   def show
+    if params[:slide_id].present?
+      @slide = Slide.find(params[:slide_id])
+    else
+      @slide = @course.slides.order(:sort).first
+    end
+
   end
 
   def course_overview

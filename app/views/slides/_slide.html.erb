@@ -1,1 +1,5 @@
 <%= raw slide.content %>
+<% if policy(slide).update? %>
+<hr />
+  <%= link_to "Edit Slide", edit_slide_path(slide) %>
+<% end %>

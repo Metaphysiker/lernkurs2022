@@ -7,6 +7,8 @@
     <%= render slide %>
     <p>
       <%= link_to "Show this slide", slide %>
+      |
+        <%= link_to "Back to course", course_path(slide.course, slide_id: slide) %>
     </p>
   <% end %>
 </div>

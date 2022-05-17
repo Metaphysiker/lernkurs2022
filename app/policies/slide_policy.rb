@@ -6,8 +6,12 @@ class SlidePolicy < ApplicationPolicy
      end
   end
 
+  def create?
+    user.present? && user.admin?
+  end
+
   def update?
-    user.admin?
+    user.present? && user.admin?
   end
 
 end
