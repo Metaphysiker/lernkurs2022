@@ -11,6 +11,10 @@ export default class extends Controller {
 
   }
 
+  disconnect() {
+    sortable.destroy();
+  }
+
   updateOrder(){
     console.log(sortable.toArray());
 
