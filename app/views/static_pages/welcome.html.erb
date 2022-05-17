@@ -1,10 +1,6 @@
-<h1>Courses</h1>
-
 <div id="courses">
   <% Course.all.each do |course| %>
-    <%= render course %>
-    <p>
-      <%= link_to "Show this course", course %>
-    </p>
+    <%= link_to course.name, course_path(course) %>
+    <hr />
   <% end %>
 </div>
