@@ -4,6 +4,7 @@
   @extend .btn-light !optional;
   @extend .border !optional;
   @extend .btn-lg !optional;
+  @extend .fw-bold !optional;
   color: black;
   font-size: 1rem;
   //font-weight: bold;
@@ -20,10 +21,9 @@
 
 
   &:hover{
-    background-color: lightgray;
-    color: black;
-    filter: brightness(1.1);
+  //  filter: brightness(1.1);
     transform: scale(1.05);
+    @extend .border !optional;
   }
 
 

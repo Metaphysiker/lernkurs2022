@@ -13,9 +13,9 @@ export default class extends Controller {
 
     if(event.params.quizQuestionCorrectAnswer === "yes"){
 
+      $(this.buttonTargets).prop("disabled", true);
       $(this.buttonTargets).addClass( "disabled" );
       $(event.target).addClass("correct-answer");
-
 
       const custom_event = new CustomEvent('correct-answer', {
             detail: {
@@ -26,10 +26,9 @@ export default class extends Controller {
         window.dispatchEvent(custom_event)
 
     } else {
-
+        $(event.target).prop("disabled", true);
         $(event.target).addClass( "disabled" );
         $(event.target).addClass("false-answer");
-
     }
 
   }

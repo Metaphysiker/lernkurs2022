@@ -18,7 +18,7 @@
 
   <div>
     <%= form.label :correct_answer, style: "display: block" %>
-    <%= form.text_field :correct_answer %>
+    <%= form.select :correct_answer, QuizQuestion.correct_answer_options %>
   </div>
 
   <div>
