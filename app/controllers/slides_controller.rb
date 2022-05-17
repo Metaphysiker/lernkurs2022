@@ -68,6 +68,10 @@ class SlidesController < ApplicationController
     render partial: "slides/navigation_buttons", locals: {slide: @slide}, layout: false
   end
 
+  def exercise
+    render partial: "quizzes/quiz", locals: {quiz: @slide.quizzes.first}, layout: false
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_slide
@@ -76,6 +80,6 @@ class SlidesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def slide_params
-      params.require(:slide).permit(:content, :course_id)
+      params.require(:slide).permit(:content, :course_id, :slide_id)
     end
 end

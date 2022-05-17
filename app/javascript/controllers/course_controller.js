@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import $ from "jquery"
 
 export default class extends Controller {
-  static targets = [ "slide", "name", "output", "slideId", "nextSlideId", "previousSlideId", "navigationButtons" ]
+  static targets = [ "slide", "name", "exercise", "output", "slideId", "nextSlideId", "previousSlideId", "navigationButtons" ]
 
   connect(){
     //this.getSlide(this.slideIdTarget.getAttribute('data-value'));
@@ -19,19 +19,36 @@ export default class extends Controller {
   getSlide(slide_id){
 
     this.setNavigationButtons(slide_id);
+    this.setSlide(slide_id);
+    this.setExercise(slide_id);
+  }
+
+  setSlide(slide_id){
+
     var self = this;
 
     $.ajax({
       url: "/slides/" + slide_id + ".json",
       context: document.body
     }).done(function(response) {
+      self.slideTarget.innerHTML = response.content;
 
-      self.setSlide(response.content);
     });
   }
 
-  setSlide(html){
-    this.slideTarget.innerHTML = html;
+  setExercise(slide_id){
+
+    var self = this;
+
+    $.ajax({
+      url: "/slides/" + slide_id + ".json",
+      context: document.body
+    }).done(function(response) {
+      //self.exerciseTarget.innerHTML = response.content;
+
+      self.exerciseTarget.innerHTML = slide_id;
+
+    });
   }
 
   setNavigationButtons(slide_id){

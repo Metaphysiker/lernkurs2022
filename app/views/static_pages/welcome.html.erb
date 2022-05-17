@@ -1,64 +1,10 @@
+<h1>Courses</h1>
 
-  <div
-  data-controller="course slides points navigation"
-  data-action="
-    course:updateSlide->slides#updateSlide
-    course:updateSlide->navigation#updateButtons
-  " >
-
-  <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Philosophie.ch</a>
-      <span class="navbar-text me-auto">
-        <span data-points-target="output" >500</span> Punkte
-      </span>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Über uns</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <div class="container">
-
-
-    <div class="card m-3">
-      <div class="card-body">
-        <div data-slides-target="output">
-
-        </div>
-      </div>
-    </div>
-
-
-    <div data-navigation-target="output">
-
-    </div>
-
-
-    <br>
-
-    previousSlideId:
-    <div data-course-target="previousSlideId">
-      1
-    </div>
-
-    NextSlideId:
-    <div data-course-target="nextSlideId">
-      2
-    </div>
-
-    SlideId:
-    <div data-course-target="slideId" data-slides-target="slideId" data-navigation-target="slideId" data-value="1" >
-      1
-    </div>
-
-  </div>
-
+<div id="courses">
+  <% Course.all.each do |course| %>
+    <%= render course %>
+    <p>
+      <%= link_to "Show this course", course %>
+    </p>
+  <% end %>
 </div>

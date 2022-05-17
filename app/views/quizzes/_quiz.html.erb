@@ -1,12 +1,16 @@
-<div id="<%= dom_id quiz %>">
-  <p>
-    <strong>Content:</strong>
-    <%= quiz.content %>
-  </p>
+<div class="container">
+  <hr>
+  <div id="<%= dom_id quiz %>">
+    <p>
+      <%= quiz.content %>
+    </p>
 
-  <% quiz.quiz_questions.each do |quiz_question| %>
-    <%= quiz_question.content %> - <%= quiz_question.correct_answer %>
-    
-  <% end %>
 
+    <% quiz.quiz_questions.each do |quiz_question| %>
+    <div class="d-grid gap-2">
+      <button type="button" class="btn btn-outline-secondary my-2 border"><%= quiz_question.content %> - <%= quiz_question.correct_answer %></button>
+    </div>
+    <% end %>
+
+  </div>
 </div>
