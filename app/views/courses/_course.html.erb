@@ -7,7 +7,8 @@
 <% unless first_slide.blank? %>
 
 <div
-  data-controller="course"
+  data-controller="course points"
+  data-action="correct-answer@window->points#updateCounter"
   >
   <div data-course-target="slideId" data-slides-target="slideId" data-navigation-target="slideId" data-value="<%= first_slide.id %>" >
   </div>

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     end
     member do
       get 'navigation_buttons'
+      get 'exercise'
     end
   end
   root "static_pages#welcome"

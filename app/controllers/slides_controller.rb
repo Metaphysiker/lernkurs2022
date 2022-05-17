@@ -1,5 +1,5 @@
 class SlidesController < ApplicationController
-  before_action :set_slide, only: %i[ show edit update destroy navigation_buttons ]
+  before_action :set_slide, only: %i[ show edit update destroy navigation_buttons exercise]
 
   # GET /slides or /slides.json
   def index
@@ -69,7 +69,11 @@ class SlidesController < ApplicationController
   end
 
   def exercise
-    render partial: "quizzes/quiz", locals: {quiz: @slide.quizzes.first}, layout: false
+    if @slide.quizzes.empty?
+      render plain: ""
+    else
+      render partial: "quizzes/quiz", locals: {quiz: @slide.quizzes.first}, layout: false
+    end
   end
 
   private

@@ -41,12 +41,12 @@ export default class extends Controller {
     var self = this;
 
     $.ajax({
-      url: "/slides/" + slide_id + ".json",
+      url: "/slides/" + slide_id + "/exercise",
       context: document.body
     }).done(function(response) {
       //self.exerciseTarget.innerHTML = response.content;
 
-      self.exerciseTarget.innerHTML = slide_id;
+      self.exerciseTarget.innerHTML = response;
 
     });
   }

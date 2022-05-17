@@ -3,17 +3,19 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = [ "user_id", "output" ]
 
-  updateCounter({ detail: { content } }) {
-    this.incrementallyUpdate(this.outputTarget);
+
+  updateCounter({ detail: { points } }) {
+    this.incrementallyUpdate(this.outputTarget, points);
   //  this.outputTarget.innerHTML =
   //    `${parseInt(this.outputTarget.innerHTML) + 100}`
   }
 
-  incrementallyUpdate(element){
+  incrementallyUpdate(element, points){
 
     var target_value = 1000;
     var current_value = parseInt(this.outputTarget.innerHTML);
-    var difference = target_value - current_value;
+    //var difference = target_value - current_value;
+    var difference =  points;
 
     var myPromise = () => new Promise(resolve => setTimeout(resolve, 50));
 
