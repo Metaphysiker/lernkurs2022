@@ -1,0 +1,12 @@
+<div id="<%= dom_id quiz %>">
+  <p>
+    <strong>Content:</strong>
+    <%= quiz.content %>
+  </p>
+
+  <% quiz.quiz_questions.each do |quiz_question| %>
+    <%= quiz_question.content %> - <%= quiz_question.correct_answer %>
+    
+  <% end %>
+
+</div>

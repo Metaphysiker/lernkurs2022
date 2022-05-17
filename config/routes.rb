@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :quiz_questions
+  resources :quizzes
   resources :courses
   resources :slides do
     collection do

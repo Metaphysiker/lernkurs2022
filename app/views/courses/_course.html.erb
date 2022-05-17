@@ -58,7 +58,7 @@
       <div data-id="<%= slide.id %>" class="border rounded p-1 my-2">
         <div data-id="<%= slide.id %>">
           <%= link_to edit_slide_path(slide) do %>
-            <%= raw slide.content %>
+            <%= ActionView::Base.full_sanitizer.sanitize(slide.content).truncate(50) %>
           <% end %>
         </div>
       </div>

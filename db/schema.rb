@@ -10,12 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_16_114639) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_17_084327) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "courses", force: :cascade do |t|
     t.string "name", default: ""
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "quiz_questions", force: :cascade do |t|
+    t.text "content", default: ""
+    t.string "correct_answer", default: "no"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "quiz_id"
+    t.index ["quiz_id"], name: "index_quiz_questions_on_quiz_id"
+  end
+
+  create_table "quizzes", force: :cascade do |t|
+    t.text "content", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -29,5 +44,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_16_114639) do
     t.index ["course_id"], name: "index_slides_on_course_id"
   end
 
+  add_foreign_key "quiz_questions", "quizzes"
   add_foreign_key "slides", "courses"
 end
