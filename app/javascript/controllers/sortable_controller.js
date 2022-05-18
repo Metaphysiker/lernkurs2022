@@ -1,15 +1,16 @@
-//import $ from "jquery"
-import "jquery_with_setup"
-
-import  Sortable  from "sortablejs"
 import { Controller } from "@hotwired/stimulus"
+
+//import  Sortable  from "sortablejs"
 let sortable = undefined;
 export default class extends Controller {
   static targets = [ "saveOrder", "slides", "output" ];
 
   connect() {
 
-    sortable = Sortable.create(this.slidesTarget)
+    import("jquery_with_setup");
+    import("sortablejs").then(sortablejs => {
+      sortable = sortablejs.Sortable.create(this.slidesTarget)
+    })
 
   }
 
