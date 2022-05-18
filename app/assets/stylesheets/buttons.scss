@@ -1,3 +1,21 @@
+.primary-button {
+  @extend .btn !optional;
+  @extend .btn-light !optional;
+  @extend .border !optional;
+  @extend .btn-lg !optional;
+  @extend .fw-bold !optional;
+  color: black;
+  font-size: 1rem;
+  //font-weight: bold;
+  @extend .my-2 !optional;
+  //@extend .text-e-color !optional;
+
+  &:hover{
+    transform: scale(1.05);
+    @extend .border !optional;
+  }
+}
+
 .quiz-button {
   //@extend .rounded !optional;
   @extend .btn !optional;
@@ -25,7 +43,4 @@
     transform: scale(1.05);
     @extend .border !optional;
   }
-
-
-
 }
