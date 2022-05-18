@@ -12,7 +12,11 @@ class QuizzesController < ApplicationController
 
   # GET /quizzes/new
   def new
-    @quiz = Quiz.new
+    if params[:slide_id].present?
+      @quiz = Quiz.new(slide_id: params[:slide_id])
+    else
+      @quiz = Quiz.new
+    end
   end
 
   # GET /quizzes/1/edit

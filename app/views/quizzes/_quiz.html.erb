@@ -5,6 +5,18 @@
       <%= quiz.content %>
     </p>
 
+    <% if policy(QuizQuestion.new).create? %>
+      <div>
+        <p>
+          <%= link_to "New quiz question", new_quiz_question_path(quiz_id: quiz) %>
+        </p>
+
+        <p>
+          <%= link_to "Back to course", course_path(quiz.slide.course, slide_id: quiz.slide) %>
+        </p>
+      </div>
+    <% end %>
+
     <div data-controller="quiz">
       <% quiz.quiz_questions.each do |quiz_question| %>
       <div class="d-grid gap-2">

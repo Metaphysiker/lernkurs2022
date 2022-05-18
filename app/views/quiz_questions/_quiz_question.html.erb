@@ -9,4 +9,8 @@
     <%= quiz_question.correct_answer %>
   </p>
 
+  <p>
+    <%= link_to "Back to course", course_path(quiz_question.quiz.slide.course, slide_id: quiz_question.quiz.slide) %>
+  </p>
+
 </div>

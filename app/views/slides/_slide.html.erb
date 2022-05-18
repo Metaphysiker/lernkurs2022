@@ -1,12 +1,14 @@
 <%= raw slide.content %>
 
 <% if policy(slide).update? %>
-<hr />
-<div>
-  <%= link_to "Edit this slide", edit_slide_path(slide) %> |
-  <%= link_to "Back to slides", slides_path %> |
-  <%= link_to "Back to course", course_path(slide.course, slide_id: slide) %>
+  <hr />
+  <div>
+    <%= link_to "Edit this slide", edit_slide_path(slide) %> |
+    <%= link_to "Back to slides", slides_path %> |
+    <%= link_to "Back to course", course_path(slide.course, slide_id: slide) %>
+    <%= button_to "Destroy this slide", slide, method: :delete %>
+    <hr />
+    <%= link_to "add quiz", new_quiz_path(slide_id: slide) %>
 
-  <%= button_to "Destroy this slide", slide, method: :delete %>
-</div>
+  </div>
 <% end %>
