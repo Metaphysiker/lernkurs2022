@@ -14,4 +14,4 @@ admin = User.create(email: "sandro.raess@philosophie.ch", password: "epikur", pa
 
 admin.roles << Role.find_by_name("admin")
 
-klima_lernkurs = Course(name: "Klimagerechtigkeit")
+klima_lernkurs = Course.create(name: "Klimagerechtigkeit")
