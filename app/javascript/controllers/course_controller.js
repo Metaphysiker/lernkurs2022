@@ -1,10 +1,12 @@
 import { Controller } from "@hotwired/stimulus"
-import $ from "jquery"
+//import $ from "jquery"
 
 export default class extends Controller {
   static targets = [ "slide", "name", "exercise", "output", "slideId", "nextSlideId", "previousSlideId", "navigationButtons" ]
 
   connect(){
+
+    import("jquery_with_setup");
     //this.getSlide(this.slideIdTarget.getAttribute('data-value'));
   }
 

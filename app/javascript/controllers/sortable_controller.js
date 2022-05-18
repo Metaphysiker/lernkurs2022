@@ -1,4 +1,6 @@
-import $ from "jquery"
+//import $ from "jquery"
+import "jquery_with_setup"
+
 import  Sortable  from "sortablejs"
 import { Controller } from "@hotwired/stimulus"
 let sortable = undefined;

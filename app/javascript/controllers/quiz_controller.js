@@ -1,8 +1,13 @@
-import $ from "jquery"
+//import $ from "jquery"
+
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static targets = [ "button", "name", "output" ]
+
+  connect(){
+    import("jquery_with_setup");
+  }
 
   disconnect(){
 
