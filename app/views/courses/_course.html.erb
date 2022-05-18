@@ -47,5 +47,5 @@
 </div>
 <% end %>
 <% if policy(Slide.new(course_id: course.id)).create? %>
-  <%= link_to "Create Slide", new_slide_path(Slide.new(course_id: course.id)) %>
+  <%= link_to "Create Slide", new_slide_path(course_id: course.id) %>
 <% end %>

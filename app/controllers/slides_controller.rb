@@ -13,7 +13,11 @@ class SlidesController < ApplicationController
 
   # GET /slides/new
   def new
-    @slide = Slide.new
+    if params[:course_id].present?
+      @slide = Slide.new(course_id: params[:course_id])
+    else
+      @slide = Slide.new
+    end
   end
 
   # GET /slides/1/edit
