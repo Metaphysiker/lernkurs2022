@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :roles
-  devise_for :users
   resources :quiz_questions
   resources :quizzes
   resources :courses do
@@ -23,4 +22,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  devise_for :users, controllers: { sessions: "devise/passwordless/sessions" }
+  devise_scope :user do
+      get "/users/magic_link",
+      to: "devise/passwordless/magic_links#show",
+      as: "users_magic_link"
+  end
+
 end
