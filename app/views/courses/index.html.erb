@@ -4,9 +4,18 @@
 
 <div id="courses">
   <% @courses.each do |course| %>
-    <%= render course %>
+    <%#= render course %>
     <p>
-      <%= link_to "Show this course", course %>
+      <strong><%= course.name %></strong>
+    </p>
+    <p>
+      <%= course.description %>
+    </p>
+    <p>
+      <%= link_to "Edit course", edit_course_path(course) %>
+
+      <br />
+      <%= link_to "Show this course", course, slide: course.slides.first %>
     </p>
   <% end %>
 </div>
