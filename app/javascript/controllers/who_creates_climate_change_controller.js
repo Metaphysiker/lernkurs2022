@@ -12,7 +12,7 @@ export default class extends Controller {
   }
 
   disconnect(){
-    
+
   }
 
   greet() {
