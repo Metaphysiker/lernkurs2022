@@ -1,6 +1,12 @@
-<div id="courses">
-  <% Course.all.each do |course| %>
-    <%= link_to course.name, course_path(course) %>
-    <hr />
-  <% end %>
+<%= render "layouts/navigation" %>
+
+<div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 my-3">
+          <% Course.all.each do |course| %>
+          <div class="col">
+            <%= render "courses/card", course: course %>
+          </div>
+
+          <% end %>
+        </div>
 </div>
