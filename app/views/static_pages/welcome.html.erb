@@ -1,7 +1,7 @@
 <%= render "layouts/navigation" %>
 
 <div class="container">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 my-3">
+        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-3 g-3 my-3">
           <% Course.all.each do |course| %>
           <div class="col">
             <%= render "courses/card", course: course %>
@@ -10,3 +10,7 @@
           <% end %>
         </div>
 </div>
+
+<%= render "layouts/footer" %>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>

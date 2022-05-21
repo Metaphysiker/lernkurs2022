@@ -1,8 +1,26 @@
-<hr />
-<% if user_signed_in? %>
-  <p>Welcome <%= current_user.email %></p>
-  <%= button_to 'Logout', destroy_user_session_path, method: :delete %>
-<% else %>
-  <%= link_to 'Login', new_user_session_path %>
-  <%= link_to 'Sign up', new_user_registration_path %>
-<% end %>
+<div class="container-fluid bg-a-color">
+  <footer class="py-3 my-4">
+    <p class="text-center text-muted">Philosophie.ch</p>
+    <% if user_signed_in? %>
+      <p class="text-center text-muted">Angemeldet mit <strong><%= current_user.email %></strong></p>
+      <p class="text-center text-muted d-flex justify-content-center">
+        <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
+      </p>
+    <% else %>
+      <p class="text-center text-muted">
+        <%= link_to 'Login', new_user_session_path, class: "action-button-b-color" %>  |
+        <%= link_to 'Sign up', new_user_registration_path, class: "action-button-green-color"  %>
+      </p>
+    <% end %>
+    <hr>
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+    </ul>
+
+
+  </footer>
+</div>

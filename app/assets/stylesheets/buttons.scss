@@ -1,26 +1,40 @@
-.primary-button {
-  @extend .btn !optional;
-  @extend .btn-light !optional;
-  @extend .border !optional;
-  @extend .btn-lg !optional;
-  @extend .fw-bold !optional;
-  color: black;
-  font-size: 1rem;
-  //font-weight: bold;
-  @extend .my-2 !optional;
-  //@extend .text-e-color !optional;
+@import "variables";
 
-  &:hover{
-    transform: scale(1.05);
-    @extend .border !optional;
+@mixin button-modifiers {
+  @each $name, $hex in $main-colors {
+    &-#{$name} {
+      background-color: $hex !important;
+      @extend .btn !optional;
+      @extend .btn-lg !optional;
+      @extend .fw-bold !optional;
+      color: white;
+      font-size: 1rem;
+      @extend .my-2 !optional;
+
+      &:hover{
+        transform: scale(1.05);
+        color: white;
+        @extend .border-0 !optional;
+        background-color: darken($hex, 10%) !important;
+      }
+    }
   }
 }
+
+.primary-button {
+  @include button-modifiers;
+}
+
+.action-button {
+  @include button-modifiers;
+}
+
 
 .quiz-button {
   //@extend .rounded !optional;
   @extend .btn !optional;
   @extend .btn-light !optional;
-  @extend .border !optional;
+  //@extend .border !optional;
   @extend .btn-lg !optional;
   @extend .fw-bold !optional;
   color: black;
@@ -41,6 +55,6 @@
   &:hover{
   //  filter: brightness(1.1);
     transform: scale(1.05);
-    @extend .border !optional;
+    //@extend .border !optional;
   }
 }
