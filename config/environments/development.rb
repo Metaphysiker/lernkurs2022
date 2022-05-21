@@ -70,4 +70,15 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'mail.oriented.net',
+    port:                 587,
+    #domain:               'gmail.com',
+    user_name:             'lernkurs@philosophie.ch',
+    password:              Rails.application.credentials.oriented_password,
+    authentication:       'plain',
+    enable_starttls_auto: true }
+
 end

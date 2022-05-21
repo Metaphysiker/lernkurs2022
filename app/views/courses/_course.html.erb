@@ -5,15 +5,13 @@
 
 <% end %>
 
-<% first_slide = slide %>
-
-<% unless first_slide.blank? %>
+<% unless slide.blank? %>
 
 <div
   data-controller="course points"
   data-action="correct-answer@window->points#updateCounter"
   >
-  <div data-course-target="slideId" data-slides-target="slideId" data-navigation-target="slideId" data-value="<%= first_slide.id %>" >
+  <div data-course-target="slideId" data-slides-target="slideId" data-navigation-target="slideId" data-value="<%= slide.id %>" >
   </div>
 <%= render "layouts/course_navigation" %>
 
@@ -23,7 +21,7 @@
 
       <div class="col-12 offset-sm-1 col-sm-10 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
         <div data-course-target="slide" class="mt-3">
-          <%= render "slides/slide", slide: first_slide  %>
+          <%= render "slides/slide", slide: slide  %>
         </div>
         <hr>
       </div>
@@ -35,20 +33,25 @@
   <div class="exercise">
     <div data-course-target="exercise">
       <div class="col-12 offset-sm-1 col-sm-10 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
-        <%= render "quizzes/quiz", quiz: first_slide.quizzes.first unless first_slide.quizzes.empty?  %>
+        <%= render "quizzes/quiz", quiz: slide.quizzes.first unless slide.quizzes.empty?  %>
       </div>
     </div>
   </div>
 
   <div class="navigation">
     <div data-course-target="navigationButtons">
-      <%= render "slides/navigation_buttons", slide: first_slide  %>
+      <%= render "slides/navigation_buttons", slide: slide  %>
     </div>
   </div>
 
 
 </div>
 <% end %>
-<% if policy(Slide.new(course_id: course.id)).create? %>
-  <%= link_to "Create Slide", new_slide_path(course_id: course.id) %>
-<% end %>
+
+<div class="container">
+  <% if policy(Slide.new(course_id: course.id)).create? %>
+    <%= link_to "Create Slide", new_slide_path(course_id: course.id) %>
+    <br>
+    <%= link_to "Course Overview", course_overview_course_path(course) %>
+  <% end %>
+</div>
