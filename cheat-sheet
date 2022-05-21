@@ -1,1 +1,5 @@
-<div data-controller="who-creates-climate-change"><input type="text" data-who-creates-climate-change-target="name"> <button data-action="click-&gt;who-creates-climate-change#greet"> Greet </button> <span data-who-creates-climate-change-target="output"> &nbsp; </span></div>
+<div data-controller="who-creates-climate-change">
+  <div style="width: 100%; height: 100vh;" data-who-creates-climate-change-target="output">
+  &nbsp;
+  </div>
+</div>
