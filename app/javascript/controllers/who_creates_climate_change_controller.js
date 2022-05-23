@@ -40,52 +40,33 @@ export default class extends Controller {
     .attr("width", width)
   .append("xhtml:div")
     .html(`<div class="">
-    Wähle eine Bevölkerungsgruppe aus und schau, wie viel Treibhausgase sie verursachen:
+    Klick auf eine Bevölkerungsgruppe aus und schau, wie viel Treibhausgase sie verursacht:
         </div>`);
 
-    var people_richest_1 = starting_position
-    .append("g")
-    .attr("transform", `translate(${width/100 * 0}, ${text_block.height})`);
+    function add_people_group(container, width_percentage, text){
 
-    people_richest_1
-    .append("text")
-    .text("1%");
+      var people_group = starting_position
+      .append("g")
+      .attr("transform", `translate(${width/100 * width_percentage}, ${text_block.height})`);
 
-    people_richest_1
-    .append("svg:image")
-    .attr('width', width/100 * 20)
-    .attr('height', 100)
-    .style("cursor", "pointer")
-    .style("opacity", 1)
-    .attr("xlink:href", "https://upload.wikimedia.org/wikipedia/commons/d/d8/Person_icon_BLACK-01.svg")
-    .style("fill", "#69b3a2");
+      people_group
+      .append("text")
+      .text(text);
 
-    var people_richest_10 = starting_position.append("svg:image")
-    .attr('x', width/100 * 25)
-    .attr('y', text_block.height)
-    .attr('width', width/100 * 20)
-    .attr('height', 100)
-    .style("cursor", "pointer")
-    .style("opacity", 1)
-    .attr("xlink:href", "https://upload.wikimedia.org/wikipedia/commons/d/d8/Person_icon_BLACK-01.svg");
+      people_group
+      .append("svg:image")
+      .attr('width', width/100 * 20)
+      .attr('height', 100)
+      .style("cursor", "pointer")
+      .style("opacity", 1)
+      .attr("xlink:href", "https://upload.wikimedia.org/wikipedia/commons/d/d8/Person_icon_BLACK-01.svg")
+      .style("fill", "#69b3a2");
+    }
 
-    var people_middle_40 = starting_position.append("svg:image")
-    .attr('x', width/100 * 50)
-    .attr('y', text_block.height)
-    .attr('width', width/100 * 20)
-    .attr('height', 100)
-    .style("cursor", "pointer")
-    .style("opacity", 1)
-    .attr("xlink:href", "https://upload.wikimedia.org/wikipedia/commons/d/d8/Person_icon_BLACK-01.svg");
-
-    var people_poorest_50 = starting_position.append("svg:image")
-    .attr('x', width/100 * 75)
-    .attr('y', text_block.height)
-    .attr('width', width/100 * 20)
-    .attr('height', 100)
-    .style("cursor", "pointer")
-    .style("opacity", 1)
-    .attr("xlink:href", "https://upload.wikimedia.org/wikipedia/commons/d/d8/Person_icon_BLACK-01.svg");
+    add_people_group(starting_position, 0, "1%");
+    add_people_group(starting_position, 25, "10%");
+    add_people_group(starting_position, 50, "40%");
+    add_people_group(starting_position, 75, "50%");
 
   }
 
