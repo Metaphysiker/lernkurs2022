@@ -48,11 +48,11 @@ export function peopleGroupEmissions() {
       .style("fill", "#69b3a2");
     }
 
-    function draw_cake(){
+    function draw_pie(){
 
     }
 
-    function update_cake(){
+    function update_pie(){
 
       var people_group = starting_position
       .append("g")
