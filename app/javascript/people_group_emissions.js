@@ -7,10 +7,10 @@ export function peopleGroupEmissions() {
     //variables
     let margin = {top: 5, right: 5, bottom: 5, left: 5};
     let width = $(container).width();
-    let height = 600;
+    let height = $(container).height();
     let text_block = {height: 150, width: 200};
-    const radius = Math.min(width, height) / 2;
-    const data1 = {a: 9, b: 20, c:30, d:8, e:12}
+    const radius = Math.min(width, height) / 4;
+    const data1 = {a: 0, b: 100}
 
     //define svg
     const svg = d3.select(container)
@@ -19,50 +19,96 @@ export function peopleGroupEmissions() {
     .attr("height", height)
     .append("g");
 
+    //positions
     var starting_position = svg.append("g")
                             .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-    //add introduction_text
-    var introduction_text = starting_position.append("foreignObject")
-    .attr("x", 0)
-    .attr("y", 0)
-    .attr("height", height)
-    .attr("width", width)
-  .append("xhtml:div")
-    .html(`<div class="">
-          Klick auf eine Bevölkerungsgruppe aus und schau, wie viel Treibhausgase sie verursacht:
-        </div>`);
+    var text_position = svg.append("g")
+                            .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+    var people_group_position = svg.append("g")
+                            .attr("transform", `translate(${margin.left}, ${100})`);
+
+    var emission_text_position = svg.append("g")
+                            .attr("transform", `translate(${margin.left}, ${250})`);
+
+    var pie_position = svg.append("g")
+                            .attr("transform", `translate(${width/2}, ${450})`);
+
+
+   add_text(text_position, "Wer verursacht wie viele CO2-Emissionen?");
+
+   var emission_text = add_text(emission_text_position, "Klicke oben auf eine Bevölkerungsgruppe!");
 
     //add people groups
-    add_people_group(starting_position, 0, "1%");
-    add_people_group(starting_position, 25, "10%");
-    add_people_group(starting_position, 50, "40%");
-    add_people_group(starting_position, 75, "50%");
-    draw_pie(data1);
+    add_people_group(people_group_position, 0, "1%", "Die allerreichsten Menschen verursachen 15 Prozent aller Emissionen.", JSON.stringify({a: 15, b: 85}));
+    add_people_group(people_group_position, 25, "10%", "Die reichen Menschen verursachen 37 Prozent aller Emissionen.", JSON.stringify({a: 17, b: 83}));
+    add_people_group(people_group_position, 50, "40%", "Die Mittelschicht verursacht 41 Prozent Emissionen.", JSON.stringify({a: 41, b: 59}));
+    add_people_group(people_group_position, 75, "50%", "Die ärmsten Menschen 7 Prozent aller Emissionen.", JSON.stringify({a: 7, b: 93}));
 
+    //add pie
+    add_pie(pie_position, data1);
 
     //functions
-    function add_people_group(container, width_percentage, text){
 
-      var people_group = starting_position
+    function add_text(container, text){
+      return container.append("foreignObject")
+      .attr("x", 0)
+      .attr("y", 0)
+      .attr("height", height)
+      .attr("width", width)
+    .append("xhtml:div")
+      .html(`<div class="text-center">
+            ${text}
+          </div>`);
+    }
+
+    function add_people_group(container, width_percentage, text, information_text, pie_data){
+      console.log(pie_data);
+
+      var people_group = container
       .append("g")
-      .attr("transform", `translate(${width/100 * width_percentage}, ${text_block.height})`);
+      .attr("transform", `translate(${width/100 * width_percentage}, 0)`);
 
       people_group
       .append("text")
       .text(text);
 
-      people_group
+      var people_group_image = people_group
       .append("svg:image")
       .attr('width', width/100 * 20)
       .attr('height', 100)
       .style("cursor", "pointer")
       .style("opacity", 1)
+      .attr("information_text", information_text)
+      .attr("pie_data", pie_data)
       .attr("xlink:href", "https://upload.wikimedia.org/wikipedia/commons/d/d8/Person_icon_BLACK-01.svg")
       .style("fill", "#69b3a2");
+
+      people_group.on("mouseenter", function(){
+        people_group_image
+        .transition()
+        .duration(500)
+        .attr('width', width/100 * 25)
+        .attr('height', 120);
+      });
+
+      people_group.on("mouseleave", function(){
+        people_group_image
+        .transition()
+        .duration(500)
+        .attr('width', width/100 * 20)
+        .attr('height', 100);
+      });
+
+      people_group.on("click", function(){
+        emission_text.remove();
+        emission_text = add_text(emission_text_position, people_group_image.attr("information_text"));
+        add_pie(pie_position, JSON.parse(people_group_image.attr("pie_data")));
+      });
     }
 
-    function draw_pie(data){
+    function add_pie(container, data){
 
       const color = d3.scaleOrdinal()
       .domain(["a", "b", "c", "d", "e", "f"])
@@ -76,14 +122,14 @@ export function peopleGroupEmissions() {
     const data_ready = pie(Object.entries(data))
 
     // map to data
-    const u = svg.selectAll("path")
+    const u = container.selectAll("path")
       .data(data_ready)
 
         // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
         u
           .join('path')
-          .transition()
-          .duration(1000)
+          //.transition()
+        //  .duration(2000)
           .attr('d', d3.arc()
             .innerRadius(0)
             .outerRadius(radius)
