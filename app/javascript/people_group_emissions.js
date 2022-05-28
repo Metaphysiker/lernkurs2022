@@ -10,7 +10,7 @@ export function peopleGroupEmissions() {
     let height = $(container).height();
     let text_block = {height: 150, width: 200};
     const radius = Math.min(width, height) / 4;
-    const data1 = {a: 0, b: 100}
+    const data1 = {a: 10, b: 90}
 
     //define svg
     const svg = d3.select(container)
@@ -119,21 +119,46 @@ export function peopleGroupEmissions() {
       .value(function(d) {return d[1]; })
       .sort(function(a, b) { return d3.ascending(a.key, b.key);} ) // This make sure that group order remains the same in the pie chart
 
+    console.log(Object.entries(data));
     const data_ready = pie(Object.entries(data))
-
+    console.log(data_ready);
     // map to data
     const u = container.selectAll("path")
       .data(data_ready)
 
+      console.log(u);
+
         // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
         u
           .join('path')
-          //.transition()
-        //  .duration(2000)
-          .attr('d', d3.arc()
+          .transition()
+         .duration(2000)
+          .attr('d', function(d){
+            console.log("inside d")
+            console.log(d.startAngle);
+            return d3.arc()
+                        .innerRadius(0)
+                        .outerRadius(radius)
+                        .startAngle(d.startAngle)
+                        .endAngle(d.endAngle)();
+          })
+          .attr('dfff', function(d){
+            console.log(d);
+            console.log(d3.arc()
             .innerRadius(0)
             .outerRadius(radius)
           )
+          }
+
+        )          .attr('dfff', function(d){
+            console.log(d);
+            console.log(d3.arc()
+            .innerRadius(0)
+            .outerRadius(radius)
+          )
+          }
+
+        )
           .attr('fill', function(d){ return(color(d.data[0])) })
           .attr("stroke", "white")
           .style("stroke-width", "2px")
