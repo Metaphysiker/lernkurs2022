@@ -10,7 +10,7 @@ export function peopleGroupEmissions() {
     let height = $(container).height();
     let text_block = {height: 150, width: 200};
     const radius = Math.min(width, height) / 4;
-    const data1 = {a: 10, b: 90}
+    const data1 = {a: 0, b: 100}
 
     //define svg
     const svg = d3.select(container)
@@ -44,10 +44,57 @@ export function peopleGroupEmissions() {
     add_people_group(people_group_position, 0, "1%", "Die allerreichsten Menschen verursachen 15 Prozent aller Emissionen.", JSON.stringify({a: 15, b: 85}));
     add_people_group(people_group_position, 25, "10%", "Die reichen Menschen verursachen 37 Prozent aller Emissionen.", JSON.stringify({a: 17, b: 83}));
     add_people_group(people_group_position, 50, "40%", "Die Mittelschicht verursacht 41 Prozent Emissionen.", JSON.stringify({a: 41, b: 59}));
-    add_people_group(people_group_position, 75, "50%", "Die ärmsten Menschen 7 Prozent aller Emissionen.", JSON.stringify({a: 7, b: 93}));
+    add_people_group(people_group_position, 75, "50%", "Die ärmsten Menschen 7 Prozent aller Emissionen.", JSON.stringify({a: 93, b: 7}));
 
     //add pie
-    add_pie(pie_position, data1);
+    //add_pie(pie_position, data1);
+
+      var inner_radius = 60
+      var radius_width = 10
+      var arc_colors = ["#F3A54A", "#AA7CAA", "#CCDE66", "#4B90A6"]
+
+      var arc = d3.arc()
+
+      var datax = []
+      for (var k=0; k<1; k++){
+
+        var score = 0.7 * Math.random()
+        var startAngle = Math.random() * 2 * Math.PI
+        var endAngle = startAngle + score * 2 * Math.PI
+        datax.push({
+                startAngle: startAngle,
+                endAngle: endAngle,
+                innerRadius: 0,
+                outerRadius: inner_radius + (k + 1) * radius_width,
+                fill: arc_colors[k]
+              })
+
+      }
+
+      pie_position.selectAll("path").data(datax).enter()
+      .append("path")
+      .style("fill", function(d){ return d.fill })
+      .attr("d", arc);
+
+      d3.interval(function() {
+        pie_position.selectAll("path").transition()
+            .duration(1000)
+            .attrTween("d", function(d){
+              return arcTween(d, 0.7 * Math.random())
+            })
+      }, 2000)
+
+function arcTween(d, new_score) {
+    var new_startAngle = Math.random() * 2 * Math.PI
+    var new_endAngle = new_startAngle + new_score * 2 * Math.PI
+    var interpolate_start = d3.interpolate(d.startAngle, new_startAngle)
+    var interpolate_end = d3.interpolate(d.endAngle, new_endAngle)
+    return function(t) {
+      d.startAngle = interpolate_start(t)
+      d.endAngle = interpolate_end(t)
+      return arc(d)
+    }
+  }
 
     //functions
 
@@ -64,7 +111,6 @@ export function peopleGroupEmissions() {
     }
 
     function add_people_group(container, width_percentage, text, information_text, pie_data){
-      console.log(pie_data);
 
       var people_group = container
       .append("g")
@@ -119,14 +165,13 @@ export function peopleGroupEmissions() {
       .value(function(d) {return d[1]; })
       .sort(function(a, b) { return d3.ascending(a.key, b.key);} ) // This make sure that group order remains the same in the pie chart
 
-    console.log(Object.entries(data));
     const data_ready = pie(Object.entries(data))
-    console.log(data_ready);
     // map to data
     const u = container.selectAll("path")
       .data(data_ready)
 
-      console.log(u);
+      u
+       .join('path')
 
         // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
         u
@@ -134,36 +179,17 @@ export function peopleGroupEmissions() {
           .transition()
          .duration(2000)
           .attr('d', function(d){
-            console.log("inside d")
-            console.log(d.startAngle);
             return d3.arc()
-                        .innerRadius(0)
-                        .outerRadius(radius)
-                        .startAngle(d.startAngle)
-                        .endAngle(d.endAngle)();
+              .innerRadius(0)
+              .outerRadius(radius)
+              .cornerRadius(0)
+              .startAngle(d.startAngle)
+              .endAngle(d.endAngle)();
           })
-          .attr('dfff', function(d){
-            console.log(d);
-            console.log(d3.arc()
-            .innerRadius(0)
-            .outerRadius(radius)
-          )
-          }
-
-        )          .attr('dfff', function(d){
-            console.log(d);
-            console.log(d3.arc()
-            .innerRadius(0)
-            .outerRadius(radius)
-          )
-          }
-
-        )
           .attr('fill', function(d){ return(color(d.data[0])) })
           .attr("stroke", "white")
           .style("stroke-width", "2px")
           .style("opacity", 1)
-
 
     }
 
