@@ -10,9 +10,13 @@
           <p class="text-black">
             Dieser Lernkurs wurde durch die grosszügige Unterstützung der Ernst Göhner Stiftung ermöglicht.
           </p>
+          <p class="text-black">
+
+            <%= image_tag "Ernst-Göhner-Stiftung-Logo.png", class: "img-fluid my-3" %>
+          </p>
         </div>
         <div class="col-sm-4 offset-md-1 py-4">
-          <h4 class="text-black">Contact</h4>
+          <h4 class="text-black">Kontakt & Links</h4>
           <ul class="list-unstyled">
             <li><a href="#" class="text-black">Follow on Twitter</a></li>
             <li><a href="#" class="text-black">Like on Facebook</a></li>
@@ -25,7 +29,7 @@
   <div class="navbar bg-a-color">
     <div class="container">
       <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
-        <strong>Philosophie.ch</strong>
+        <%= image_tag "Philosophie-ch-Logo.png", class: "navbar-brand-image" %>
       <% end %>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
