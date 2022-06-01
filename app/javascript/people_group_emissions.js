@@ -44,7 +44,7 @@ export function peopleGroupEmissions() {
     add_people_group(people_group_position, 0, "1%", "Die allerreichsten Menschen verursachen 15 Prozent aller Emissionen.", JSON.stringify({a: 15, b: 85}));
     add_people_group(people_group_position, 25, "10%", "Die reichen Menschen verursachen 37 Prozent aller Emissionen.", JSON.stringify({a: 17, b: 83}));
     add_people_group(people_group_position, 50, "40%", "Die Mittelschicht verursacht 41 Prozent Emissionen.", JSON.stringify({a: 41, b: 59}));
-    add_people_group(people_group_position, 75, "50%", "Die ärmsten Menschen 7 Prozent aller Emissionen.", JSON.stringify({a: 93, b: 7}));
+    add_people_group(people_group_position, 75, "50%", "Die ärmsten Menschen 7 Prozent aller Emissionen.", JSON.stringify({a: 7, b: 93}));
 
     //add pie
     //add_pie(pie_position, data1);
@@ -55,38 +55,9 @@ export function peopleGroupEmissions() {
 
       var arc = d3.arc()
 
-      var datax = []
-      for (var k=0; k<1; k++){
-
-        var score = 0.7 * Math.random()
-        var startAngle = Math.random() * 2 * Math.PI
-        var endAngle = startAngle + score * 2 * Math.PI
-        datax.push({
-                startAngle: startAngle,
-                endAngle: endAngle,
-                innerRadius: 0,
-                outerRadius: inner_radius + (k + 1) * radius_width,
-                fill: arc_colors[k]
-              })
-
-      }
-
-      pie_position.selectAll("path").data(datax).enter()
-      .append("path")
-      .style("fill", function(d){ return d.fill })
-      .attr("d", arc);
-
-      d3.interval(function() {
-        pie_position.selectAll("path").transition()
-            .duration(1000)
-            .attrTween("d", function(d){
-              return arcTween(d, 0.7 * Math.random())
-            })
-      }, 2000)
-
 function arcTween(d, new_score) {
-    var new_startAngle = Math.random() * 2 * Math.PI
-    var new_endAngle = new_startAngle + new_score * 2 * Math.PI
+    var new_startAngle = 0 //Math.random() * 2 * Math.PI
+    var new_endAngle = new_startAngle + new_score
     var interpolate_start = d3.interpolate(d.startAngle, new_startAngle)
     var interpolate_end = d3.interpolate(d.endAngle, new_endAngle)
     return function(t) {
@@ -156,6 +127,29 @@ function arcTween(d, new_score) {
 
     function add_pie(container, data){
 
+      var dummy_data = [{
+              startAngle: 0,
+              endAngle: 0,
+              innerRadius: 0,
+              outerRadius: 100,
+              fill: "#F3A54A"
+            }]
+
+      container.selectAll("path").data(dummy_data).enter()
+      .append("path")
+      .style("fill", function(d){ return d.fill })
+      .attr("d", arc);
+
+
+      container.selectAll("path").transition()
+          .duration(1000)
+          .attrTween("d", function(d){
+            return arcTween(d, 6.28 * (data.a/100))
+          })
+    }
+
+    function add_pie1(container, data){
+
       const color = d3.scaleOrdinal()
       .domain(["a", "b", "c", "d", "e", "f"])
       .range(d3.schemeDark2);
@@ -192,12 +186,6 @@ function arcTween(d, new_score) {
           .style("opacity", 1)
 
     }
-
-    function update_pie(){
-
-    }
-
-
 
   };
 
