@@ -43,7 +43,7 @@ export function peopleGroupEmissions() {
     //add people groups
     add_people_group(people_group_position, 0, "1%", "Die allerreichsten Menschen verursachen 15 Prozent aller Emissionen.", JSON.stringify({a: 15, b: 85}));
     add_people_group(people_group_position, 25, "10%", "Die reichen Menschen verursachen 37 Prozent aller Emissionen.", JSON.stringify({a: 17, b: 83}));
-    add_people_group(people_group_position, 50, "40%", "Die Mittelschicht verursacht 41 Prozent Emissionen.", JSON.stringify({a: 41, b: 59}));
+    add_people_group(people_group_position, 50, "40%", "Die Mittelschicht verursacht 41 Prozent aller Emissionen.", JSON.stringify({a: 41, b: 59}));
     add_people_group(people_group_position, 75, "50%", "Die ärmsten Menschen 7 Prozent aller Emissionen.", JSON.stringify({a: 7, b: 93}));
 
     //add pie
@@ -55,9 +55,9 @@ export function peopleGroupEmissions() {
 
       var arc = d3.arc()
 
-function arcTween(d, new_score) {
-    var new_startAngle = 0 //Math.random() * 2 * Math.PI
-    var new_endAngle = new_startAngle + new_score
+function arcTween(d, start_angle, end_angle) {
+    var new_startAngle = start_angle //Math.random() * 2 * Math.PI
+    var new_endAngle = end_angle
     var interpolate_start = d3.interpolate(d.startAngle, new_startAngle)
     var interpolate_end = d3.interpolate(d.endAngle, new_endAngle)
     return function(t) {
@@ -127,7 +127,9 @@ function arcTween(d, new_score) {
 
     function add_pie(container, data){
 
-      var dummy_data = [{
+      container.selectAll("path").remove();
+
+      var first_pie_arc = [{
               startAngle: 0,
               endAngle: 0,
               innerRadius: 0,
@@ -135,16 +137,63 @@ function arcTween(d, new_score) {
               fill: "#F3A54A"
             }]
 
-      container.selectAll("path").data(dummy_data).enter()
+      var second_pie_arc = [{
+              startAngle: 6.28 * (data.a/100),
+              endAngle: 6.28 * (data.a/100),
+              innerRadius: 0,
+              outerRadius: 100,
+              fill: "#CCDE66"
+            }]
+
+    var first_arc = container
+    .data(first_pie_arc)
+    .append("path")
+    .attr("d", arc)
+    .attr("stroke", "white")
+    .attr("fill", "green");
+
+    first_arc.transition()
+        .duration(1000)
+        .attrTween("d", function(d){
+          return arcTween(d, 0, 6.28 * (data.a/100))
+        })
+
+    var second_arc = container
+    .data(second_pie_arc)
+    .attr("logging", function(data){
+      console.log(data)
+    })
+    .append("path")
+    .attr("d", arc)
+    .attr("stroke", "white")
+    .attr("fill", "blue");
+
+    second_arc.transition()
+        .duration(1000)
+        .attrTween("d", function(d){
+          return arcTween(d, 6.28 * (data.a/100), 6.28)
+        })
+
+    var first_pie_arc_path = container.data(first_pie_arc).enter()
       .append("path")
       .style("fill", function(d){ return d.fill })
       .attr("d", arc);
 
-
-      container.selectAll("path").transition()
+      first_pie_arc_path.transition()
           .duration(1000)
           .attrTween("d", function(d){
             return arcTween(d, 6.28 * (data.a/100))
+          })
+
+    var second_pie_arc_path = container.data(second_pie_arc).enter()
+      .append("path")
+      .style("fill", function(d){ return d.fill })
+      .attr("d", arc);
+
+      second_pie_arc_path.transition()
+          .duration(1000)
+          .attrTween("d", function(d){
+            return arcTween(d, 6.28)
           })
     }
 
