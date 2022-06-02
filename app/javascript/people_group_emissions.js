@@ -48,12 +48,7 @@ export function peopleGroupEmissions() {
 
     //add pie
     //add_pie(pie_position, data1);
-
-      var inner_radius = 60
-      var radius_width = 10
-      var arc_colors = ["#F3A54A", "#AA7CAA", "#CCDE66", "#4B90A6"]
-
-      var arc = d3.arc()
+    var arc = d3.arc()
 
 function arcTween(d, start_angle, end_angle) {
     var new_startAngle = d.startAngle//start_angle //Math.random() * 2 * Math.PI
