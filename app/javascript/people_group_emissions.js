@@ -56,7 +56,7 @@ export function peopleGroupEmissions() {
       var arc = d3.arc()
 
 function arcTween(d, start_angle, end_angle) {
-    var new_startAngle = start_angle //Math.random() * 2 * Math.PI
+    var new_startAngle = d.startAngle//start_angle //Math.random() * 2 * Math.PI
     var new_endAngle = end_angle
     var interpolate_start = d3.interpolate(d.startAngle, new_startAngle)
     var interpolate_end = d3.interpolate(d.endAngle, new_endAngle)
@@ -170,6 +170,7 @@ function arcTween(d, start_angle, end_angle) {
 
     second_arc.transition()
         .duration(1000)
+        .delay(1000)
         .attrTween("d", function(d){
           return arcTween(d, 6.28 * (data.a/100), 6.28)
         })
