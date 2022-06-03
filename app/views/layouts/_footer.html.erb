@@ -8,8 +8,8 @@
       </p>
     <% else %>
       <p class="text-center text-muted">
-        <%= link_to 'Login', new_user_session_path, class: "action-button-b-color" %>  |
-        <%= link_to 'Sign up', new_user_registration_path, class: "action-button-green-color"  %>
+        <%= link_to t('login'), new_user_session_path, class: "action-button-b-color" %>  |
+        <%= link_to t('signup'), new_user_registration_path, class: "action-button-green-color"  %>
       </p>
     <% end %>
     <hr>
