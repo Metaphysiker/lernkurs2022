@@ -23,12 +23,11 @@
         <div data-course-target="slide" class="mt-3">
           <%= render "slides/slide", slide: slide  %>
         </div>
-        <hr>
       </div>
 
     </div>
 
-  </div>
+
 
   <div class="exercise">
     <div data-course-target="exercise">
@@ -39,6 +38,7 @@
   </div>
 
   <div class="navigation">
+    <hr>
     <div data-course-target="navigationButtons">
       <%= render "slides/navigation_buttons", slide: slide  %>
     </div>
@@ -54,4 +54,5 @@
     <br>
     <%= link_to "Course Overview", course_overview_course_path(course) %>
   <% end %>
+</div>
 </div>

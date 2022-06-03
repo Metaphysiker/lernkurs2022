@@ -6,13 +6,13 @@
 </div>
 
 <div class="my-2 text-center">
-  <button data-action="click->course#getPreviousSlide" class="<%= "disabled" if slide.previous_slide_id < 0 %> btn btn-primary">
+  <button data-action="click->course#getPreviousSlide" class="<%= "disabled" if slide.previous_slide_id < 0 %> action-button-green-color">
     Zurück
   </button>
 
   <%= slide_sort %> / <%= total_slides_count %>
 
-  <button data-action="click->course#getNextSlide" class="<%= "disabled" if slide.next_slide_id < 0 %> btn btn-primary">
+  <button data-action="click->course#getNextSlide" class="<%= "disabled" if slide.next_slide_id < 0 %> action-button-green-color">
     Weiter
   </button>
    |
@@ -25,7 +25,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="settingsModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="settingsModalLabel">Menü</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
