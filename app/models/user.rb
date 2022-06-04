@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_many :user_roles
   has_many :roles, through: :user_roles
+  has_one :account
 
   def admin?
     self.roles.where(name: "admin").exists?
