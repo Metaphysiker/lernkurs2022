@@ -8,6 +8,20 @@ export default class extends Controller {
 
     import("jquery_with_setup");
     //this.getSlide(this.slideIdTarget.getAttribute('data-value'));
+
+    // Navigate with arrow buttons
+    document.addEventListener('keydown', (event) => {
+
+      if(event.code == "ArrowRight") {
+        this.getNextSlide()
+      } else if(event.code == "ArrowLeft"){
+        this.getPreviousSlide()
+      }
+    }, false);
+  }
+
+  disconnect(){
+    document.removeEventListener('keydown');
   }
 
   getPreviousSlide(){

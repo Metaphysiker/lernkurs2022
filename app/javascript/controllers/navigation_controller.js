@@ -18,6 +18,20 @@ export default class extends Controller {
         </button>
       </div>
       `
+      console.log("listener")
+
+      // Add event listener on keydown
+      document.addEventListener('keydown', (event) => {
+        console.log("listener")
+        var name = event.key;
+        var code = event.code;
+        // Alert the key name and key code on keydown
+        alert(`Key pressed ${name} \r\n Key code value: ${code}`);
+      }, false);
+
+  }
+
+  disconnect(){
 
   }
 
