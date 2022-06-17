@@ -6,14 +6,13 @@ export default class extends Controller {
 
   connect(){
     import("jquery_with_setup");
-  } 
+  }
 
   disconnect(){
 
   }
 
   check() {
-
 
     if(event.params.quizQuestionCorrectAnswer === "yes"){
 

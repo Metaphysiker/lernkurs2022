@@ -10,7 +10,7 @@ export default class extends Controller {
     //this.getSlide(this.slideIdTarget.getAttribute('data-value'));
 
     // Navigate with arrow buttons
-    document.addEventListener('keydown', (event) => {
+    document.addEventListener('keyup', (event) => {
 
       if(event.code == "ArrowRight") {
         this.getNextSlide()
@@ -21,7 +21,7 @@ export default class extends Controller {
   }
 
   disconnect(){
-    document.removeEventListener('keydown');
+    document.removeEventListener('keyup');
   }
 
   getPreviousSlide(){
