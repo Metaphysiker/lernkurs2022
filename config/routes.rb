@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :accounts
+  resources :accounts do
+    member do
+      put 'update_course_history'
+    end
+  end
   resources :roles
   devise_for :users
   #devise_for :users, controllers: { sessions: "devise/passwordless/sessions" }

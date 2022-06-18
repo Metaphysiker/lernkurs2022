@@ -82,7 +82,7 @@ class CoursesController < ApplicationController
     def set_account
       if user_signed_in?
         if current_user.account.present?
-          @account = current_user.account if current_user.account.present?
+          @account = current_user.account
         else
           @account = Account.create(user_id: current_user.id)
         end

@@ -2,11 +2,13 @@ import { Controller } from "@hotwired/stimulus"
 //import $ from "jquery"
 
 export default class extends Controller {
-  static targets = [ "slide", "name", "exercise", "output", "slideId", "nextSlideId", "previousSlideId", "navigationButtons" ]
+  static targets = [ "slide", "name", "exercise", "output", "accountId", "courseId", "slideId", "nextSlideId", "previousSlideId", "navigationButtons" ]
 
   connect(){
 
-    import("jquery_with_setup");
+    import("jquery_with_setup").then(tinymce_imported => {
+      this.updateCourseHistoryOfAccount(this.accountIdTarget.getAttribute('data-value'), this.courseIdTarget.getAttribute('data-value'), this.slideIdTarget.getAttribute('data-value'))
+    });
     //this.getSlide(this.slideIdTarget.getAttribute('data-value'));
 
     // Navigate with arrow buttons
@@ -37,6 +39,8 @@ export default class extends Controller {
     this.setNavigationButtons(slide_id);
     this.setSlide(slide_id);
     this.setExercise(slide_id);
+    this.updateCourseHistoryOfAccount(this.accountIdTarget.getAttribute('data-value'), this.courseIdTarget.getAttribute('data-value'), slide_id)
+
   }
 
   setSlide(slide_id){
@@ -48,6 +52,18 @@ export default class extends Controller {
       context: document.body
     }).done(function(response) {
       self.slideTarget.innerHTML = response;
+    });
+  }
+
+  updateCourseHistoryOfAccount(account_id, course_id, slide_id){
+
+    $.ajax({
+      url: "/accounts/" + account_id + "/update_course_history",
+      type: "PUT",
+      headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
+      data: {course_id: course_id, slide_id: slide_id},
+    }).done(function(response) {
+      console.log(response);
     });
   }
 

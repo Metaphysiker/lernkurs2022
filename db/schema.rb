@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_04_195152) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_18_112557) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_04_195152) do
     t.string "first_name", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.jsonb "courses", default: {}
+    t.jsonb "exercises", default: {}
     t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 

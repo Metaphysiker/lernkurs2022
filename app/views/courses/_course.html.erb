@@ -11,6 +11,16 @@
   data-controller="course points"
   data-action="correct-answer@window->points#updateCounter"
   >
+
+  <div data-course-target="courseId" data-value="<%= course.id %>" >
+  </div>
+
+  <div data-course-target="accountId" data-value="<%= @account.id %>" >
+  </div>
+
+  <div data-course-target="slideId" data-slides-target="slideId" data-navigation-target="slideId" data-value="<%= slide.id %>" >
+  </div>
+
   <div data-course-target="slideId" data-slides-target="slideId" data-navigation-target="slideId" data-value="<%= slide.id %>" >
   </div>
 <%= render "layouts/course_navigation" %>
