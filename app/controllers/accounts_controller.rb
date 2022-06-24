@@ -76,25 +76,23 @@ class AccountsController < ApplicationController
 
     exercise_hash = {id: exercise_id, class: exercise_class, points_scored: points}
 
-
-    if exercises.key?(course.id)
-
-      exercise_entry = exercises[course.id]["exercises"].detect { |h| h["id"] == exercise_id}
+    if exercises.key?(course.id.to_s)
+      exercise_entry = exercises[course.id.to_s]["exercises"].detect { |h| h["id"] == exercise_id}
 
       if exercise_entry.nil?
-        exercises[course.id]["exercises"] = exercises[course.id]["exercises"].push(exercise_hash)
+        exercises[course.id.to_s]["exercises"] = exercises[course.id.to_s]["exercises"].push(exercise_hash)
       else
-        #exercise_entry = exercise_hash
-        exercises[course.id]["exercises"] = exercises[course.id]["exercises"].push(exercise_hash)
+        exercises[course.id.to_s]["exercises"].map do |h|
+          h["points_scored"] = points if h["id"] == exercise_id
+        end
+        #exercises[course.id.to_s]["exercises"] = exercises[course.id.to_s]["exercises"].push(exercise_hash)
 
       end
 
-
     else
-      exercises[course.id] = {exercises: [exercise_hash]}
+      exercises[course.id.to_s] = {"exercises" => [exercise_hash]}
     end
 
-    puts exercises
     @account.update(exercises: exercises)
     head :ok
   end

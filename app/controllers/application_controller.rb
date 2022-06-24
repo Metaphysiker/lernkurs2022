@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     elsif cookies["philosophie-lernkurs-account-id"].present?
       @account = Account.find(cookies["philosophie-lernkurs-account-id"])
       if @account.user.present?
-        redirect_to new_user_session_path
+        #redirect_to new_user_session_path
       end
     else
       @account = Account.create

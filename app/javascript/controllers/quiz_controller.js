@@ -34,7 +34,7 @@ export default class extends Controller {
 
 
         var ajax = new Ajax.ajax();
-        ajax.updateExerciseHistoryOfAccount(1, "quiz", 1, 1);
+        ajax.updateExerciseHistoryOfAccount(1, "quiz", 1, 555);
 
         //ajax1.updateExerciseHistoryOfAccount(1, 1, 1);
 

@@ -12,6 +12,7 @@ export function ajax() {
     });
   },
   this.updateExerciseHistoryOfAccount = function(account_id, exercise_class, exercise_id, points) {
+    console.log("points: " + points)
     $.ajax({
       url: "/accounts/" + account_id + "/update_excercise_history",
       type: "PUT",
