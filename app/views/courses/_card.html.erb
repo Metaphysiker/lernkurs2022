@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card h-100">
   <% if course.image.attached? %>
     <%= image_tag course.image, class: "card-img-top", width: 300, height: 250, style: "object-fit: cover"  %>
   <% end %>
@@ -13,8 +13,23 @@
       <strong>Dauer: </strong>20 Minuten
     </p>
   </div>
-  <div class="card-footer border-top bg-light">
-    <%= link_to "Loslegen!", course_path(course), class: "action-button-green-color" %>
+  <div class="card-footer border-top bg-light text-center">
+
+    <% if @account.courses.key?(course.id.to_s) %>
+    <% current_slide_id = @account.courses[course.id.to_s]["history"][-1] %>
+      <%= link_to "Weitermachen!", course_path(course, slide_id: current_slide_id ), class: "action-button-i-color" %>
+      <hr>
+      <p>
+        <strong>Dein Fortschritt:</strong>
+      </p>
+
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: <%= (Slide.find(current_slide_id).sort.to_f + 1.0) / course.slides.count.to_f * 100 %>%" aria-valuenow="<%= Slide.find(current_slide_id).sort %>" aria-valuemin="0" aria-valuemax="<%= course.slides.count %>"></div>
+      </div>
+    <% else %>
+      <%= link_to "Loslegen!", course_path(course), class: "action-button-green-color" %>
+    <% end %>
+
 
   </div>
 </div>

@@ -1,6 +1,5 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: %i[ show edit update destroy course_overview show_at_slide]
-  before_action :set_account
 
   # GET /courses or /courses.json
   def index
@@ -79,21 +78,4 @@ class CoursesController < ApplicationController
       params.require(:course).permit(:name, :course_id, :description, :image)
     end
 
-    def set_account
-      if user_signed_in?
-        if current_user.account.present?
-          @account = current_user.account
-        else
-          @account = Account.create(user_id: current_user.id)
-        end
-      elsif cookies["philosophie-lernkurs-account-id"].present?
-        @account = Account.find(cookies["philosophie-lernkurs-account-id"])
-        if @account.user.present?
-          redirect_to new_user_session_path
-        end
-      else
-        @account = Account.create
-        cookies.permanent["philosophie-lernkurs-account-id"] = @account.id
-      end
-    end
 end

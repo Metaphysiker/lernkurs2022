@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :accounts do
     member do
       put 'update_course_history'
+      put 'update_excercise_history'
     end
   end
   resources :roles

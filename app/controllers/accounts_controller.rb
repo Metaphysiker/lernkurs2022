@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-  before_action :set_account, only: %i[ show edit update destroy update_course_history ]
+  before_action :set_account, only: %i[ show edit update destroy update_course_history update_excercise_history ]
 
   # GET /accounts or /accounts.json
   def index
@@ -54,14 +54,29 @@ class AccountsController < ApplicationController
     courses = @account.courses
 
     if courses.key?(course_id)
-      puts courses[course_id]
       courses[course_id]["history"] = courses[course_id]["history"].push(slide_id)
     else
       courses[course_id] = {history: [slide_id]}
     end
 
-    puts courses
     @account.update(courses: courses)
+    head :ok
+  end
+
+  def update_excercise_history
+    exercise_class = params[:exercise_class]
+    exercise_id = params[:exercise_id]
+    points = params[:points].to_i
+    exercises = @account.exercises
+    exercise_id_and_class = exercise_class + "-" + exercise_id.to_s
+
+    if exercises.key?(exercise_id_and_class)
+      exercises[exercise_id_and_class]["points"] = points
+    else
+      exercises[exercise_id_and_class] = {points: points}
+    end
+
+    @account.update(exercises: exercises)
     head :ok
   end
 

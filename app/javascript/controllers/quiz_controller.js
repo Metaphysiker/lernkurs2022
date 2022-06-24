@@ -1,11 +1,15 @@
-
 import { Controller } from "@hotwired/stimulus"
+
+import * as Ajax from "ajax"
 
 export default class extends Controller {
   static targets = [ "button", "name", "output" ]
 
   connect(){
-    import("jquery_with_setup");
+    import("jquery_with_setup").then(jquery_with_setup => {
+
+    });
+
   }
 
   disconnect(){
@@ -27,6 +31,12 @@ export default class extends Controller {
           })
 
         window.dispatchEvent(custom_event)
+
+
+        var ajax = new Ajax.ajax();
+        ajax.updateExerciseHistoryOfAccount(1, "quiz", 1, 1);
+
+        //ajax1.updateExerciseHistoryOfAccount(1, 1, 1);
 
     } else {
         $(event.target).prop("disabled", true);
