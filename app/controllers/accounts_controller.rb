@@ -66,16 +66,35 @@ class AccountsController < ApplicationController
   def update_excercise_history
     exercise_class = params[:exercise_class]
     exercise_id = params[:exercise_id]
+
+    exercise = exercise_class.classify.safe_constantize.find(exercise_id)
+    course = exercise.slide.course
+
     points = params[:points].to_i
     exercises = @account.exercises
     exercise_id_and_class = exercise_class + "-" + exercise_id.to_s
 
-    if exercises.key?(exercise_id_and_class)
-      exercises[exercise_id_and_class]["points"] = points
+    exercise_hash = {id: exercise_id, class: exercise_class, points_scored: points}
+
+
+    if exercises.key?(course.id)
+
+      exercise_entry = exercises[course.id]["exercises"].detect { |h| h["id"] == exercise_id}
+
+      if exercise_entry.nil?
+        exercises[course.id]["exercises"] = exercises[course.id]["exercises"].push(exercise_hash)
+      else
+        #exercise_entry = exercise_hash
+        exercises[course.id]["exercises"] = exercises[course.id]["exercises"].push(exercise_hash)
+
+      end
+
+
     else
-      exercises[exercise_id_and_class] = {points: points}
+      exercises[course.id] = {exercises: [exercise_hash]}
     end
 
+    puts exercises
     @account.update(exercises: exercises)
     head :ok
   end
