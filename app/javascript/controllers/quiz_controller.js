@@ -37,11 +37,8 @@ export default class extends Controller {
 
         window.dispatchEvent(custom_event)
 
-
         var ajax = new Ajax.ajax();
         ajax.updateExerciseHistoryOfAccount(this.accountIdTarget.getAttribute('data-value'), this.exerciseClassTarget.getAttribute('data-value'), this.exerciseIdTarget.getAttribute('data-value'), myPoints);
-
-        //ajax1.updateExerciseHistoryOfAccount(1, 1, 1);
 
     } else {
         $(event.target).prop("disabled", true);
