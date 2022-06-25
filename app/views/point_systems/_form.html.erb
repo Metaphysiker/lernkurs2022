@@ -1,0 +1,34 @@
+<%= form_with(model: point_system) do |form| %>
+  <% if point_system.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(point_system.errors.count, "error") %> prohibited this point_system from being saved:</h2>
+
+      <ul>
+        <% point_system.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :total_possible_points, style: "display: block" %>
+    <%= form.number_field :total_possible_points %>
+  </div>
+
+  <div>
+    <%= form.label :points_deduction_for_mistake, style: "display: block" %>
+    <%= form.number_field :points_deduction_for_mistake %>
+  </div>
+
+  <div>
+    <%= form.text_field :pointsystemable_type %>
+  </div>
+  <div>
+    <%= form.text_field :pointsystemable_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

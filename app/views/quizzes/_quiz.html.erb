@@ -4,6 +4,12 @@
       <%= quiz.content %>
     </p>
 
+    <% if quiz.point_system.present? %>
+        <%= link_to "PointSystem bearbeiten", edit_point_system_path(quiz.point_system) %>
+    <% else %>
+      <%= link_to "PointSystem Neu", new_point_system_path %>
+    <% end %>
+
     <% if policy(QuizQuestion.new).create? %>
       <div>
         <p>

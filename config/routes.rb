@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :point_systems
   resources :accounts do
     member do
       put 'update_course_history'

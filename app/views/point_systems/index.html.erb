@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Point systems</h1>
+
+<div id="point_systems">
+  <% @point_systems.each do |point_system| %>
+    <%= render point_system %>
+    <p>
+      <%= link_to "Show this point system", point_system %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New point system", new_point_system_path %>
