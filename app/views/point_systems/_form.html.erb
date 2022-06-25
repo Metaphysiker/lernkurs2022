@@ -1,3 +1,4 @@
+
 <%= form_with(model: point_system) do |form| %>
   <% if point_system.errors.any? %>
     <div style="color: red">
@@ -20,7 +21,7 @@
     <%= form.label :points_deduction_for_mistake, style: "display: block" %>
     <%= form.number_field :points_deduction_for_mistake %>
   </div>
-
+  
   <div>
     <%= form.text_field :pointsystemable_type %>
   </div>

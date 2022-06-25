@@ -7,7 +7,9 @@
     <% if quiz.point_system.present? %>
         <%= link_to "PointSystem bearbeiten", edit_point_system_path(quiz.point_system) %>
     <% else %>
-      <%= link_to "PointSystem Neu", new_point_system_path %>
+
+      <%= render "point_systems/form", point_system: PointSystem.new(pointsystemable_id: quiz.id, pointsystemable_type: quiz.class.name) %>
+
     <% end %>
 
     <% if policy(QuizQuestion.new).create? %>
