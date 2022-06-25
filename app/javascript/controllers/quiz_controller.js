@@ -2,11 +2,16 @@ import { Controller } from "@hotwired/stimulus"
 
 import * as Ajax from "ajax"
 
+var myPoints = 3;
+var pointsDeductionForMistake = 1;
+
 export default class extends Controller {
-  static targets = [ "button", "name", "output", "accountId", "exerciseId", "exerciseClass" ]
+  static targets = [ "button", "name", "output", "accountId", "exerciseId", "exerciseClass", "totalPossiblePoints", "pointsDeductionForMistake" ]
 
   connect(){
     import("jquery_with_setup").then(jquery_with_setup => {
+      myPoints = this.totalPossiblePointsTarget.getAttribute('data-value')
+      pointsDeductionForMistake = this.pointsDeductionForMistakeTarget.getAttribute('data-value')
 
     });
 
@@ -26,7 +31,7 @@ export default class extends Controller {
 
       const custom_event = new CustomEvent('correct-answer', {
             detail: {
-              points: 100
+              points: myPoints
             }
           })
 
@@ -34,7 +39,7 @@ export default class extends Controller {
 
 
         var ajax = new Ajax.ajax();
-        ajax.updateExerciseHistoryOfAccount(this.accountIdTarget.getAttribute('data-value'), this.exerciseClassTarget.getAttribute('data-value'), this.exerciseIdTarget.getAttribute('data-value'), 1);
+        ajax.updateExerciseHistoryOfAccount(this.accountIdTarget.getAttribute('data-value'), this.exerciseClassTarget.getAttribute('data-value'), this.exerciseIdTarget.getAttribute('data-value'), myPoints);
 
         //ajax1.updateExerciseHistoryOfAccount(1, 1, 1);
 
@@ -42,6 +47,11 @@ export default class extends Controller {
         $(event.target).prop("disabled", true);
         $(event.target).addClass( "disabled" );
         $(event.target).addClass("false-answer");
+        if((myPoints - pointsDeductionForMistake) < 0){
+          myPoints = 0
+        } else {
+          myPoints = myPoints - pointsDeductionForMistake
+        }
     }
 
   }
