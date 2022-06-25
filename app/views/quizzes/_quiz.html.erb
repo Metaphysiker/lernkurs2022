@@ -17,9 +17,15 @@
     <% end %>
 
     <div data-controller="quiz">
+      <div data-quiz-target="accountId" data-value="<%= @account.id %>" >
+      </div>
+      <div data-quiz-target="exerciseId" data-value="<%= quiz.id %>" >
+      </div>
+      <div data-quiz-target="exerciseClass" data-value="<%= quiz.class.name %>" >
+      </div>
       <% quiz.quiz_questions.each do |quiz_question| %>
       <div class="d-grid gap-2">
-        <button data-quiz-target="button" data-action="click->quiz#check" data-quiz-quiz-question-correct-answer-param="<%= quiz_question.correct_answer %>" data type="button" class="quiz-button "><%= quiz_question.content %> - <%= quiz_question.correct_answer %></button>
+        <button data-quiz-target="button" data-action="click->quiz#check" data-quiz-quiz-question-correct-answer-param="<%= quiz_question.correct_answer %>" data type="button" class="quiz-button "><%= quiz_question.content %></button>
       </div>
       <% end %>
 

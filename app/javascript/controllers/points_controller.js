@@ -11,8 +11,9 @@ export default class extends Controller {
   }
 
   incrementallyUpdate(element, points){
-
+    console.log("incrementallyUpdate")
     var target_value = 1000;
+    console.log(this.outputTarget.innerHTML);
     var current_value = parseInt(this.outputTarget.innerHTML);
     //var difference = target_value - current_value;
     var difference =  points;
