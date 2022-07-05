@@ -19,7 +19,7 @@ export default class extends Controller {
   }
 
   updateOrder(){
-    console.log(sortable.toArray());
+    //console.log(sortable.toArray());
 
     $.ajax({
       type: "POST",
@@ -28,7 +28,7 @@ export default class extends Controller {
       context: document.body
     }).done(function(response) {
 
-      console.log(response);
+      //console.log(response);
 
     });
   }
