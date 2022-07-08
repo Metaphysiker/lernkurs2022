@@ -1,0 +1,31 @@
+<div class="container">
+<div id="<%= dom_id medium %>">
+
+  <% if medium.file.representable? %>
+    <%= image_tag medium.file, class: "img-thumbnail" %>
+  <% else %>
+    <%= link_to rails_blob_path(medium.file, disposition: "attachment") do %>
+      Nothing
+    <% end %>
+  <% end %>
+
+  <p>
+    <%= link_to "Download", rails_blob_path(medium.file, disposition: "attachment") %>
+  </p>
+
+  <p>
+    <%= rails_blob_url(medium.file, disposition: "attachment") %>
+  </p>
+
+  <p>
+    <strong>Name:</strong>
+    <%= medium.name %>
+  </p>
+
+  <p>
+    <strong>Alt text:</strong>
+    <%= medium.alt_text %>
+  </p>
+
+</div>
+</div>
