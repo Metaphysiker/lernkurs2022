@@ -27,15 +27,21 @@ export default class extends Controller {
   }
 
   getPreviousSlide(){
-    this.getSlide(this.previousSlideIdTarget.getAttribute('data-value'));
+    var previous_slide_id = this.previousSlideIdTarget.getAttribute('data-value');
+    if (previous_slide_id >= 0){
+        this.getSlide(previous_slide_id);
+    }
   }
 
   getNextSlide(){
-    this.getSlide(this.nextSlideIdTarget.getAttribute('data-value'));
+    var next_slide_id = this.nextSlideIdTarget.getAttribute('data-value');
+    if (next_slide_id >= 0){
+        this.getSlide(next_slide_id);
+    }
   }
 
   getSlide(slide_id){
-
+    console.log(slide_id);
     this.setNavigationButtons(slide_id);
     this.setSlide(slide_id);
     this.setExercise(slide_id);
