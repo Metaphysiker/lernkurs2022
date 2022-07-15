@@ -19,6 +19,8 @@ export default class extends Controller {
       } else if(event.code == "ArrowLeft"){
         this.getPreviousSlide()
       }
+
+
     }, false);
   }
 
