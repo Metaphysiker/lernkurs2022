@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @checkbox %>
+
+<div>
+  <%= link_to "Edit this checkbox", edit_checkbox_path(@checkbox) %> |
+  <%= link_to "Back to checkboxes", checkboxes_path %>
+
+  <%= button_to "Destroy this checkbox", @checkbox, method: :delete %>
+</div>

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @checkbox_exercise %>
+
+<div>
+  <%= link_to "Edit this checkbox exercise", edit_checkbox_exercise_path(@checkbox_exercise) %> |
+  <%= link_to "Back to checkbox exercises", checkbox_exercises_path %>
+
+  <%= button_to "Destroy this checkbox exercise", @checkbox_exercise, method: :delete %>
+</div>

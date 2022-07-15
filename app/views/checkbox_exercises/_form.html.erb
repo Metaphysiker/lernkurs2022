@@ -1,10 +1,10 @@
-<%= form_with(model: queckbox_exercise) do |form| %>
-  <% if queckbox_exercise.errors.any? %>
+<%= form_with(model: checkbox_exercise) do |form| %>
+  <% if checkbox_exercise.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(queckbox_exercise.errors.count, "error") %> prohibited this queckbox_exercise from being saved:</h2>
+      <h2><%= pluralize(checkbox_exercise.errors.count, "error") %> prohibited this checkbox_exercise from being saved:</h2>
 
       <ul>
-        <% queckbox_exercise.errors.each do |error| %>
+        <% checkbox_exercise.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>

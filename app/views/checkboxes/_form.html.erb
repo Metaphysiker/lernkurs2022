@@ -1,0 +1,27 @@
+<%= form_with(model: checkbox) do |form| %>
+  <% if checkbox.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(checkbox.errors.count, "error") %> prohibited this checkbox from being saved:</h2>
+
+      <ul>
+        <% checkbox.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :content, style: "display: block" %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div>
+    <%= form.label :checkbox_exercise_id, style: "display: block" %>
+    <%= form.text_field :checkbox_exercise_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

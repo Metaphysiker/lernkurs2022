@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Checkboxes</h1>
+
+<div id="checkboxes">
+  <% @checkboxes.each do |checkbox| %>
+    <%= render checkbox %>
+    <p>
+      <%= link_to "Show this checkbox", checkbox %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New checkbox", new_checkbox_path %>
