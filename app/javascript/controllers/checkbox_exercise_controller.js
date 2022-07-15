@@ -41,9 +41,7 @@ export default class extends Controller {
         ajax.updateExerciseHistoryOfAccount(this.accountIdTarget.getAttribute('data-value'), this.exerciseClassTarget.getAttribute('data-value'), this.exerciseIdTarget.getAttribute('data-value'), myPoints);
 
     } else {
-        $(event.target).prop("disabled", true);
-        $(event.target).addClass( "disabled" );
-        $(event.target).addClass("false-answer");
+
         if((myPoints - pointsDeductionForMistake) < 0){
           myPoints = 0
         } else {

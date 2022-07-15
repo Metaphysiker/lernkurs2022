@@ -1,25 +1,43 @@
 <div class="container text-center">
 <div id="<%= dom_id checkbox_exercise %>">
 
-  <fieldset>
-      <legend>
-        <%= checkbox_exercise.content %>
-      </legend>
+  <div data-controller="checkbox-exercise">
+    <div data-checkbox-exercise-target="accountId" data-value="<%= @account.id %>" >
+    </div>
+    <div data-checkbox-exercise-target="exerciseId" data-value="<%= checkbox_exercise.id %>" >
+    </div>
+    <div data-checkbox-exercise-target="exerciseClass" data-value="<%= checkbox_exercise.class.name %>" >
+    </div>
+    <div data-checkbox-exercise-target="totalPossiblePoints" data-value="<%= checkbox_exercise.point_system.total_possible_points unless checkbox_exercise.point_system.blank? %>" >
+    </div>
+    <div data-checkbox-exercise-target="pointsDeductionForMistake" data-value="<%= checkbox_exercise.point_system.points_deduction_for_mistake unless checkbox_exercise.point_system.blank? %>" >
+    </div>
 
-      <% checkbox_exercise.checkboxes.each do |checkbox| %>
-      <div>
-        <input type="checkbox" id="<%= checkbox.id %>" value="<%= checkbox.id %>" name="<%= checkbox.content %>">
-        <label for="scales"><%= checkbox.content %></label>
-      </div>
-      <% end %>
+    <fieldset>
+        <legend>
+          <%= checkbox_exercise.content %>
+        </legend>
 
-  </fieldset>
+        <% checkbox_exercise.checkboxes.each do |checkbox| %>
+        <div>
+          <input type="checkbox" id="<%= checkbox.id %>" value="<%= checkbox.id %>" name="<%= checkbox.content %>">
+          <label for="scales"><%= checkbox.content %></label>
+        </div>
+        <% end %>
 
-  <div class="d-grid gap-2">
-    <button data-quiz-target="button" data-action="click->quiz#check" data type="button" class="action-button-e-color">
-      Antwort prüfen
-    </button>
+    </fieldset>
+
+
+    <div class="d-grid gap-2">
+      <button data-checkbox-exercise-target="button" data-action="click->checkbox-exercise#check" data type="button" class="checkbox-exercise">Antwort prüfen</button>
+    </div>
+
+
+
+    <span data-checkbox-exercise-target="output">
+    </span>
   </div>
+
 
 </div>
 
