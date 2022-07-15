@@ -1,12 +1,29 @@
-<div class="container">
+<div class="container text-center">
 <div id="<%= dom_id checkbox_exercise %>">
-  <p class="text-center">
-    <%= checkbox_exercise.content %>
-  </p>
+
+  <fieldset>
+      <legend>
+        <%= checkbox_exercise.content %>
+      </legend>
+
+      <% checkbox_exercise.checkboxes.each do |checkbox| %>
+      <div>
+        <input type="checkbox" id="<%= checkbox.id %>" value="<%= checkbox.id %>" name="<%= checkbox.content %>">
+        <label for="scales"><%= checkbox.content %></label>
+      </div>
+      <% end %>
+
+  </fieldset>
+
+  <div class="d-grid gap-2">
+    <button data-quiz-target="button" data-action="click->quiz#check" data type="button" class="action-button-e-color">
+      Antwort prüfen
+    </button>
+  </div>
 
 </div>
 
-<% if true  # policy(QuizQuestion.new).create? %>
+<% if policy(Checkbox.new).create? %>
   <div>
     <p>
       <%= link_to "New check box", new_checkbox_path(checkbox_exercise_id: checkbox_exercise) %>
@@ -18,17 +35,5 @@
   </div>
 <% end %>
 
-<fieldset>
-    <legend>
-      <%= checkbox_exercise.content %>
-    </legend>
 
-    <% checkbox_exercise.checkboxes.each do |checkbox| %>
-    <div>
-      <input type="checkbox" id="<%= checkbox.id %>" value="<%= checkbox.id %>" name="<%= checkbox.content %>">
-      <label for="scales"><%= checkbox.content %></label>
-    </div>
-    <% end %>
-
-</fieldset>
 </div>

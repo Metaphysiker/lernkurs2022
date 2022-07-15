@@ -12,7 +12,8 @@ export default class extends Controller {
     import("jquery_with_setup").then(jquery_with_setup => {
       myPoints = this.totalPossiblePointsTarget.getAttribute('data-value')
       pointsDeductionForMistake = this.pointsDeductionForMistakeTarget.getAttribute('data-value')
-
+      console.log("myPoints");
+      console.log(myPoints);
     });
 
   }
@@ -24,6 +25,7 @@ export default class extends Controller {
   check() {
 
     if(event.params.quizQuestionCorrectAnswer === "yes"){
+      console.log(myPoints);
 
       $(this.buttonTargets).prop("disabled", true);
       $(this.buttonTargets).addClass( "disabled" );
