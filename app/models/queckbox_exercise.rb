@@ -1,0 +1,2 @@
+class QueckboxExercise < ApplicationRecord
+end

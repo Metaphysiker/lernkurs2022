@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @queckbox_exercise %>
+
+<div>
+  <%= link_to "Edit this queckbox exercise", edit_queckbox_exercise_path(@queckbox_exercise) %> |
+  <%= link_to "Back to queckbox exercises", queckbox_exercises_path %>
+
+  <%= button_to "Destroy this queckbox exercise", @queckbox_exercise, method: :delete %>
+</div>

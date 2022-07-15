@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :queckbox_exercises
   resources :media
   resources :point_systems
   resources :accounts do

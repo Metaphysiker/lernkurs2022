@@ -1,0 +1,2 @@
+module QueckboxExercisesHelper
+end
