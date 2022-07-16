@@ -27,13 +27,12 @@ export default class extends Controller {
     var current_value = parseInt(this.outputTarget.innerHTML);
     var target_value = points;
     //var current_value = parseInt(this.outputTarget.innerHTML);
-    var difference = points - current_value;
-    console.log(difference);
 
     var myPromise = async (milli_seconds = 1000) => new Promise(resolve => setTimeout(resolve, milli_seconds));
 
     while (current_value != target_value) {
       console.log(current_value);
+      console.log(target_value);
       if(current_value < target_value){
         current_value = parseInt(this.outputTarget.innerHTML) + 1;
         this.outputTarget.innerHTML = current_value;
