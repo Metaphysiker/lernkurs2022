@@ -33,10 +33,6 @@ export default class extends Controller {
 
      $("." + this.checkboxClassTarget.getAttribute('data-value') +":checkbox:checked").map(function() {
        var checkbox_value = parseInt(this.value);
-       console.log(checkbox_value);
-       console.log(solution.includes(checkbox_value));
-       console.log(solution);
-
 
        if(solution.includes(checkbox_value)){
 

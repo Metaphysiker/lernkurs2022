@@ -1,0 +1,33 @@
+<div id="<%= dom_id open_question %>" class="container">
+
+  <div data-controller="open-question">
+    <div data-open-question-target="accountId" data-value="<%= @account.id %>" >
+    </div>
+    <div data-open-question-target="exerciseId" data-value="<%= open_question.id %>" >
+    </div>
+    <div data-open-question-target="exerciseClass" data-value="<%= open_question.class.name %>" >
+    </div>
+    <div data-open-question-target="totalPossiblePoints" data-value="<%= open_question.point_system.total_possible_points unless open_question.point_system.blank? %>" >
+    </div>
+    <div data-open-question-target="pointsDeductionForMistake" data-value="<%= open_question.point_system.points_deduction_for_mistake unless open_question.point_system.blank? %>" >
+    </div>
+    <div data-open-question-target="solution" data-value="<%= open_question.correct_answer unless open_question.correct_answer.blank? %>" >
+    </div>
+
+    <p>
+      <%= open_question.content %>
+    </p>
+    <p>
+      <input data-open-question-target="input" type="text">
+    </p>
+    <p>
+      <button data-action="click->open-question#check">
+        Greet
+      </button>
+    </p>
+
+    <span data-open-question-target="output">
+    </span>
+  </div>
+
+</div>

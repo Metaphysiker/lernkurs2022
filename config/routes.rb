@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :open_questions
   resources :checkboxes
   resources :checkbox_exercises
   resources :media
