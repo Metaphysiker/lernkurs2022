@@ -23,15 +23,21 @@ export default class extends Controller {
   }
 
   check() {
+    console.log(myPoints);
 
-    var missing_answers = solution;
+    var missing_answers = [...solution];
     var wrong_answers = [];
     //var checkedVals = $("." + this.checkboxClassTarget.getAttribute('data-value') +":checkbox:checked").map(function() {
     //    return {value: this.value, id: this.id};
     //}).get();
 
      $("." + this.checkboxClassTarget.getAttribute('data-value') +":checkbox:checked").map(function() {
-       var checkbox_value = parseInt(this.value)
+       var checkbox_value = parseInt(this.value);
+       console.log(checkbox_value);
+       console.log(solution.includes(checkbox_value));
+       console.log(solution);
+
+
        if(solution.includes(checkbox_value)){
 
          $("#" + this.id).prop("disabled", true);

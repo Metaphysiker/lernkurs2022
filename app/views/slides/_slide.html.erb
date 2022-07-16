@@ -8,7 +8,13 @@
     <%= link_to "Back to course", course_path(slide.course, slide_id: slide) %>
     <%= button_to "Destroy this slide", slide, method: :delete %>
     <hr />
-    <%= link_to "add quiz", new_quiz_path(slide_id: slide) %>
+
+    <div class="d-grid gap-2">
+
+      <%= link_to "add quiz", new_quiz_path(slide_id: slide), class: "btn btn-primary" %>
+      <%= link_to "add checkbox_exercise", new_checkbox_exercise_path(slide_id: slide), class: "btn btn-primary" %>
+    </div>
+
 
   </div>
 <% end %>

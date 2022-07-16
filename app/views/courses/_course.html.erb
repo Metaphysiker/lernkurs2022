@@ -45,6 +45,12 @@
         <%= render "quizzes/quiz", quiz: slide.quizzes.first unless slide.quizzes.empty?  %>
       </div>
     </div>
+
+    <div data-course-target="exercise">
+      <div class="col-12 offset-sm-1 col-sm-10 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
+        <%= render "checkbox_exercises/checkbox_exercise", checkbox_exercise: slide.checkbox_exercises.first unless slide.checkbox_exercises.empty?  %>
+      </div>
+    </div>
   </div>
 
   <div class="navigation">

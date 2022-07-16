@@ -1,6 +1,7 @@
 class Slide < ApplicationRecord
   belongs_to :course, optional: true
   has_many :quizzes
+  has_many :checkbox_exercises
 
   after_create :set_sort
 

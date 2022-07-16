@@ -16,6 +16,9 @@
     <%= form.text_area :content %>
   </div>
 
+  <%= form.select :slide_id, Slide.all.map {|slide| [slide.content, slide.id]}, {include_blank: true}, {class: "form-select"}  %>
+
+
   <div>
     <%= form.submit %>
   </div>

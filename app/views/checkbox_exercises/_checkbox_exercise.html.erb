@@ -57,5 +57,13 @@
   </div>
 <% end %>
 
+<% if policy(Checkbox.new).create? %>
+  <% if checkbox_exercise.point_system.present? %>
+      <%= link_to "PointSystem bearbeiten", edit_point_system_path(checkbox_exercise.point_system) %>
+  <% else %>
+    <%= render "point_systems/form", point_system: PointSystem.new(pointsystemable_id: checkbox_exercise.id, pointsystemable_type: checkbox_exercise.class.name) %>
+  <% end %>
+<% end %>
+
 
 </div>

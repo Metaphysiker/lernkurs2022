@@ -12,7 +12,11 @@ class CheckboxExercisesController < ApplicationController
 
   # GET /checkbox_exercises/new
   def new
-    @checkbox_exercise = CheckboxExercise.new
+    if params[:slide_id].present?
+      @checkbox_exercise = CheckboxExercise.new(slide_id: params[:slide_id])
+    else
+      @checkbox_exercise = CheckboxExercise.new
+    end
   end
 
   # GET /checkbox_exercises/1/edit
@@ -65,6 +69,6 @@ class CheckboxExercisesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def checkbox_exercise_params
-      params.require(:checkbox_exercise).permit(:content)
+      params.require(:checkbox_exercise).permit(:content, :slide_id)
     end
 end
