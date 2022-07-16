@@ -12,7 +12,7 @@ export default class extends Controller {
     .then((response) => {
       console.log("getPointsFromCourse");
       console.log(response);
-      this.incrementallyUpdate(this.outputTarget, points);
+      this.incrementallyUpdate(this.outputTarget, response);
     });
 
 
@@ -26,13 +26,16 @@ export default class extends Controller {
     console.log(this.outputTarget.innerHTML);
     var current_value = parseInt(this.outputTarget.innerHTML);
     var target_value = points;
+    console.log("current value: " + current_value);
+    console.log("target value: " + target_value);
+
     //var current_value = parseInt(this.outputTarget.innerHTML);
 
     var myPromise = async (milli_seconds = 1000) => new Promise(resolve => setTimeout(resolve, milli_seconds));
 
     while (current_value != target_value) {
-      console.log(current_value);
-      console.log(target_value);
+      console.log("current value: " + current_value);
+      console.log("target value: " + target_value);
       if(current_value < target_value){
         current_value = parseInt(this.outputTarget.innerHTML) + 1;
         this.outputTarget.innerHTML = current_value;
