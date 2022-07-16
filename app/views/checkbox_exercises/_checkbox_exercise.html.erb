@@ -1,4 +1,4 @@
-<div class="container text-center">
+<div class="container">
 <div id="<%= dom_id checkbox_exercise %>">
 
   <div data-controller="checkbox-exercise">
@@ -22,12 +22,16 @@
           <%= checkbox_exercise.content %>
         </legend>
 
+
         <% checkbox_exercise.checkboxes.each do |checkbox| %>
         <div>
-          <input type="checkbox" class="<%= "#{dom_id(checkbox_exercise)}-checkboxes" %>" id="<%= "#{dom_id(checkbox_exercise)}-checkboxes-checkbox-#{checkbox.id}" %>" value="<%= checkbox.id %>" name="<%= checkbox.content %>">
-          <label for="scales"><%= checkbox.content %></label>
-        </div>
+            <input type="checkbox" class="<%= "#{dom_id(checkbox_exercise)}-checkboxes" %> mr-2" id="<%= "#{dom_id(checkbox_exercise)}-checkboxes-checkbox-#{checkbox.id}" %>" value="<%= checkbox.id %>" name="<%= checkbox.content %>">
+            <label for="scales" class="">
+              &nbsp; &nbsp; <%= checkbox.content %>
+            </label>
+
         <% end %>
+
 
     </fieldset>
 

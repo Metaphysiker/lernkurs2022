@@ -74,10 +74,12 @@ class SlidesController < ApplicationController
   end
 
   def exercise
-    if @slide.quizzes.empty?
-      render plain: ""
-    else
+    if @slide.quizzes.present?
       render partial: "quizzes/quiz", locals: {quiz: @slide.quizzes.first}, layout: false
+    elsif @slide.checkbox_exercises.present?
+      render partial: "checkbox_exercises/checkbox_exercise", locals: {checkbox_exercise: @slide.checkbox_exercises.first}, layout: false
+    else
+      render plain: ""
     end
   end
 

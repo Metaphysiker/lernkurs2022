@@ -8,7 +8,7 @@ class CoursesController < ApplicationController
 
   # GET /courses/1 or /courses/1.json
   def show
-    if params[:slide_id].present?
+    if params[:slide_id].present? && !Slide.where(id: params[:slide_id]).empty?
       @slide = Slide.find(params[:slide_id])
     else
       @slide = @course.slides.order(:sort).first

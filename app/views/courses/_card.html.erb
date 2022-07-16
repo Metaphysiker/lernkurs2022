@@ -24,7 +24,8 @@
       </p>
 
       <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: <%= (Slide.find(current_slide_id).sort.to_f + 1.0) / course.slides.count.to_f * 100 %>%" aria-valuenow="<%= Slide.find(current_slide_id).sort %>" aria-valuemin="0" aria-valuemax="<%= course.slides.count %>"></div>
+        <% current_slide = Slide.where(id: current_slide_id).empty? ? course.slides.first : Slide.find(current_slide_id) %>
+        <div class="progress-bar" role="progressbar" style="width: <%= ((current_slide.sort.to_f + 1.0) / course.slides.count.to_f * 100) unless current_slide.nil? %>%" aria-valuenow="<%= current_slide.sort %>" aria-valuemin="0" aria-valuemax="<%= course.slides.count %>"></div>
       </div>
     <% else %>
       <%= link_to "Loslegen!", course_path(course), class: "action-button-green-color" %>
