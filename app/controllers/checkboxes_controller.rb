@@ -71,6 +71,6 @@ class CheckboxesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def checkbox_params
-      params.require(:checkbox).permit(:content, :checkbox_exercise_id)
+      params.require(:checkbox).permit(:content, :checkbox_exercise_id, :correct_answer)
     end
 end

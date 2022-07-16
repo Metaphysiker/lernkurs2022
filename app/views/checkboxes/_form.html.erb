@@ -17,6 +17,11 @@
   </div>
 
   <div>
+    <%= form.label :correct_answer, style: "display: block" %>
+    <%= form.select :correct_answer, Checkbox.correct_answer_options %>
+  </div>
+
+  <div>
     <%= form.label :checkbox_exercise_id, style: "display: block" %>
     <%= form.text_field :checkbox_exercise_id %>
   </div>

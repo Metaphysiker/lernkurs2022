@@ -6,7 +6,7 @@ var myPoints = 3;
 var pointsDeductionForMistake = 1;
 
 export default class extends Controller {
-  static targets = [ "button", "name", "output", "accountId", "exerciseId", "exerciseClass", "totalPossiblePoints", "pointsDeductionForMistake" ]
+  static targets = [ "button", "name", "output", "accountId", "exerciseId", "exerciseClass", "totalPossiblePoints", "pointsDeductionForMistake", "checkboxClass" ]
 
   connect(){
     import("jquery_with_setup").then(jquery_with_setup => {
@@ -22,6 +22,14 @@ export default class extends Controller {
   }
 
   check() {
+
+    var checkedVals = $("." + this.checkboxClassTarget.getAttribute('data-value') +":checkbox:checked").map(function() {
+        return {value: this.value, id: this.id};
+    }).get();
+
+    console.log(checkedVals);
+
+    //check if all are true
 
     if(event.params.quizQuestionCorrectAnswer === "yes"){
 

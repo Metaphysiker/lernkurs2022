@@ -12,6 +12,8 @@
     </div>
     <div data-checkbox-exercise-target="pointsDeductionForMistake" data-value="<%= checkbox_exercise.point_system.points_deduction_for_mistake unless checkbox_exercise.point_system.blank? %>" >
     </div>
+    <div data-checkbox-exercise-target="checkboxClass" data-value="<%= "#{dom_id(checkbox_exercise)}-checkboxes" %>" >
+    </div>
 
     <fieldset>
         <legend>
@@ -20,7 +22,7 @@
 
         <% checkbox_exercise.checkboxes.each do |checkbox| %>
         <div>
-          <input type="checkbox" id="<%= checkbox.id %>" value="<%= checkbox.id %>" name="<%= checkbox.content %>">
+          <input type="checkbox" class="<%= "#{dom_id(checkbox_exercise)}-checkboxes" %>" id="<%= checkbox.id %>" value="<%= checkbox.correct_answer %>" name="<%= checkbox.content %>">
           <label for="scales"><%= checkbox.content %></label>
         </div>
         <% end %>
