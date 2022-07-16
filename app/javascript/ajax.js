@@ -27,15 +27,17 @@ export function ajax() {
 
 
   },
-  this.getPoints = function(account_id, exercise_class, exercise_id, points) {
+  this.getPointsFromCourse = function(account_id, course_id) {
+    return new Promise(function(resolve, reject) {
     $.ajax({
-      url: "/accounts/" + account_id + "/update_excercise_history",
-      type: "PUT",
+      url: "/accounts/" + account_id + "/get_points_from_course",
+      type: "GET",
       headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
-      data: {exercise_class: exercise_class, exercise_id: exercise_id, points: points},
+      data: {account_id: account_id, course_id},
     }).done(function(response) {
-      return response;
+      resolve(response);
     });
+  })
   }
 
 }

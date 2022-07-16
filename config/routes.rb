@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     member do
       put 'update_course_history'
       put 'update_excercise_history'
+      get 'get_points_from_course'
     end
   end
   resources :roles
