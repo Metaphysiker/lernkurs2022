@@ -12,15 +12,20 @@ export function ajax() {
     });
   },
   this.updateExerciseHistoryOfAccount = function(account_id, exercise_class, exercise_id, points) {
-    console.log("points: " + points)
-    $.ajax({
-      url: "/accounts/" + account_id + "/update_excercise_history",
-      type: "PUT",
-      headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
-      data: {exercise_class: exercise_class, exercise_id: exercise_id, points: points},
-    }).done(function(response) {
-      return response;
+
+    return new Promise(function(resolve, reject) {
+      $.ajax({
+        url: "/accounts/" + account_id + "/update_excercise_history",
+        type: "PUT",
+        headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
+        data: {exercise_class: exercise_class, exercise_id: exercise_id, points: points},
+      }).done(function(response) {
+        resolve(response);
+      });
+
     });
+
+
   },
   this.getPoints = function(account_id, exercise_class, exercise_id, points) {
     $.ajax({

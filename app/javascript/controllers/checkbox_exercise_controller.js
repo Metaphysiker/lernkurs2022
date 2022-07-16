@@ -48,16 +48,19 @@ export default class extends Controller {
 
     //check if all correct answers are present and whether there are no wrong answers present
     if((missing_answers.length === 0) && (wrong_answers.length === 0)){
-      const custom_event = new CustomEvent('correct-answer', {
-            detail: {
-              points: myPoints
-            }
-          })
 
-        window.dispatchEvent(custom_event)
+      var ajax = new Ajax.ajax();
+      ajax.updateExerciseHistoryOfAccount(this.accountIdTarget.getAttribute('data-value'), this.exerciseClassTarget.getAttribute('data-value'), this.exerciseIdTarget.getAttribute('data-value'), myPoints)
+      .then(() => {
+        const custom_event = new CustomEvent('correct-answer', {
+          detail: {
+            points: myPoints
+          }
+        })
+        window.dispatchEvent(custom_event);
+      });
 
-        var ajax = new Ajax.ajax();
-        ajax.updateExerciseHistoryOfAccount(this.accountIdTarget.getAttribute('data-value'), this.exerciseClassTarget.getAttribute('data-value'), this.exerciseIdTarget.getAttribute('data-value'), myPoints);
+
     } else {
       if((myPoints - pointsDeductionForMistake) < 0){
         myPoints = 0

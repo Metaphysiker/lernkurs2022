@@ -13,6 +13,12 @@ class OpenQuestionsController < ApplicationController
   # GET /open_questions/new
   def new
     @open_question = OpenQuestion.new
+
+    if params[:slide_id].present?
+      @open_question = OpenQuestion.new(slide_id: params[:slide_id])
+    else
+      @open_question = OpenQuestion.new
+    end
   end
 
   # GET /open_questions/1/edit

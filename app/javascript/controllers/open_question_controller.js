@@ -26,16 +26,16 @@ export default class extends Controller {
 
     if(solution.includes(this.inputTarget.value)){
 
-      const custom_event = new CustomEvent('correct-answer', {
+        var ajax = new Ajax.ajax();
+        ajax.updateExerciseHistoryOfAccount(this.accountIdTarget.getAttribute('data-value'), this.exerciseClassTarget.getAttribute('data-value'), this.exerciseIdTarget.getAttribute('data-value'), myPoints)
+        .then(() => {
+          const custom_event = new CustomEvent('correct-answer', {
             detail: {
               points: myPoints
             }
           })
-
-        window.dispatchEvent(custom_event)
-
-        var ajax = new Ajax.ajax();
-        ajax.updateExerciseHistoryOfAccount(this.accountIdTarget.getAttribute('data-value'), this.exerciseClassTarget.getAttribute('data-value'), this.exerciseIdTarget.getAttribute('data-value'), myPoints);
+          window.dispatchEvent(custom_event);
+        });
 
     } else {
       if((myPoints - pointsDeductionForMistake) < 0){

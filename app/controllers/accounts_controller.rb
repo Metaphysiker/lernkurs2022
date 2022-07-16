@@ -77,13 +77,13 @@ class AccountsController < ApplicationController
     exercise_hash = {id: exercise_id, class: exercise_class, points_scored: points}
 
     if exercises.key?(course.id.to_s)
-      exercise_entry = exercises[course.id.to_s]["exercises"].detect { |h| h["id"] == exercise_id}
+      exercise_entry = exercises[course.id.to_s]["exercises"].detect { |h| (h["id"] == exercise_id) && (h["class"] == exercise_class) }
 
       if exercise_entry.nil?
         exercises[course.id.to_s]["exercises"] = exercises[course.id.to_s]["exercises"].push(exercise_hash)
       else
         exercises[course.id.to_s]["exercises"].map do |h|
-          h["points_scored"] = points if h["id"] == exercise_id
+          h["points_scored"] = points if (h["id"] == exercise_id) && (h["class"] == exercise_class)
         end
         #exercises[course.id.to_s]["exercises"] = exercises[course.id.to_s]["exercises"].push(exercise_hash)
 

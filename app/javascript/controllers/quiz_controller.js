@@ -31,16 +31,16 @@ export default class extends Controller {
       $(this.buttonTargets).addClass( "disabled" );
       $(event.target).addClass("correct-answer");
 
-      const custom_event = new CustomEvent('correct-answer', {
-            detail: {
-              points: myPoints
-            }
-          })
-
-        window.dispatchEvent(custom_event)
-
-        var ajax = new Ajax.ajax();
-        ajax.updateExerciseHistoryOfAccount(this.accountIdTarget.getAttribute('data-value'), this.exerciseClassTarget.getAttribute('data-value'), this.exerciseIdTarget.getAttribute('data-value'), myPoints);
+      var ajax = new Ajax.ajax();
+      ajax.updateExerciseHistoryOfAccount(this.accountIdTarget.getAttribute('data-value'), this.exerciseClassTarget.getAttribute('data-value'), this.exerciseIdTarget.getAttribute('data-value'), myPoints)
+      .then(() => {
+        const custom_event = new CustomEvent('correct-answer', {
+          detail: {
+            points: myPoints
+          }
+        })
+        window.dispatchEvent(custom_event);
+      });
 
     } else {
         $(event.target).prop("disabled", true);
