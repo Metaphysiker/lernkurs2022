@@ -42,6 +42,7 @@
               <%= render "quizzes/quiz", quiz: slide.quizzes.first unless slide.quizzes.empty?  %>
               <%= render "checkbox_exercises/checkbox_exercise", checkbox_exercise: slide.checkbox_exercises.first unless slide.checkbox_exercises.empty?  %>
               <%= render "open_questions/open_question", open_question: slide.open_questions.first unless slide.open_questions.empty?  %>
+              <%= render "clozes/cloze", cloze: slide.clozes.first unless slide.clozes.empty?  %>
 
             </div>
           </div>

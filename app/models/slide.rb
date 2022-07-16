@@ -3,6 +3,7 @@ class Slide < ApplicationRecord
   has_many :quizzes
   has_many :checkbox_exercises
   has_many :open_questions
+  has_many :clozes
 
   after_create :set_sort
 

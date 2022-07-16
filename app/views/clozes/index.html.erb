@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Clozes</h1>
+
+<div id="clozes">
+  <% @clozes.each do |cloze| %>
+    <%= render cloze %>
+    <p>
+      <%= link_to "Show this cloze", cloze %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New cloze", new_cloze_path %>

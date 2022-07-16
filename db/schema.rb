@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_16_094604) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_16_132630) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -67,6 +67,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_16_094604) do
     t.datetime "updated_at", null: false
     t.string "correct_answer", default: "no"
     t.index ["checkbox_exercise_id"], name: "index_checkboxes_on_checkbox_exercise_id"
+  end
+
+  create_table "clozes", force: :cascade do |t|
+    t.text "content", default: ""
+    t.text "correct_answer", default: ""
+    t.bigint "slide_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "text"
+    t.index ["slide_id"], name: "index_clozes_on_slide_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -160,6 +170,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_16_094604) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "checkbox_exercises", "slides"
   add_foreign_key "checkboxes", "checkbox_exercises"
+  add_foreign_key "clozes", "slides"
   add_foreign_key "open_questions", "slides"
   add_foreign_key "quiz_questions", "quizzes"
   add_foreign_key "quizzes", "slides"

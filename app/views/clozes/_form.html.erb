@@ -1,0 +1,38 @@
+<%= form_with(model: cloze) do |form| %>
+  <% if cloze.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(cloze.errors.count, "error") %> prohibited this cloze from being saved:</h2>
+
+      <ul>
+        <% cloze.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :content, style: "display: block" %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div>
+    <%= form.label :correct_answer, style: "display: block" %>
+    <%= form.text_area :correct_answer %>
+  </div>
+
+  <p>
+    Placeholder: [0], [1] und so weiter.
+  </p>
+  <div>
+    <%= form.label :text, style: "display: block" %>
+    <%= form.text_area :text %>
+  </div>
+
+  <%= form.select :slide_id, Slide.all.map {|slide| [slide.content, slide.id]}, {include_blank: true}, {class: "form-select"}  %>
+
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @cloze %>
+
+<div>
+  <%= link_to "Edit this cloze", edit_cloze_path(@cloze) %> |
+  <%= link_to "Back to clozes", clozes_path %>
+
+  <%= button_to "Destroy this cloze", @cloze, method: :delete %>
+</div>

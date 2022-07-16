@@ -1,0 +1,32 @@
+<div id="<%= dom_id cloze %>">
+  <p>
+    <%= cloze.content %>
+  </p>
+  <p>
+    <%= cloze.text %>
+  </p>
+  <p>
+    gaps:
+    <%= raw cloze.text_with_input_fields %>
+  </p>
+  <p>
+    <%= cloze.text.scan(/\[.\]/) %>
+  </p>
+  <p>
+    <% new_text = cloze.text %>
+    <% cloze.text.scan(/\[.\]/).each do |match| %>
+
+      <% new_text.gsub(/\[.\]/) %>
+    <% end %>
+  </p>
+
+  <p>
+    <%= cloze.correct_answer %>
+  </p>
+
+  <p>
+    <strong>Slide:</strong>
+    <%= cloze.slide_id %>
+  </p>
+
+</div>
