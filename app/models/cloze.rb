@@ -7,12 +7,12 @@ class Cloze < ApplicationRecord
 
   def text_with_input_fields
     new_text = self.text
+    number = match.scan(/\d+/).first
+
     stringy = <<MARKER
 <input type="text" id="" name="">
 MARKER
     self.text.scan(/\[.\]/).each do |match|
-      number = match.scan(/\d+/).first
-      puts number
       new_text = new_text.gsub(/\[#{number}\]/, stringy)
     end
     new_text
