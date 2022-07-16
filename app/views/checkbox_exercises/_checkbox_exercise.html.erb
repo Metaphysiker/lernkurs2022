@@ -14,6 +14,8 @@
     </div>
     <div data-checkbox-exercise-target="checkboxClass" data-value="<%= "#{dom_id(checkbox_exercise)}-checkboxes" %>" >
     </div>
+    <div data-checkbox-exercise-target="solution" data-value="<%= checkbox_exercise.checkboxes.where(correct_answer: "yes").pluck(:id).join(",") %>" >
+    </div>
 
     <fieldset>
         <legend>
@@ -22,7 +24,7 @@
 
         <% checkbox_exercise.checkboxes.each do |checkbox| %>
         <div>
-          <input type="checkbox" class="<%= "#{dom_id(checkbox_exercise)}-checkboxes" %>" id="<%= checkbox.id %>" value="<%= checkbox.correct_answer %>" name="<%= checkbox.content %>">
+          <input type="checkbox" class="<%= "#{dom_id(checkbox_exercise)}-checkboxes" %>" id="<%= "#{dom_id(checkbox_exercise)}-checkboxes-checkbox-#{checkbox.id}" %>" value="<%= checkbox.id %>" name="<%= checkbox.content %>">
           <label for="scales"><%= checkbox.content %></label>
         </div>
         <% end %>
