@@ -25,15 +25,26 @@ export default class extends Controller {
     console.log("incrementallyUpdate")
     console.log(this.outputTarget.innerHTML);
     var current_value = parseInt(this.outputTarget.innerHTML);
+    var target_value = points;
+    //var current_value = parseInt(this.outputTarget.innerHTML);
     var difference = points - current_value;
     console.log(difference);
 
-    var myPromise = () => new Promise(resolve => setTimeout(resolve, 50));
+    var myPromise = async (milli_seconds = 1000) => new Promise(resolve => setTimeout(resolve, milli_seconds));
 
-    for (let i = 0, p = Promise.resolve(); i < difference; i++) {
-        p = p.then(() => myPromise())
-             .then(() => this.outputTarget.innerHTML = `${parseInt(this.outputTarget.innerHTML) + 1}` );
+    while (current_value != target_value) {
+      console.log(current_value);
+      if(current_value < target_value){
+        current_value = parseInt(this.outputTarget.innerHTML) + 1;
+        this.outputTarget.innerHTML = current_value;
+
+      } else {
+        current_value = parseInt(this.outputTarget.innerHTML) - 1;
+        this.outputTarget.innerHTML = current_value;
+      }
+
     }
+
   }
 
 }
