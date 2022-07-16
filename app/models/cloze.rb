@@ -8,12 +8,15 @@ class Cloze < ApplicationRecord
   def text_with_input_fields
     new_text = self.text
 
-    stringy = <<MARKER
-<input type="text" class="input-cloze-#{self.id}">
-MARKER
     self.text.scan(/\[.\]/).each do |match|
       number = match.scan(/\d+/).first
-      new_text = new_text.gsub(/\[#{number}\]/, stringy)
+
+html_string = <<MARKER
+  <input type="text" class="input-cloze-#{self.id}" data-input-id="#{number}">
+MARKER
+
+
+      new_text = new_text.gsub(/\[#{number}\]/, html_string)
     end
     new_text
   end

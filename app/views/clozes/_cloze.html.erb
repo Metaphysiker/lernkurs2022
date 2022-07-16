@@ -20,6 +20,8 @@
     </div>
     <div data-cloze-target="inputClass" data-value=".input-cloze-<%= cloze.id %>" >
     </div>
+    <div data-cloze-target="solution" data-value="<%= cloze.correct_answer %>" >
+    </div>
 
     <p>
       <%= raw cloze.text_with_input_fields %>
@@ -27,7 +29,7 @@
 
     <p>
       <button data-action="click->cloze#check">
-        Greet
+        <%= t('check-answer') %>
       </button>
     </p>
 
