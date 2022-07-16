@@ -1,18 +1,39 @@
-<div id="<%= dom_id cloze %>">
+<div id="<%= dom_id cloze %>" class="container">
   <p>
     <%= cloze.content %>
-  </p>
-  <p>
-    <%= raw cloze.text_with_input_fields %>
   </p>
 
   <p>
     <%= cloze.correct_answer %>
   </p>
 
-  <p>
-    <strong>Slide:</strong>
-    <%= cloze.slide_id %>
-  </p>
+  <div data-controller="cloze">
+    <div data-cloze-target="accountId" data-value="<%= @account.id %>" >
+    </div>
+    <div data-cloze-target="exerciseId" data-value="<%= cloze.id %>" >
+    </div>
+    <div data-cloze-target="exerciseClass" data-value="<%= cloze.class.name %>" >
+    </div>
+    <div data-cloze-target="totalPossiblePoints" data-value="<%= cloze.point_system.total_possible_points unless cloze.point_system.blank? %>" >
+    </div>
+    <div data-cloze-target="pointsDeductionForMistake" data-value="<%= cloze.point_system.points_deduction_for_mistake unless cloze.point_system.blank? %>" >
+    </div>
+    <div data-cloze-target="inputClass" data-value=".input-cloze-<%= cloze.id %>" >
+    </div>
+
+    <p>
+      <%= raw cloze.text_with_input_fields %>
+    </p>
+
+    <p>
+      <button data-action="click->cloze#check">
+        Greet
+      </button>
+    </p>
+
+    <span data-cloze-target="output">
+    </span>
+  </div>
+
 
 </div>

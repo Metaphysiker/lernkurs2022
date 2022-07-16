@@ -24,7 +24,7 @@ export default class extends Controller {
 
   check() {
 
-    if(solution.includes(this.inputTarget.value)){
+    if(solution == this.inputTarget.value){
 
         var ajax = new Ajax.ajax();
         ajax.updateExerciseHistoryOfAccount(this.accountIdTarget.getAttribute('data-value'), this.exerciseClassTarget.getAttribute('data-value'), this.exerciseIdTarget.getAttribute('data-value'), myPoints)
