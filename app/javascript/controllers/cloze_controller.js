@@ -25,24 +25,30 @@ export default class extends Controller {
   }
 
   check() {
-    console.log("check");
-    console.log(this.inputClassTarget.getAttribute('data-value'));
-    console.log($(this.inputClassTarget.getAttribute('data-value')));
-    console.log(solution);
+    var missing_answers = [...solution];
+    var wrong_answers = [];
 
     $(this.inputClassTarget.getAttribute('data-value')).map(function() {
-      console.log(this.value);
-      console.log(this.getAttribute('data-input-id'));
-      console.log(solution[this.getAttribute('data-input-id')])
-      console.log(solution[this.getAttribute('data-input-id')].split(",").includes(this.value))
+
+
+      if(solution[this.getAttribute('data-input-id')].split(",").includes(this.value)){
+        console.log("REMOVE!");
+        console.log(missing_answers.indexOf(this.value));
+        //console.log(missing)
+
+        missing_answers.splice(missing_answers.indexOf(missing_answers[this.getAttribute('data-input-id')]), 1);
+
+      } else {
+        console.log("WRONG!");
+        wrong_answers.push(this.value);
+      }
+
     });
 
-    if(event.params.quizQuestionCorrectAnswer === "yes"){
-      console.log(myPoints);
+    console.log(wrong_answers);
+    console.log(missing_answers);
 
-      $(this.buttonTargets).prop("disabled", true);
-      $(this.buttonTargets).addClass( "disabled" );
-      $(event.target).addClass("correct-answer");
+    if((missing_answers.length === 0) && (wrong_answers.length === 0)){
 
       var ajax = new Ajax.ajax();
       ajax.updateExerciseHistoryOfAccount(this.accountIdTarget.getAttribute('data-value'), this.exerciseClassTarget.getAttribute('data-value'), this.exerciseIdTarget.getAttribute('data-value'), myPoints)
@@ -55,15 +61,13 @@ export default class extends Controller {
         window.dispatchEvent(custom_event);
       });
 
+
     } else {
-        $(event.target).prop("disabled", true);
-        $(event.target).addClass( "disabled" );
-        $(event.target).addClass("false-answer");
-        if((myPoints - pointsDeductionForMistake) < 0){
-          myPoints = 0
-        } else {
-          myPoints = myPoints - pointsDeductionForMistake
-        }
+      if((myPoints - pointsDeductionForMistake) < 0){
+        myPoints = 0
+      } else {
+        myPoints = myPoints - pointsDeductionForMistake
+      }
     }
 
   }
