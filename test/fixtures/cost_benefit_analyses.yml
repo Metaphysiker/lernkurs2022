@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  slide: one
+  content: MyText
+  cost: MyText
+  benefit: MyText
+
+two:
+  slide: two
+  content: MyText
+  cost: MyText
+  benefit: MyText

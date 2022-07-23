@@ -1,0 +1,40 @@
+<div class="container" id="<%= dom_id cost_benefit_analysis %>">
+
+  <div data-controller="cost-benefit-analysis">
+    <div data-cost-benefit-analysis-target="accountId" data-value="<%= @account.id %>" >
+    </div>
+    <div data-cost-benefit-analysis-target="exerciseId" data-value="<%= cost_benefit_analysis.id %>" >
+    </div>
+    <div data-cost-benefit-analysis-target="exerciseClass" data-value="<%= cost_benefit_analysis.class.name %>" >
+    </div>
+    <div data-cost-benefit-analysis-target="totalPossiblePoints" data-value="<%= cost_benefit_analysis.point_system.total_possible_points unless cost_benefit_analysis.point_system.blank? %>" >
+    </div>
+    <div data-cost-benefit-analysis-target="pointsDeductionForMistake" data-value="<%= cost_benefit_analysis.point_system.points_deduction_for_mistake unless cost_benefit_analysis.point_system.blank? %>" >
+    </div>
+
+
+      <p class="text-center">
+          <%= cost_benefit_analysis.content %>
+      </p>
+      <div class="mb-3">
+        <label for="" class="form-label">Nutzen</label>
+        <textarea class="form-control" data-cost-benefit-analysis-target="benefitInput" type="text" rows="5"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Kosten</label>
+        <textarea class="form-control" data-cost-benefit-analysis-target="costInput" type="text" rows="5"></textarea>
+      </div>
+
+      <p>
+        <button data-action="click->cost-benefit-analysis#check" class="btn btn-primary">
+          Check
+        </button>
+      </p>
+
+    </div>
+
+    <span data-quiz-target="output">
+    </span>
+  </div>
+
+</div>

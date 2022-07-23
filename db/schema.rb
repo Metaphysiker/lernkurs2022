@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_16_132630) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_23_084801) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -77,6 +77,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_16_132630) do
     t.datetime "updated_at", null: false
     t.text "text"
     t.index ["slide_id"], name: "index_clozes_on_slide_id"
+  end
+
+  create_table "cost_benefit_analyses", force: :cascade do |t|
+    t.bigint "slide_id"
+    t.text "content", default: ""
+    t.text "cost", default: ""
+    t.text "benefit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slide_id"], name: "index_cost_benefit_analyses_on_slide_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -171,6 +181,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_16_132630) do
   add_foreign_key "checkbox_exercises", "slides"
   add_foreign_key "checkboxes", "checkbox_exercises"
   add_foreign_key "clozes", "slides"
+  add_foreign_key "cost_benefit_analyses", "slides"
   add_foreign_key "open_questions", "slides"
   add_foreign_key "quiz_questions", "quizzes"
   add_foreign_key "quizzes", "slides"

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @cost_benefit_analysis %>
+
+<div>
+  <%= link_to "Edit this cost benefit analysis", edit_cost_benefit_analysis_path(@cost_benefit_analysis) %> |
+  <%= link_to "Back to cost benefit analyses", cost_benefit_analyses_path %>
+
+  <%= button_to "Destroy this cost benefit analysis", @cost_benefit_analysis, method: :delete %>
+</div>

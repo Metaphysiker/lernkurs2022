@@ -3,3 +3,6 @@
   &nbsp;
   </div>
 </div>
+
+rails g scaffold CostBenefitAnalysis slide:referenc
+es content:text

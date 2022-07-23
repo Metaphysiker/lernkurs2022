@@ -4,6 +4,7 @@ class Slide < ApplicationRecord
   has_many :checkbox_exercises
   has_many :open_questions
   has_many :clozes
+  has_many :cost_benefit_analyses
 
   after_create :set_sort
 

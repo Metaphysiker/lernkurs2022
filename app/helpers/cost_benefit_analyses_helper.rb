@@ -1,0 +1,2 @@
+module CostBenefitAnalysesHelper
+end
