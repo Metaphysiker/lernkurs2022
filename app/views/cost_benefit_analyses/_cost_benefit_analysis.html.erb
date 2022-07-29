@@ -14,7 +14,7 @@
 
 
       <p class="text-center">
-          <%= cost_benefit_analysis.content %>
+          <%= raw cost_benefit_analysis.content %>
       </p>
       <div class="mb-3">
         <label for="" class="form-label">Nutzen</label>
@@ -26,8 +26,8 @@
       </div>
 
       <p>
-        <button data-action="click->cost-benefit-analysis#check" class="btn btn-primary">
-          Check
+        <button data-action="click->cost-benefit-analysis#save" class="btn btn-primary">
+          <%= t('save_answer') %>
         </button>
       </p>
 

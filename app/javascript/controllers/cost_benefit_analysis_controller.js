@@ -21,6 +21,14 @@ export default class extends Controller {
 
   }
 
+  save() {
+    console.log("benefit: ");
+    console.log(this.benefitInputTarget.value);
+    console.log("cost: ");
+    console.log(this.costInputTarget.value);
+
+  }
+
   check() {
     console.log("benefit: ");
     console.log(this.benefitInputTarget.value);

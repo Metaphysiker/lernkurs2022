@@ -80,6 +80,8 @@ class SlidesController < ApplicationController
       render partial: "checkbox_exercises/checkbox_exercise", locals: {checkbox_exercise: @slide.checkbox_exercises.first}, layout: false
     elsif @slide.clozes.present?
       render partial: "clozes/cloze", locals: {cloze: @slide.clozes.first}, layout: false
+    elsif @slide.cost_benefit_analyses.present?
+      render partial: "cost_benefit_analyses/cost_benefit_analysis", locals: {cost_benefit_analysis: @slide.cost_benefit_analyses.first}, layout: false
     else
       render plain: ""
     end
