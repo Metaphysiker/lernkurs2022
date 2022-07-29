@@ -27,7 +27,7 @@
         <% account.exercises[course.id.to_s]["exercises"].each do |exercise_row| %>
           <% exercise = exercise_row["class"].safe_constantize.find(exercise_row["id"].to_i) %>
           <tr>
-            <td><%= exercise.content %></td>
+            <td><%= strip_tags(exercise.content) %></td>
             <td><%= exercise_row["points_scored"] %> von <%= exercise.point_system.total_possible_points %></td>
           </tr>
 
