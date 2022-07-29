@@ -1,7 +1,7 @@
 <div class="container">
   <div id="<%= dom_id quiz %>">
     <p class="text-center">
-      <%= quiz.content %>
+      <%= raw quiz.content %>
     </p>
     <% if policy(QuizQuestion.new).create? %>
       <% if quiz.point_system.present? %>
@@ -34,7 +34,7 @@
       </div>
       <div data-quiz-target="pointsDeductionForMistake" data-value="<%= quiz.point_system.points_deduction_for_mistake unless quiz.point_system.blank? %>" >
       </div>
-      <% quiz.quiz_questions.each do |quiz_question| %>
+      <% quiz.quiz_questions.order("RANDOM()").each do |quiz_question| %>
       <div class="d-grid gap-2">
         <button data-quiz-target="button" data-action="click->quiz#check" data-quiz-quiz-question-correct-answer-param="<%= quiz_question.correct_answer %>" data type="button" class="quiz-button "><%= quiz_question.content %></button>
       </div>

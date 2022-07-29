@@ -13,7 +13,10 @@
 
   <div>
     <%= form.label :content, style: "display: block" %>
-    <%= form.text_area :content %>
+    <%#= form.text_area :content %>
+    <div data-controller="tinymce">
+      <%= form.text_area :content, class: "tinymce-textarea", data: {"tinymce-target": "textarea"} %>
+    </div>
   </div>
 
   <%= form.select :slide_id, Slide.all.map {|slide| [slide.content, slide.id]}, {include_blank: true}, {class: "form-select"}  %>

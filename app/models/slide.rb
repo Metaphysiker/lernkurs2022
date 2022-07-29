@@ -26,6 +26,25 @@ class Slide < ApplicationRecord
     end
   end
 
+  def exercise
+
+    if self.quizzes.present?
+      return self.quizzes.first
+    elsif self.checkbox_exercises.present?
+      return self.checkbox_exercises.first
+    elsif self.open_questions.present?
+      return self.open_questions.first
+    elsif self.clozes.present?
+      return self.clozes.first
+    elsif self.cost_benefit_analyses.present?
+      return self.cost_benefit_analyses.first
+    else
+      return nil
+    end
+
+  end
+
+
   private
 
   def set_sort

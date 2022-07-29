@@ -15,4 +15,20 @@ class Account < ApplicationRecord
 
   end
 
+  def total_possible_course_points(course_id)
+
+    points = 0
+
+    course = Course.find(course_id)
+
+    course.slides.each do |slide|
+      unless slide.exercise.nil?
+        points += slide.exercise.point_system.total_possible_points unless slide.exercise.point_system.nil?
+      end
+    end
+
+    points
+
+  end
+
 end
