@@ -5,4 +5,8 @@ class Course < ApplicationRecord
     attachable.variant :cardimage, resize_to_limit: [400, 300]
   end
 
+  def self.options
+    ["ethik", "klimagerechtigkeit"]
+  end
+
 end
