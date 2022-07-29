@@ -11,14 +11,14 @@ export function ajax() {
       console.log(response);
     });
   },
-  this.updateExerciseHistoryOfAccount = function(account_id, exercise_class, exercise_id, points) {
+  this.updateExerciseHistoryOfAccount = function(account_id, exercise_class, exercise_id, points, answer = "") {
 
     return new Promise(function(resolve, reject) {
       $.ajax({
         url: "/accounts/" + account_id + "/update_excercise_history",
         type: "PUT",
         headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
-        data: {exercise_class: exercise_class, exercise_id: exercise_id, points: points},
+        data: {exercise_class: exercise_class, exercise_id: exercise_id, points: points, answer: answer},
       }).done(function(response) {
         resolve(response);
       });

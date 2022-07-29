@@ -21,6 +21,7 @@
         <tr>
           <th scope="col">Übung</th>
           <th scope="col">Punkte gesammelt</th>
+          <th scope="col">Antwort</th>
         </tr>
       </thead>
       <tbody>
@@ -29,6 +30,9 @@
           <tr>
             <td><%= strip_tags(exercise.content) %></td>
             <td><%= exercise_row["points_scored"] %> von <%= exercise.point_system.total_possible_points %></td>
+            <td>
+              <%= exercise_row["answer"] %>
+            </td>
           </tr>
 
         <% end %>

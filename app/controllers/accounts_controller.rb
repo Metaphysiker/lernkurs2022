@@ -71,10 +71,11 @@ class AccountsController < ApplicationController
     course = exercise.slide.course
 
     points = params[:points].to_i
+    answer = params[:answer]
     exercises = @account.exercises
     exercise_id_and_class = exercise_class + "-" + exercise_id.to_s
 
-    exercise_hash = {id: exercise_id, class: exercise_class, points_scored: points}
+    exercise_hash = {id: exercise_id, class: exercise_class, points_scored: points, answer: answer}
 
     if exercises.key?(course.id.to_s)
       exercise_entry = exercises[course.id.to_s]["exercises"].detect { |h| (h["id"] == exercise_id) && (h["class"] == exercise_class) }
@@ -83,7 +84,10 @@ class AccountsController < ApplicationController
         exercises[course.id.to_s]["exercises"] = exercises[course.id.to_s]["exercises"].push(exercise_hash)
       else
         exercises[course.id.to_s]["exercises"].map do |h|
-          h["points_scored"] = points if (h["id"] == exercise_id) && (h["class"] == exercise_class)
+          if (h["id"] == exercise_id) && (h["class"] == exercise_class)
+            h["points_scored"] = points
+            h["answer"] = answer
+          end
         end
         #exercises[course.id.to_s]["exercises"] = exercises[course.id.to_s]["exercises"].push(exercise_hash)
 
