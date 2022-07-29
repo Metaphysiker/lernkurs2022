@@ -34,14 +34,15 @@
   //@extend .rounded !optional;
   @extend .btn !optional;
   @extend .btn-light !optional;
-  //@extend .border !optional;
+  @extend .border !optional;
   @extend .btn-lg !optional;
-  @extend .fw-bold !optional;
+  //@extend .fw-bold !optional;
   color: black;
   font-size: 1rem;
   //font-weight: bold;
   @extend .my-2 !optional;
-  //@extend .text-e-color !optional;
+  @extend .py-3 !optional;
+  background-color: WhiteSmoke;
 
   &.correct-answer {
     background-color: lightgreen;
@@ -55,6 +56,7 @@
   &:hover{
   //  filter: brightness(1.1);
     transform: scale(1.05);
+    //background-color: WhiteSmoke;
     //@extend .border !optional;
   }
 }
