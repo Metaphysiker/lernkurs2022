@@ -16,19 +16,46 @@
       <p class="text-center">
           <%= raw cost_benefit_analysis.content %>
       </p>
+      <div class="mb-3 border rounded p-3">
+        <p>
+          <strong>Anleitung: </strong>
+        </p>
+        <p>
+          Überlege dir die Nutzen und Schäden und weise ihnen einen Wert zu.
+        </p>
+        <p>
+          1. Pro Linie kannst du einen Eintrag machen.
+        </p>
+        <p>
+          2. Mach am Ende einen Doppelpunkt ":" und schreib den Wert hin.
+        </p>
+        <p>
+          <strong> Zum Beispiel: </strong><br>
+          Mehr Gesundheit dank Krankenkassen : 12
+        </p>
+        <p>
+          Mehr Frustration wegen höheren Steuern : -5
+        </p>
+        <p>
+          3. Neue Linie für den nächsten Eintrag machen.
+        </p>
+        <p>
+          4. Wenn du fertig bist, auf "Antwort speichern" drücken.
+        </p>
+      </div>
       <div class="mb-3">
         <label for="" class="form-label">Nutzen</label>
-        <textarea class="form-control" data-cost-benefit-analysis-target="benefitInput" type="text" rows="5"></textarea>
+        <textarea class="form-control" data-cost-benefit-analysis-target="benefitInput" type="text" rows="5" placeholder="Nutzen 1 : 5 &#10;Nutzen 2 : 3 &#10;Nutzen 3 : 8 &#10;Nutzen 4 : 12"></textarea>
       </div>
       <div class="mb-3">
         <label for="" class="form-label">Kosten</label>
-        <textarea class="form-control" data-cost-benefit-analysis-target="costInput" type="text" rows="5"></textarea>
+        <textarea class="form-control" data-cost-benefit-analysis-target="costInput" type="text" rows="5" placeholder="Schaden 1 : -2 &#10;Schaden 2 : -14 &#10;Schaden 3 : -6 &#10;Schaden 4 : -9"></textarea>
       </div>
 
       <table class="table table-striped" data-cost-benefit-analysis-target="fullTable">
         <thead>
           <tr>
-            <th scope="col">Was</th>
+            <th scope="col">Nutzen / Kosten</th>
             <th scope="col">Wert</th>
           </tr>
         </thead>

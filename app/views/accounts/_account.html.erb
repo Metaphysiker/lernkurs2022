@@ -31,7 +31,7 @@
             <td><%= strip_tags(exercise.content) %></td>
             <td><%= exercise_row["points_scored"] %> von <%= exercise.point_system.total_possible_points %></td>
             <td>
-              <%= simple_format(exercise_row["answer"]) %>
+              <%= raw exercise_row["answer"] %>
             </td>
           </tr>
 
