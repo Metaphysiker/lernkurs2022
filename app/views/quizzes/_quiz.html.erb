@@ -3,6 +3,12 @@
     <p class="text-center">
       <%= raw quiz.content %>
     </p>
+
+    <% if policy(quiz).update? %>
+      <%= link_to t("helpers.submit.update", model: Quiz.model_name.human), edit_quiz_path(quiz) %>
+      <br />
+    <% end %>
+
     <% if policy(QuizQuestion.new).create? %>
       <% if quiz.point_system.present? %>
           <%= link_to "PointSystem bearbeiten", edit_point_system_path(quiz.point_system) %>
