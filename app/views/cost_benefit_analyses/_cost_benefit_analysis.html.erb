@@ -25,6 +25,19 @@
         <textarea class="form-control" data-cost-benefit-analysis-target="costInput" type="text" rows="5"></textarea>
       </div>
 
+      <table class="table table-striped" data-cost-benefit-analysis-target="fullTable">
+        <thead>
+          <tr>
+            <th scope="col">Was</th>
+            <th scope="col">Wert</th>
+          </tr>
+        </thead>
+        <tbody data-cost-benefit-analysis-target="tableOutput">
+
+        </tbody>
+      </table>
+
+
       <p>
         <button data-action="click->cost-benefit-analysis#save" class="btn btn-primary">
           <%= t('save_answer') %>
