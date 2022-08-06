@@ -44,6 +44,11 @@
       <div class="d-grid gap-2">
         <button data-quiz-target="button" data-action="click->quiz#check" data-quiz-quiz-question-correct-answer-param="<%= quiz_question.correct_answer %>" data type="button" class="quiz-button "><%= quiz_question.content %></button>
       </div>
+        <% if policy(quiz_question).update? %>
+          <p>
+            <%= link_to t("helpers.submit.update", model: QuizQuestion.model_name.human), edit_quiz_question_path(quiz_question) %>
+          </p>
+        <% end %>
       <% end %>
 
 

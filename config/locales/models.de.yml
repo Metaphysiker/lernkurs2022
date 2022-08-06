@@ -1,0 +1,9 @@
+de:
+  activerecord:
+    models:
+      quiz_question:
+        one: Quiz-Frage
+        other: Quiz-Fragen
+      quiz:
+        one: Quiz
+        other: Quizzes
