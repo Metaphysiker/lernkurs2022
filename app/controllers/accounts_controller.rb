@@ -130,6 +130,7 @@ class AccountsController < ApplicationController
       new_user = User.create(email: params[:email], password: params[:password], password_confirmation: params[:password])
       @account.update(user_id: new_user.id)
       sign_in new_user
+      CourseMailer.welcome_mail(params[:email]).deliver_later
     end
 
     head :ok
