@@ -44,6 +44,14 @@ class Slide < ApplicationRecord
 
   end
 
+  def self.save_progress_options
+    ["true", "false"]
+  end
+
+  def self.course_complete_options
+    ["true", "false"]
+  end
+
 
   private
 

@@ -1,0 +1,38 @@
+<% unless user_signed_in? %>
+<div data-controller="save-progress">
+  <div data-save-progress-target="accountId" data-value="<%= @account.id %>" >
+  </div>
+  <p>
+    Möchtest du deine Resultate per e-Mail verschicken?
+  </p>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Vorname: </span>
+    <input type="text" class="form-control" placeholder="Manfred, Julia ..." aria-label="name" aria-describedby="basic-addon1" data-save-progress-target="firstName">
+  </div>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">e-Mail: </span>
+    <input type="text" class="form-control" placeholder="max.muster@email.com" aria-label="name" aria-describedby="basic-addon1" data-save-progress-target="email">
+  </div>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Passwort: </span>
+    <input type="password" class="form-control" aria-label="password" aria-describedby="basic-addon1" data-save-progress-target="password">
+  </div>
+
+  <div data-save-progress-target="output">
+  </div>
+
+  <button data-action="click->save-progress#save_progress" class="btn btn-primary">
+    Fortschritt speichern
+  </button>
+</div>
+<% else %>
+<p>
+  Du bist angemeldet und dein Fortschritt wird laufend gespeichert!
+</p>
+<p>
+  Vergiss dich nicht beim nächsten Mal anzumelden.
+</p>
+
+<% end %>

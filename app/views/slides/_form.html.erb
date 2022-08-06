@@ -20,6 +20,14 @@
     </div>
     <br>
     <%= form.select :course_id, Course.all.map {|course| [course.name, course.id]}, {include_blank: true}, {class: "form-select"}  %>
+    <br>
+    <%= form.label :save_progress, style: "display: block" %>
+
+    <%= form.select :save_progress, Slide.save_progress_options.map {|option| [option, option]}, {include_blank: false}, {class: "form-select"}  %>
+    <br>
+    <%= form.label :course_complete, style: "display: block" %>
+
+    <%= form.select :course_complete, Slide.course_complete_options.map {|option| [option, option]}, {include_blank: false}, {class: "form-select"}  %>
   </div>
 
 

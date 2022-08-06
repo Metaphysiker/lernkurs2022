@@ -1,5 +1,34 @@
 <%= raw slide.content %>
 
+<% if slide.save_progress == "true" %>
+  <%= render "accounts/save_progress" %>
+<% end %>
+
+<% if false %>
+<div data-controller="course-completion">
+  <p>
+    Möchtest du deine Resultate per e-Mail verschicken?
+  </p>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Vorname: </span>
+    <input type="text" class="form-control" placeholder="Manfred, Julia ..." aria-label="name" aria-describedby="basic-addon1" data-course-completion-target="name">
+  </div>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">e-Mail: </span>
+    <input type="text" class="form-control" placeholder="max.muster@email.com" aria-label="name" aria-describedby="basic-addon1" data-course-completion-target="name">
+  </div>
+
+  <div data-course-completion-target="output">
+  </div>
+
+  <button data-action="click->course-completion#greet" class="btn btn-primary">
+    Resultate verschicken
+  </button>
+</div>
+
+<% end %>
+
 <% if policy(slide).update? %>
   <hr />
   <div>

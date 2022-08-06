@@ -33,7 +33,34 @@ export function ajax() {
       url: "/accounts/" + account_id + "/get_points_from_course",
       type: "GET",
       headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
-      data: {account_id: account_id, course_id},
+      data: {account_id: account_id, course_id: course_id},
+    }).done(function(response) {
+      resolve(response);
+    });
+  })
+  }
+
+
+  this.sendResultsTo = function(account_id, course_id, email1, email2) {
+    return new Promise(function(resolve, reject) {
+    $.ajax({
+      url: "/accounts/" + account_id + "/send_results_to",
+      type: "POST",
+      headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
+      data: {account_id: account_id, course_id: course_id, email1: email1, email2: email2},
+    }).done(function(response) {
+      resolve(response);
+    });
+  })
+  }
+
+  this.saveProgress = function(account_id, first_name, email, password) {
+    return new Promise(function(resolve, reject) {
+    $.ajax({
+      url: "/accounts/" + account_id + "/save_progress",
+      type: "POST",
+      headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
+      data: {id: account_id, first_name: first_name, email: email, password: password },
     }).done(function(response) {
       resolve(response);
     });

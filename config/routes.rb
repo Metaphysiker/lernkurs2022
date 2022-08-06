@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       put 'update_course_history'
       put 'update_excercise_history'
       get 'get_points_from_course'
+      post 'send_results_to'
+      post 'save_progress'
     end
   end
   resources :roles

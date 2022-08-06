@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_29_062858) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_06_164209) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -152,6 +152,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_29_062858) do
     t.datetime "updated_at", null: false
     t.bigint "course_id"
     t.integer "sort", default: 0
+    t.string "save_progress", default: "false"
+    t.string "course_complete", default: "false"
     t.index ["course_id"], name: "index_slides_on_course_id"
   end
 
