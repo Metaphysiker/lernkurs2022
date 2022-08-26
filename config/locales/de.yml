@@ -35,3 +35,5 @@ de:
   signup: "Registrieren"
   check-answer: "Antwort prüfen"
   save_answer: "Antwort speichern"
+  routes:
+    courses: "kurs"

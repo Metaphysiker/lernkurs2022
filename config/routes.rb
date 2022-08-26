@@ -31,9 +31,11 @@ Rails.application.routes.draw do
 
   resources :quiz_questions
   resources :quizzes
-  resources :courses do
-    member do
-      get 'course_overview'
+  localized do
+    resources :courses do
+      member do
+        get 'course_overview'
+      end
     end
   end
   resources :slides do

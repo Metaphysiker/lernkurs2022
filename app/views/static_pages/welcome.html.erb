@@ -1,6 +1,10 @@
 <%= render "layouts/navigation" %>
 
 <div class="container">
+
+      <h2 class="text-center my-3">Ethik-Kurse</h2>
+      <%= render "courses/courses_by_group", courses: Course.where(group: "ethik") %>
+      <hr>
         <div class="row row-cols-1 row-cols-sm-1 row-cols-md-3 g-3 my-3">
           <% Course.all.each do |course| %>
           <div class="col">
