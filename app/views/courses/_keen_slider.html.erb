@@ -16,7 +16,7 @@
 
     <% Course.first.slides.each_with_index do |slide, index| %>
     <div class="keen-slider__slide number-slide<%= index %>">
-      <%= render Course.first, slide: slide %>
+      <%= render "slides/slide_with_exercise", slide: slide %>
     </div>
     <% end %>
 

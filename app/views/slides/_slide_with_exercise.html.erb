@@ -1,0 +1,60 @@
+<%= raw slide.content %>
+<% if slide.exercise %>
+  <%= render "#{slide.exercise.model_name.collection}/#{slide.exercise.model_name.element}", {"#{slide.exercise.model_name.element}": slide.exercise } %>
+<% end %>
+<%#= render "quizzes/quiz", quiz: slide.quizzes.first unless slide.quizzes.empty?  %>
+
+
+<% if slide.save_progress == "true" %>
+  <%= render "accounts/save_progress" %>
+<% end %>
+
+<% if false %>
+<div data-controller="course-completion">
+  <p>
+    Möchtest du deine Resultate per e-Mail verschicken?
+  </p>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Vorname: </span>
+    <input type="text" class="form-control" placeholder="Manfred, Julia ..." aria-label="name" aria-describedby="basic-addon1" data-course-completion-target="name">
+  </div>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">e-Mail: </span>
+    <input type="text" class="form-control" placeholder="max.muster@email.com" aria-label="name" aria-describedby="basic-addon1" data-course-completion-target="name">
+  </div>
+
+  <div data-course-completion-target="output">
+  </div>
+
+  <button data-action="click->course-completion#greet" class="btn btn-primary">
+    Resultate verschicken
+  </button>
+</div>
+
+<% end %>
+
+<% if policy(slide).update? %>
+  <hr />
+  <div>
+
+    <div class="d-grid gap-2">
+      <%= link_to t("helpers.submit.update", model: Slide.model_name.human), edit_slide_path(slide), class: "btn btn-primary" %>
+      <%#= link_to "Back to slides", slides_path, class: "btn btn-primary" %>
+      <%#= link_to t("back_to_course"), course_path(slide.course, slide_id: slide), class: "btn btn-primary" %>
+      <%#= button_to "Destroy this slide", slide, method: :delete, class: "btn btn-danger" %>
+    </div>
+
+    <hr />
+
+    <% if slide.exercise.nil? %>
+      <div class="d-grid gap-2">
+        <%= link_to t("models.add", model: Quiz.model_name.human), new_quiz_path(slide_id: slide), class: "btn btn-primary" %>
+        <%= link_to t("models.add", model: CheckboxExercise.model_name.human), new_checkbox_exercise_path(slide_id: slide), class: "btn btn-primary" %>
+        <%= link_to t("models.add", model: OpenQuestion.model_name.human), new_open_question_path(slide_id: slide), class: "btn btn-primary" %>
+        <%= link_to t("models.add", model: Cloze.model_name.human), new_cloze_path(slide_id: slide), class: "btn btn-primary" %>
+        <%= link_to t("models.add", model: CostBenefitAnalysis.model_name.human), new_cost_benefit_analysis_path(slide_id: slide), class: "btn btn-primary" %>
+      </div>
+      <% end %>
+  </div>
+<% end %>
