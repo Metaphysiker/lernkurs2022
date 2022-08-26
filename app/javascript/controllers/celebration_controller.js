@@ -10,7 +10,10 @@ export default class extends Controller {
 
     import("bootstrap").then(bootstrap => {
 
-      modal = new bootstrap.Modal(document.getElementById('exampleModal'), "");
+      modal = new bootstrap.Modal(document.getElementById('exampleModal'),
+      {
+        keyboard: false
+      });
 
     });
 
