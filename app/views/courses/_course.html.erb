@@ -5,7 +5,7 @@
 <% unless slide.blank? %>
 
 <div
-  data-controller="course points"
+  data-controller="course points celebration"
   data-action="correct-answer@window->points#updateCounter"
   >
 
@@ -68,6 +68,7 @@
 </div>
 <% end %>
 
+
 </div>
 
 
@@ -79,6 +80,3 @@
     </div>
   </div>
 <% end %>
-
-
-<%= render "courses/celebration_modal" %>

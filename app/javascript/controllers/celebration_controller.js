@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 var modal;
 
 export default class extends Controller {
-  static targets = [ "name", "output" ]
+  static targets = [ "name", "output", "points" ]
 
   connect(){
 
@@ -17,19 +17,17 @@ export default class extends Controller {
   }
 
   greet() {
-    console.log("greet");
-    //this.outputTarget.textContent =
-    //  `Hello, celebration!`
-
-      //var myModal = document.getElementById('exampleModal');
-      //myModal.show();
-          modal.show();
-
+    this.outputTarget.textContent =
+      `Hello, ${this.nameTarget.value}!`
   }
 
 
   celebrate({ detail: { points } }) {
+    this.pointsTarget.innerHTML = points;
+    //this.greet();
+    modal.show();
     console.log("celebrate!");
-    this.greet();
+    console.log(points);
+
   }
 }
