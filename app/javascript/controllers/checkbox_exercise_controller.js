@@ -58,6 +58,7 @@ export default class extends Controller {
           }
         })
         window.dispatchEvent(custom_event);
+
       });
 
 

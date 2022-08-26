@@ -7,6 +7,7 @@ export default class extends Controller {
   connect(){
 
     import("jquery_with_setup").then(tinymce_imported => {
+
       this.updateCourseHistoryOfAccount(this.accountIdTarget.getAttribute('data-value'), this.courseIdTarget.getAttribute('data-value'), this.slideIdTarget.getAttribute('data-value'))
     });
     //this.getSlide(this.slideIdTarget.getAttribute('data-value'));

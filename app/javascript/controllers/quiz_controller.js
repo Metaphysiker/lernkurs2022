@@ -40,6 +40,17 @@ export default class extends Controller {
           }
         })
         window.dispatchEvent(custom_event);
+
+        const celebrate_event = new CustomEvent('celebrate', {
+          detail: {
+            points: myPoints
+          }
+        })
+        window.dispatchEvent(celebrate_event);
+
+        console.log(celebrate_event);
+
+
       });
 
     } else {

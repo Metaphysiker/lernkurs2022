@@ -25,6 +25,7 @@
 
 <%= render "layouts/course_navigation", course: course %>
 
+
   <div class="container">
 
     <div class="row">
@@ -77,4 +78,7 @@
       <%= link_to "Course Overview", course_overview_course_path(course), class: "btn btn-primary" %>
     </div>
   </div>
-  <% end %>
+<% end %>
+
+
+<%= render "courses/celebration_modal" %>

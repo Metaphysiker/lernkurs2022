@@ -29,7 +29,8 @@
       </div>
     <% end %>
 
-    <div data-controller="quiz">
+    <div data-controller="quiz celebration"
+          data-action="celebrate@window->celebration#celebrate">
       <div data-quiz-target="accountId" data-value="<%= @account.id %>" >
       </div>
       <div data-quiz-target="exerciseId" data-value="<%= quiz.id %>" >
