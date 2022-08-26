@@ -25,7 +25,7 @@ export default class extends Controller {
 
     setTimeout(function(){
       modal.hide();
-  }, 2000);
+  }, 2500);
 
   }
 }
