@@ -36,4 +36,4 @@ de:
   check-answer: "Antwort prüfen"
   save_answer: "Antwort speichern"
   routes:
-    courses: "kurs"
+    courses: "kurse"
