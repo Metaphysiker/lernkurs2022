@@ -1,0 +1,25 @@
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/keen-slider@6.7.0/keen-slider.min.css"
+/>
+<div data-controller="keen-slider">
+  <input data-keen-slider-target="name" type="text">
+
+  <button data-action="click->keen-slider#greet">
+    Greet
+  </button>
+
+  <span data-keen-slider-target="output">
+  </span>
+
+  <div id="my-keen-slider" class="keen-slider">
+
+    <% Course.first.slides.each_with_index do |slide, index| %>
+    <div class="keen-slider__slide number-slide<%= index %>">
+      <%= render Course.first, slide: slide %>
+    </div>
+    <% end %>
+
+  </div>
+
+</div>
