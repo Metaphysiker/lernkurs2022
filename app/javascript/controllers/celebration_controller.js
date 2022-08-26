@@ -16,18 +16,16 @@ export default class extends Controller {
 
   }
 
-  greet() {
-    this.outputTarget.textContent =
-      `Hello, ${this.nameTarget.value}!`
-  }
-
-
   celebrate({ detail: { points } }) {
     this.pointsTarget.innerHTML = points;
     //this.greet();
     modal.show();
     console.log("celebrate!");
     console.log(points);
+
+    setTimeout(function(){
+      modal.hide();
+  }, 2000);
 
   }
 }
