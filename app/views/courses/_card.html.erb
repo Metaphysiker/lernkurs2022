@@ -28,6 +28,15 @@
       <%= link_to "Loslegen!", course_path(course), class: "action-button-green-color" %>
     <% end %>
 
+    <% if policy(course).update? %>
+      <hr>
+      <%= link_to t("helpers.submit.update", model: Course.model_name.human), edit_course_path(course), class: "btn btn-primary" %>
+      <br>
+      <br>
+      <%= link_to t("course_overview"), course_overview_course_path(course), class: "btn btn-primary" %>
+
+    <% end %>
+
 
   </div>
 </div>

@@ -1,13 +1,16 @@
-<div class="container">
+<%= render "layouts/navigation" %>
 
-<h1>Editing course</h1>
+<div class="container my-3">
+
+<h1><%= t("helpers.submit.update", model: Course.model_name.human) %></h1>
 
 <%= render "form", course: @course %>
 
 <br>
 
 <div>
-  <%= link_to "Show this course", @course %> |
-  <%= link_to "Back to courses", courses_path %>
+  <%= link_to t("models.show", model: Course.model_name.human), @course %> |
+  <%= link_to t("back_to_overview"), courses_path %>
 </div>
 </div>
+<%= render "layouts/footer" %>

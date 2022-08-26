@@ -1,3 +1,5 @@
+<%= render "layouts/navigation" %>
+
 <% course = @course %>
 
 <div class="container">
@@ -15,11 +17,20 @@
     <div data-sortable-target="slides">
 
       <% course.slides.order(:sort).each do |slide| %>
-      <div data-id="<%= slide.id %>" class="border rounded p-1 my-2">
+      <div data-id="<%= slide.id %>" class="border p-1 my-0">
         <div data-id="<%= slide.id %>">
-          <%= link_to edit_slide_path(slide) do %>
-            <%= ActionView::Base.full_sanitizer.sanitize(slide.content).truncate(50) %>
-          <% end %>
+          <div class="row">
+            <div class="col-1 border-end text-center">
+              <i class="bi bi-chevron-expand"></i>
+            </div>
+            <div class="col-11">
+              <%= link_to edit_slide_path(slide) do %>
+                <%= ActionView::Base.full_sanitizer.sanitize(slide.content).truncate(100) %>
+              <% end %>
+            </div>
+          </div>
+
+
         </div>
       </div>
       <% end %>
@@ -28,7 +39,7 @@
 
 
     <button data-action="click->sortable#updateOrder" class="btn btn-primary">
-      updateOrder
+      <%= t("update_order") %>
     </button>
 
   </div>

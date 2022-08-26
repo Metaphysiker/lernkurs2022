@@ -1,0 +1,7 @@
+<div class="row row-cols-1 row-cols-sm-1 row-cols-md-3 g-3 my-3">
+  <% courses.each do |course| %>
+    <div class="col">
+      <%= render "courses/card", course: course %>
+    </div>
+  <% end %>
+</div>

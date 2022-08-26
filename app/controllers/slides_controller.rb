@@ -43,7 +43,9 @@ class SlidesController < ApplicationController
   def update
     respond_to do |format|
       if @slide.update(slide_params)
-        format.html { redirect_to slide_url(@slide), notice: "Slide was successfully updated." }
+        #format.html { redirect_to slide_url(@slide), notice: "Slide was successfully updated." }
+        format.html { redirect_to course_url(@slide.course, slide_id: @slide), notice: "Slide was successfully updated." }
+
         format.json { render :show, status: :ok, location: @slide }
       else
         format.html { render :edit, status: :unprocessable_entity }

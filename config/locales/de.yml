@@ -35,5 +35,12 @@ de:
   signup: "Registrieren"
   check-answer: "Antwort prüfen"
   save_answer: "Antwort speichern"
+  back_to_overview: "Zurück zur Übersicht"
+  back_to_course: "Zurück zum Kurs"
+  course_overview: "Kurs-Übersicht"
+  update_order: "Reihenfolge anpassen"
   routes:
     courses: "kurse"
+  models:
+    show: "%{model} anschauen"
+    add: "%{model} hinzufügen"

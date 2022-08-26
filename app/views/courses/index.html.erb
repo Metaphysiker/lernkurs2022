@@ -1,26 +1,17 @@
+<%= render "layouts/navigation" %>
+
 <div class="container">
-<p style="color: green"><%= notice %></p>
 
-<h1>Courses</h1>
+      <h1 class="text-center my-3">Alle Lernkurse von philosophie.ch</h1>
+      <%= render "courses/courses_by_group", courses: Course.all %>
 
-<div id="courses">
-  <% @courses.each do |course| %>
-    <%#= render course %>
-    <p>
-      <strong><%= course.name %></strong>
-    </p>
-    <p>
-      <%= course.description %>
-    </p>
-    <p>
-      <%= link_to "Edit course", edit_course_path(course) %>
 
-      <br />
-      <%= link_to "Show this course", course, slide: course.slides.first %>
-    </p>
-    <hr>
-  <% end %>
+      <% if policy(Course).create? %>
+        <hr>
+        <%= link_to t("helpers.submit.create", model: Course.model_name.human), new_course_path, class: "action-button-d-color text-dark" %>
+      <% end %>
+
+
 </div>
 
-<%= link_to "New course", new_course_path %>
-</div>
+<%= render "layouts/footer" %>

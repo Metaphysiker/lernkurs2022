@@ -7,3 +7,21 @@ de:
       quiz:
         one: Quiz
         other: Quizzes
+      course:
+        one: Kurs
+        other: Kurse
+      slide:
+        one: Slide
+        other: Slides
+      checkbox_exercise:
+        one: Checkbox-Übung
+        other: Checkbox-Übungen
+      open_question:
+        one: Offene-Frage-Übung
+        other: Offene-Frage-Übungen
+      cloze:
+        one: Lückentext-Übung
+        other: Lückentext-Übungen
+      cost_benefit_analysis:
+        one: Kosten-Nutzen-Übung
+        other: Kosten-Nutzen-Übungen

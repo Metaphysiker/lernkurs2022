@@ -1,48 +1,12 @@
-<%= form_with(model: course) do |form| %>
-  <% if course.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
-
-      <ul>
-        <% course.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.label :group, style: "display: block" %>
-    <%= form.select :group, Course.options.map {|option| [option, option]}, {}, {class: "form-select"}  %>
-  </div>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
-  </div>
-
-  <div>
-    <p>
-      Image
-    </p>
-    <%= form.file_field :image %>
-  </div>
-
-  <div>
-    <p>
-      Medal-Image
-    </p>
-    <%= form.file_field :medal_image %>
-  </div>
-
-
-
-  <div>
-    <%= form.submit %>
-  </div>
+<%= simple_form_for course do |f| %>
+  <%= f.input :name %>
+  <%= f.input :group, collection: Course.options.map {|option| [option, option]}, selected: course.group %>
+  <%= f.input :description, input_html: { rows: 5 } %>
+  <p>
+    <%= f.input :image %>
+  </p>
+  <p>
+    <%= f.input :medal_image %>
+  </p>
+  <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
