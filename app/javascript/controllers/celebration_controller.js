@@ -20,8 +20,6 @@ export default class extends Controller {
     this.pointsTarget.innerHTML = points;
     //this.greet();
     modal.show();
-    console.log("celebrate!");
-    console.log(points);
 
     setTimeout(function(){
       modal.hide();
