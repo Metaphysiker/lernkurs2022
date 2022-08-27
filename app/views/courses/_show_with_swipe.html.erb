@@ -1,0 +1,65 @@
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/keen-slider@6.7.0/keen-slider.min.css"
+/>
+<div class="container" data-controller="course-with-swipe">
+
+  <div id="my-keen-slider" class="keen-slider">
+
+    <% course.slides.order(:sort).each_with_index do |slide, index| %>
+    <div class="keen-slider__slide number-slide<%= slide.sort %>">
+      <%= render "slides/slide_with_exercise", slide: slide %>
+    </div>
+    <% end %>
+
+  </div>
+  <hr>
+  <div data-hello-target="output">
+  </div>
+
+  <div class="my-2 text-center">
+    <button  data-course-with-swipe-target="prev_button" data-action="click->course-with-swipe#prev" class="<%= "disabled" if slide.previous_slide_id < 0 %> action-button-green-color">
+      Zurück
+    </button>
+
+    <%#= slide_sort %>
+    <span data-course-with-swipe-target="current_slide">
+      <%= slide.sort + 1 %>
+    </span>
+    /
+    <span data-course-with-swipe-target="total_slides_count">
+      <%= course.slides.count %>
+    </span>
+    <%#= total_slides_count %>
+
+    <button data-course-with-swipe-target="next_button" data-action="click->course-with-swipe#next" class="<%= "disabled" if slide.next_slide_id < 0 %> action-button-green-color">
+      Weiter
+    </button>
+     |
+     <!-- Button trigger modal -->
+  <button type="button" class="btn btn-secondary bi bi-list" data-bs-toggle="modal" data-bs-target="#settingsModal">
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="settingsModalLabel">Menü</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <%= render "accounts/save_progress" %>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+</div>

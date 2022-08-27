@@ -9,7 +9,11 @@ export default class extends Controller {
     import("keen-slider").then(keen_slider => {
 
       console.log(keen_slider);
-      var slider = new KeenSlider("#my-keen-slider");
+      var slider = new KeenSlider("#my-keen-slider", {
+        slideChanged() {
+          console.log('slide changed')
+        },
+      });
 
     });
 

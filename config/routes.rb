@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     resources :courses do
       member do
         get 'course_overview'
+        get 'show_with_swipe'
       end
     end
   end
