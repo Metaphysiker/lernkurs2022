@@ -13,6 +13,10 @@
   <div data-course-with-swipe-target="courseId" data-value="<%= course.id %>" >
   </div>
 
+  <div data-course-with-swipe-target="slideSort" data-value="<%= slide.sort %>" >
+    <%#= slide.sort %>
+  </div>
+
   <div data-points-target="courseId" data-value="<%= course.id %>" >
   </div>
 
@@ -22,10 +26,10 @@
   <div data-course-with-swipe-target="slideId" data-slides-target="slideId" data-navigation-target="slideId" data-value="<%= slide.id %>" >
   </div>
 
-  <div id="my-keen-slider" class="keen-slider">
 
+  <div id="my-keen-slider" class="keen-slider mt-4">
     <% course.slides.order(:sort).each_with_index do |slide, index| %>
-    <div class="keen-slider__slide number-slide<%= slide.sort %>">
+    <div class="keen-slider__slide number-slide<%= slide.id %>">
       <%= render "slides/slide_with_exercise", slide: slide %>
     </div>
     <% end %>
@@ -41,6 +45,7 @@
     </button>
 
     <%#= slide_sort %>
+    <%= slide.inspect %>
     <span data-course-with-swipe-target="current_slide">
       <%= slide.sort + 1 %>
     </span>
@@ -49,7 +54,7 @@
       <%= course.slides.count %>
     </span>
     <%#= total_slides_count %>
-
+    <%#= slide.next_slide_id %>
     <button data-course-with-swipe-target="next_button" data-action="click->course-with-swipe#next" class="<%= "disabled" if slide.next_slide_id < 0 %> action-button-green-color">
       Weiter
     </button>

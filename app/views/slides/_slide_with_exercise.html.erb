@@ -1,6 +1,5 @@
 <div class="container">
 <%= raw slide.content %>
-</div>
 
 <% if slide.exercise %>
   <%= render "#{slide.exercise.model_name.collection}/#{slide.exercise.model_name.element}", {"#{slide.exercise.model_name.element}": slide.exercise } %>
@@ -61,3 +60,4 @@
       <% end %>
   </div>
 <% end %>
+</div>
