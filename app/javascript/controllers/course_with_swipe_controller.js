@@ -26,7 +26,7 @@ export default class extends Controller {
       slider = new KeenSlider("#my-keen-slider", {
         slideChanged() {
 
-          ajax.updateCourseHistoryOfAccount(this.accountIdTarget.getAttribute('data-value'), this.courseIdTarget.getAttribute('data-value'), slider.track.details.abs);
+          ajax.updateCourseHistoryOfAccount(self.accountIdTarget.getAttribute('data-value'), self.courseIdTarget.getAttribute('data-value'), slider.track.details.abs);
 
           self.updateNavigationButtons();
 
@@ -58,6 +58,19 @@ export default class extends Controller {
     //slider.next();
     // plus 1 because sort starts with 0
     this.current_slideTarget.textContent = slider.track.details.abs + 1;
+
+    console.log(slider.track.details.abs);
+    if((slider.track.details.abs - 1) < 0) {
+      this.prev_buttonTarget.classList.add("disabled");
+    } else {
+      this.prev_buttonTarget.classList.remove("disabled");
+    }
+
+    if((slider.track.details.abs + 1) > slider.track.details.max){
+      this.next_buttonTarget.classList.add("disabled");
+    } else {
+      this.next_buttonTarget.classList.remove("disabled");
+    }
 
     //this.next_buttonTarget.classList.add("disabled");
   }
