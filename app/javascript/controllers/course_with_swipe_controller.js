@@ -17,6 +17,7 @@ export default class extends Controller {
       slider = new KeenSlider("#my-keen-slider", {
         slideChanged() {
           self.updateNavigationButtons();
+          
           console.log('slide changed');
           console.log(slider.slide);
           console.log(slider.track.details.abs);
