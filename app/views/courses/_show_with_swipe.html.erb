@@ -1,10 +1,19 @@
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/keen-slider@6.7.0/keen-slider.min.css"
-/>
-<div class="container" data-controller="course-with-swipe">
+<% content_for :head do %>
+  <%= stylesheet_link_tag "course", "data-turbo-track": "reload" %>
+  <!-- Keen Slider css -->
+  <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/keen-slider@6.7.0/keen-slider.min.css", "data-turbo-track": "reload" %>
+<% end %>
+
+<div data-controller="course-with-swipe points celebration"
+  data-action="correct-answer@window->points#updateCounter"
+  >
+  <%= render "layouts/course_navigation", course: course %>
+
 
   <div data-course-with-swipe-target="courseId" data-value="<%= course.id %>" >
+  </div>
+
+  <div data-points-target="courseId" data-value="<%= course.id %>" >
   </div>
 
   <div data-course-with-swipe-target="accountId" data-points-target="accountId" data-value="<%= @account.id %>" >
@@ -70,5 +79,7 @@
   </div>
 
   </div>
+
+<%= render "courses/celebration_modal" %>
 
 </div>
