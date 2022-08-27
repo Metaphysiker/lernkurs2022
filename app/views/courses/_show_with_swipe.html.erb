@@ -4,6 +4,15 @@
 />
 <div class="container" data-controller="course-with-swipe">
 
+  <div data-course-with-swipe-target="courseId" data-value="<%= course.id %>" >
+  </div>
+
+  <div data-course-with-swipe-target="accountId" data-points-target="accountId" data-value="<%= @account.id %>" >
+  </div>
+
+  <div data-course-with-swipe-target="slideId" data-slides-target="slideId" data-navigation-target="slideId" data-value="<%= slide.id %>" >
+  </div>
+
   <div id="my-keen-slider" class="keen-slider">
 
     <% course.slides.order(:sort).each_with_index do |slide, index| %>
