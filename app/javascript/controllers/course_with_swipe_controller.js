@@ -16,40 +16,49 @@ export default class extends Controller {
 
     var self = this;
 
+    //import("jquery_with_setup").then(jquery_with_setup => {
+    //});
+
     import("jquery_with_setup").then(jquery_with_setup => {
-      ajax.updateCourseHistoryOfAccount(this.accountIdTarget.getAttribute('data-value'), this.courseIdTarget.getAttribute('data-value'), this.slideIdTarget.getAttribute('data-value'))
-    });
+      import("keen-slider").then(keen_slider => {
 
-    import("keen-slider").then(keen_slider => {
+        ajax.updateCourseHistoryOfAccount(this.accountIdTarget.getAttribute('data-value'), this.courseIdTarget.getAttribute('data-value'), this.slideIdTarget.getAttribute('data-value'));
 
-      slider = new KeenSlider("#my-keen-slider", {
-        initial: parseInt(self.slideIdTarget.getAttribute('data-value')),
-        //renderMode: 'custom',
-        //slides: {
-        //  perView: 1
-        //},
-        created() {
-          console.log("created");
-          //self.adjustHeightofSlide();
-        },
-        slideChanged() {
 
-          self.current_slideTarget.textContent = slider.track.details.rel + 1;
+        slider = new KeenSlider("#my-keen-slider", {
+          initial: parseInt(self.slideSortTarget.getAttribute('data-value')),
+          //renderMode: 'custom',
+          //slides: {
+          //  perView: 1
+          //},
+          created() {
+            console.log("created");
+            //self.adjustHeightofSlide();
+          },
+          slideChanged() {
 
-          ajax.updateCourseHistoryOfAccount(self.accountIdTarget.getAttribute('data-value'), self.courseIdTarget.getAttribute('data-value'), slider.track.details.rel);
 
-          self.updateNavigationButtons();
+            self.current_slideTarget.textContent = slider.track.details.rel + 1;
 
-          self.adjustHeightofSlide();
+            var slide_id = $(slider.slides[slider.track.details.rel]).find(".slide").attr('data-value');
 
-          console.log('slide changed');
+            console.log("slide id: " + slide_id);
 
-        },
+            ajax.updateCourseHistoryOfAccount(self.accountIdTarget.getAttribute('data-value'), self.courseIdTarget.getAttribute('data-value'), slide_id);
+
+            self.updateNavigationButtons();
+
+            self.adjustHeightofSlide();
+
+            console.log('slide changed');
+
+          },
+        });
+
+        this.waitForVariableToBeDefined(slider, self.adjustHeightofSlide);
+        //this.waitForVariableToBeDefined(slider, self.updateNavigationButtons);
+
       });
-
-      this.waitForVariableToBeDefined(slider, self.adjustHeightofSlide);
-      //this.waitForVariableToBeDefined(slider, self.updateNavigationButtons);
-
     });
 
     //this.getSlide(this.slideIdTarget.getAttribute('data-value'));
