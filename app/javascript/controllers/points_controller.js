@@ -29,6 +29,8 @@ export default class extends Controller {
     console.log("current value: " + current_value);
     console.log("target value: " + target_value);
 
+    console.log(this.outputTargets);
+
     //var current_value = parseInt(this.outputTarget.innerHTML);
 
     var myPromise = async (milli_seconds = 1000) => new Promise(resolve => setTimeout(resolve, milli_seconds));
@@ -38,11 +40,20 @@ export default class extends Controller {
       console.log("target value: " + target_value);
       if(current_value < target_value){
         current_value = parseInt(this.outputTarget.innerHTML) + 1;
-        this.outputTarget.innerHTML = current_value;
+
+        //Difference is targets not target.
+        for (var i = 0; i < this.outputTargets.length; i++) {
+          this.outputTargets[i].innerHTML = current_value;
+        }
+
 
       } else {
         current_value = parseInt(this.outputTarget.innerHTML) - 1;
-        this.outputTarget.innerHTML = current_value;
+
+        for (var i = 0; i < this.outputTargets.length; i++) {
+          this.outputTargets[i].innerHTML = current_value;
+        }
+
       }
 
     }

@@ -1,0 +1,25 @@
+<p>
+  <strong>
+    Du hast <span data-points-target="output" ><%= @account.course_points(slide.course.id) %></span> Punkte gesammelt.
+  </strong>
+</p>
+
+
+
+<!--HTML from anywhere
+<div data-controller="medal">
+-->
+  <button data-action="click->medal#greet">
+    Show / Hide
+  </button>
+
+  <hr>
+  <div data-medal-target="medalImage">
+    <% if slide.course.medal_image.attached? %>
+      <%= image_tag slide.course.medal_image, class: "img-fluid" %>
+    <% end %>
+  </div>
+
+  <!--HTML from anywhere
+  </div>
+  -->

@@ -3,6 +3,10 @@
 <% if slide.save_progress == "true" %>
   <%= render "accounts/save_progress" %>
 <% end %>
+<%#= slide.course_complete %>
+<% if slide.course_complete == "true" %>
+  <%= render "accounts/save_progress" %>
+<% end %>
 
 <% if false %>
 <div data-controller="course-completion">

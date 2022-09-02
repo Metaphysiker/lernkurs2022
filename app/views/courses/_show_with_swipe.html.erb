@@ -4,11 +4,10 @@
   <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/keen-slider@6.7.0/keen-slider.min.css", "data-turbo-track": "reload" %>
 <% end %>
 
-<div data-controller="course-with-swipe points celebration"
-  data-action="correct-answer@window->points#updateCounter"
+<div data-controller="course-with-swipe points celebration medal"
+  data-action="correct-answer@window->points#updateCounter correct-answer@window->medal#check"
   >
   <%= render "layouts/course_navigation", course: course %>
-
 
   <div data-course-with-swipe-target="courseId" data-value="<%= course.id %>" >
   </div>

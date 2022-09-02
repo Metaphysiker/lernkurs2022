@@ -11,6 +11,10 @@
   <%= render "accounts/save_progress" %>
 <% end %>
 
+<% if slide.course_complete == "true" %>
+  <%= render "courses/course_complete", slide: slide %>
+<% end %>
+
 <% if false %>
 <div data-controller="course-completion">
   <p>
