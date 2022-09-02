@@ -21,9 +21,12 @@
             <li><a href="#" class="text-black">Follow on Twitter</a></li>
             <li><a href="#" class="text-black">Like on Facebook</a></li>
             <li><a href="#" class="text-black">Email me</a></li>
-            <li>
-              <%= link_to t("my_account"), account_path(@account), class: "text-black" %>
-            </li>
+            <% unless @account.blank? %>
+              <li>
+                <%= link_to t("my_account"), account_path(@account), class: "text-black" %>
+              </li>
+            <% end %>
+
           </ul>
         </div>
       </div>

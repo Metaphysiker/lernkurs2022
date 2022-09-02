@@ -137,7 +137,7 @@ class AccountsController < ApplicationController
   end
 
   def dashboard
-    
+
   end
 
   private
