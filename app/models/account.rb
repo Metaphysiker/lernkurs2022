@@ -15,6 +15,15 @@ class Account < ApplicationRecord
 
   end
 
+  def check_if_medal_is_awarded(course_id)
+
+    points = self.course_points(course_id)
+    total_possible_points =  self.total_possible_course_points(course_id)
+
+    medal_awarded = points > (total_possible_points.to_f/100 * 80)
+
+  end
+
   def total_possible_course_points(course_id)
 
     points = 0

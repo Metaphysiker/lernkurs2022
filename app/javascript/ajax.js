@@ -67,4 +67,17 @@ export function ajax() {
   })
   }
 
+  this.check_if_medal_is_awarded = function(account_id, course_id){
+    return new Promise(function(resolve, reject) {
+    $.ajax({
+      url: "/accounts/" + account_id + "/check_if_medal_is_awarded",
+      type: "GET",
+      headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
+      data: {account_id: account_id, course_id: course_id},
+    }).done(function(response) {
+      resolve(response);
+    });
+  })
+  }
+
 }

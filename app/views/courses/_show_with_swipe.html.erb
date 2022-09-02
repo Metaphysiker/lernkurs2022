@@ -9,7 +9,10 @@
   >
   <%= render "layouts/course_navigation", course: course %>
 
-  <div data-course-with-swipe-target="courseId" data-value="<%= course.id %>" >
+  <div
+    data-course-with-swipe-target="courseId"
+    data-medal-target="courseId"
+   data-value="<%= course.id %>" >
   </div>
 
   <div data-course-with-swipe-target="slideSort" data-value="<%= slide.sort %>" >
@@ -19,7 +22,11 @@
   <div data-points-target="courseId" data-value="<%= course.id %>" >
   </div>
 
-  <div data-course-with-swipe-target="accountId" data-points-target="accountId" data-value="<%= @account.id %>" >
+  <div
+  data-course-with-swipe-target="accountId"
+  data-medal-target="accountId"
+  data-points-target="accountId"
+  data-value="<%= @account.id %>" >
   </div>
 
   <div data-course-with-swipe-target="slideId" data-slides-target="slideId" data-navigation-target="slideId" data-value="<%= slide.id %>" >

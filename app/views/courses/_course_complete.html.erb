@@ -1,7 +1,7 @@
 <p>
-  <strong>
-    Du hast <span data-points-target="output" ><%= @account.course_points(slide.course.id) %></span> Punkte gesammelt.
-  </strong>
+
+    Du hast <strong><span data-points-target="output" ><%= @account.course_points(slide.course.id) %></span> Punkte</strong> von <%= @account.total_possible_course_points(slide.course.id) %> gesammelt.
+
 </p>
 
 
@@ -14,7 +14,12 @@
   </button>
 
   <hr>
-  <div data-medal-target="medalImage">
+  <div data-medal-target="medalImage" class="text-center border rounded p-4">
+    <p>
+      <strong>
+        Glückwunsch! Du hast einen Orden bekommen!
+      </strong>
+    </p>
     <% if slide.course.medal_image.attached? %>
       <%= image_tag slide.course.medal_image, class: "img-fluid" %>
     <% end %>

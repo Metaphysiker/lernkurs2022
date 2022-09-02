@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       put 'update_course_history'
       put 'update_excercise_history'
       get 'get_points_from_course'
+      get 'check_if_medal_is_awarded'
       post 'send_results_to'
       post 'save_progress'
     end
