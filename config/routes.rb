@@ -14,6 +14,9 @@ Rails.application.routes.draw do
       post 'send_results_to'
       post 'save_progress'
     end
+    collection do
+      get 'dashboard'
+    end
   end
   resources :roles
   devise_for :users

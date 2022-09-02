@@ -1,6 +1,8 @@
 <%= render "layouts/navigation" %>
 
 <div class="container">
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 
       <h2 class="text-center my-3">Ethik-Kurse</h2>
       <%= render "courses/courses_by_group", courses: Course.where(group: "ethik") %>
@@ -11,5 +13,3 @@
 
 
 <%= render "layouts/footer" %>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>

@@ -39,6 +39,7 @@ de:
   back_to_course: "Zurück zum Kurs"
   course_overview: "Kurs-Übersicht"
   update_order: "Reihenfolge anpassen"
+  my_account: "Mein Konto"
   routes:
     courses: "kurse"
   models:

@@ -136,6 +136,10 @@ class AccountsController < ApplicationController
     head :ok
   end
 
+  def dashboard
+    
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_account

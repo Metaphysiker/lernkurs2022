@@ -12,6 +12,7 @@ gem 'devise'
 gem "aws-sdk-s3", require: false
 gem "image_processing", ">= 1.2"
 gem 'rails-i18n', '~> 7.0.0'
+gem 'devise-i18n'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.3"

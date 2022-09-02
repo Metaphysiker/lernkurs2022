@@ -1,0 +1,17 @@
+<div class="card my-3">
+  <div class="card-body">
+    <h1 class="card-title"><%= link_to account.id, account_path(account) %></h1>
+    <p class="card-text">
+      Erstellt: <%= l(account.created_at) %>
+    </p>
+    <p class="card-text">
+      Name: <%= account.first_name %>
+    </p>
+
+    <% account.courses.each do |course_array| %>
+    
+      <% course = Course.find(course_array[0].to_i) %>
+        <%= render "courses/overview_card", account: account, course: course %>
+      <% end %>
+  </div>
+</div>

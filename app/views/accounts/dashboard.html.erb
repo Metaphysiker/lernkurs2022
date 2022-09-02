@@ -1,0 +1,6 @@
+<div class="container">
+  <h1>Dashboard</h1>
+  <% Account.all.order(:created_at).each do |account| %>
+    <%= render "accounts/card", account: account %>
+  <% end %>
+</div>

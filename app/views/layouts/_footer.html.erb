@@ -2,10 +2,12 @@
   <footer class="py-3 my-4">
     <p class="text-center text-muted">Philosophie.ch</p>
     <% if user_signed_in? %>
-      <p class="text-center text-muted">Angemeldet mit <strong><%= current_user.email %></strong></p>
-      <p class="text-center text-muted d-flex justify-content-center">
-        <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
+      <p class="text-center text-muted">Angemeldet mit <strong><%= current_user.email %></strong>
       </p>
+      <div class="text-center">
+        <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-link" %>
+
+      </div>
     <% else %>
       <p class="text-center text-muted">
         <%= link_to t('login'), new_user_session_path, class: "action-button-b-color" %>  |
