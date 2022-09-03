@@ -2,15 +2,23 @@ import * as Ajax from "ajax"
 
 import { Controller } from "@hotwired/stimulus"
 
+import { useIntersection, useResize } from "stimulus-use"
+
 var ajax;
 
 export default class extends Controller {
   static targets = [ "name", "output", "medalImage", "accountId", "courseId" ]
 
   connect() {
+    useIntersection(this)
     ajax = new Ajax.ajax();
     console.log("MEDAL");
     console.log(this.accountIdTarget.getAttribute('data-value'));
+    this.check();
+  }
+
+  appear(entry) {
+    console.log("Medal - Check");
     this.check();
   }
 
