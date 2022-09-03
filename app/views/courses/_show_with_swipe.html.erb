@@ -93,4 +93,13 @@
 
 <%= render "courses/celebration_modal" %>
 
+<% if policy(Slide.new(course_id: course.id)).create? %>
+  <div class="container">
+    <div class="d-grid gap-2">
+      <%= link_to t("helpers.submit.create", model: Slide.model_name.human), new_slide_path(course_id: course.id), class: "btn btn-primary" %>
+      <%= link_to t("course_overview"), course_overview_course_path(course), class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
+
 </div>
