@@ -23,7 +23,6 @@ export default class extends Controller {
     }
 
     let callback = () => {
-      console.log("callback");
       this.check()
     };
 
@@ -36,9 +35,8 @@ export default class extends Controller {
     //useIntersection(this)
     //useResize(this)
 
-    setTimeout(function() {
-      self.check();
-    }, 1000);
+    self.check();
+
 
     //this.check();
   }
