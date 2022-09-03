@@ -6,21 +6,51 @@ import { useIntersection, useResize } from "stimulus-use"
 
 var ajax;
 
+
+//let target = document.querySelector('#listItem');
+//console.log("observer: ")
+//console.log(observer);
+
 export default class extends Controller {
   static targets = [ "name", "output", "medalImage", "accountId", "courseId" ]
 
   connect() {
-    useIntersection(this)
+
+    let options = {
+      root: document.body,
+      rootMargin: '0px',
+      threshold: 1.0
+    }
+
+    let callback = () => {
+      console.log("callback");
+      this.check()
+    };
+
+    let observer = new IntersectionObserver(callback, options);
+    observer.observe(this.medalImageTarget);
+
+
+    var self = this;
     ajax = new Ajax.ajax();
-    console.log("MEDAL");
-    console.log(this.accountIdTarget.getAttribute('data-value'));
-    this.check();
+    //useIntersection(this)
+    //useResize(this)
+
+    setTimeout(function() {
+      self.check();
+    }, 1000);
+
+    //this.check();
   }
 
-  appear(entry) {
-    console.log("Medal - Check");
-    this.check();
-  }
+  //appear(entry) {
+  //  console.log("Medal - Check");
+  //  this.check();
+  //}
+
+  //resize({ width, height }) {
+  //  console.log("resize");
+  //}
 
   makeMedalVisible() {
     this.medalImageTarget.classList.remove("invisible");

@@ -52,3 +52,4 @@ pin "robust-predicates", to: "https://ga.jspm.io/npm:robust-predicates@3.0.1/ind
 pin "keen-slider", to: "https://cdn.jsdelivr.net/npm/keen-slider@6.7.0/keen-slider.min.js"
 pin "stimulus-use", to: "https://ga.jspm.io/npm:stimulus-use@0.50.0/dist/index.js"
 pin "hotkeys-js", to: "https://ga.jspm.io/npm:hotkeys-js@3.9.5/dist/hotkeys.esm.js"
+pin "intersection-observer", to: "https://ga.jspm.io/npm:intersection-observer@0.12.2/intersection-observer.js"
