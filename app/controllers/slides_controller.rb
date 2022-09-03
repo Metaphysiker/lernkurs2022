@@ -30,7 +30,7 @@ class SlidesController < ApplicationController
 
     respond_to do |format|
       if @slide.save
-        format.html { redirect_to slide_url(@slide), notice: "Slide was successfully created." }
+        format.html {  redirect_to course_url(@slide.course, slide_id: @slide), notice: "Slide was successfully created."}
         format.json { render :show, status: :created, location: @slide }
       else
         format.html { render :new, status: :unprocessable_entity }
