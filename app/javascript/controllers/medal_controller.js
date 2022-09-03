@@ -27,8 +27,8 @@ export default class extends Controller {
     };
 
     let observer = new IntersectionObserver(callback, options);
-    observer.observe(this.medalImageTarget);
 
+    observer.observe(this.medalImageTarget);
 
     var self = this;
     ajax = new Ajax.ajax();
