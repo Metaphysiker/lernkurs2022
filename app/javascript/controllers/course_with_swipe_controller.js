@@ -7,7 +7,7 @@ var slider;
 var ajax;
 
 export default class extends Controller {
-  static targets = [ "slide", "name", "exercise", "output", "accountId", "courseId", "slideId","slideSort", "nextSlideId", "previousSlideId", "navigationButtons", "current_slide", "total_slides_count", "prev_button", "next_button" ]
+  static targets = [ "slide", "name", "exercise", "output", "accountId", "courseId", "slideId","slideSort", "nextSlideId", "previousSlideId", "navigationButtons", "currentSlide", "total_slides_count", "prev_button", "next_button" ]
 
 
   connect(){
@@ -36,9 +36,9 @@ export default class extends Controller {
             //self.adjustHeightofSlide();
           },
           slideChanged() {
-
-
-            self.current_slideTarget.textContent = slider.track.details.rel + 1;
+            console.log(self);
+            console.log(self.currentSlideTarget);
+            self.currentSlideTarget.textContent = slider.track.details.rel + 1;
 
             var slide_id = $(slider.slides[slider.track.details.rel]).find(".slide").attr('data-value');
 

@@ -47,8 +47,8 @@
     <div class="d-grid gap-2">
       <%= link_to t("helpers.submit.update", model: Slide.model_name.human), edit_slide_path(slide), class: "btn btn-primary" %>
       <%#= link_to "Back to slides", slides_path, class: "btn btn-primary" %>
-      <%#= link_to t("back_to_course"), course_path(slide.course, slide_id: slide), class: "btn btn-primary" %>
-      <%#= button_to "Destroy this slide", slide, method: :delete, class: "btn btn-danger" %>
+      <%= link_to t("back_to_course"), course_path(slide.course, slide_id: slide), class: "btn btn-primary" %>
+      <%= button_to "Destroy this slide", slide, method: :delete, class: "btn btn-danger" %>
     </div>
 
     <hr />
