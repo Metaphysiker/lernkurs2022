@@ -56,8 +56,15 @@ class Slide < ApplicationRecord
   private
 
   def set_sort
-    highest_value = self.course.slides.order(:sort).last.sort
-    self.update(sort: highest_value + 1)
+    if self.course.blank? || self.course.slides.count == 1
+      self.update(sort: 0)
+    else
+      highest_value = self.course.slides.order(:sort).last.sort
+      puts "HIGHEST VALUE"
+      puts highest_value
+      self.update(sort: highest_value + 1)
+    end
+
   end
 
 end

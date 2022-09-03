@@ -10,8 +10,17 @@ class Course < ApplicationRecord
 
   has_one_attached :medal_image
 
+  after_create :create_slide
+
   def self.options
     ["ethik", "klimagerechtigkeit"]
+  end
+
+  private
+
+  def create_slide
+    Slide.create(content: "<p>Hallo Welt</p>", course_id: self.id)
+
   end
 
 end
