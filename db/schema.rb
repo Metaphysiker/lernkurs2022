@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_26_065607) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_03_190750) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -77,6 +77,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_26_065607) do
     t.datetime "updated_at", null: false
     t.text "text"
     t.index ["slide_id"], name: "index_clozes_on_slide_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.string "commentable_type"
+    t.bigint "commentable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
   end
 
   create_table "cost_benefit_analyses", force: :cascade do |t|

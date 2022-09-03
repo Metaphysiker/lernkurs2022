@@ -1,0 +1,14 @@
+<div id="<%= dom_id comment %>" class="rounded border p-2">
+  <p>
+    <%= l(comment.created_at) %>
+    </p>
+    <hr />
+  <p>
+    <%= comment.content %>
+  </p>
+  <p>
+    <%= button_to "Kommentar löschen", comment, method: :delete %>
+
+    </p>
+
+</div>

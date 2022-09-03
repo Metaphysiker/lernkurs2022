@@ -5,6 +5,7 @@ class Slide < ApplicationRecord
   has_many :open_questions
   has_many :clozes
   has_many :cost_benefit_analyses
+  has_many :comments, as: :commentable
 
   after_create :set_sort
 

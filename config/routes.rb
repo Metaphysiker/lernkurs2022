@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   resources :cost_benefit_analyses
   resources :clozes
   resources :open_questions

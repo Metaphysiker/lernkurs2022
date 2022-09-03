@@ -15,6 +15,20 @@
   <%= render "courses/course_complete", slide: slide %>
 <% end %>
 
+<% if true %>
+<%#= slide.comments.count %>
+<p>
+  <strong>
+    Kommentare:
+  </strong>
+  </p>
+  <% if slide.comments.count > 0 %>
+    <%= render partial: "comments/comment", collection: slide.comments, as: :comment %>
+  <% end %>
+  <br /><br />
+  <%= render "comments/form", comment: Comment.new(commentable_id: slide.id, commentable_type: Slide.to_s) %>
+<% end %>
+
 <% if false %>
 <div data-controller="course-completion">
   <p>
