@@ -1,5 +1,5 @@
-<div class="container-fluid bg-a-color">
-  <footer class="py-3 my-4">
+<footer class="footer mt-auto py-3 bg-a-color">
+  <div class="container">
     <p class="text-center text-muted">Philosophie.ch</p>
     <% if user_signed_in? %>
       <p class="text-center text-muted">Angemeldet mit <strong><%= current_user.email %></strong>
@@ -22,7 +22,5 @@
       <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
       <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
     </ul>
-
-
-  </footer>
-</div>
+  </div>
+</footer>
