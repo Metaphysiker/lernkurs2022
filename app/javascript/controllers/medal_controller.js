@@ -13,6 +13,11 @@ var ajax;
 
 export default class extends Controller {
   static targets = [ "name", "output", "medalImage", "accountId", "courseId" ]
+  static values = {
+    accountId: Number,
+    courseId: Number,
+    medalImage: String
+  }
 
   connect() {
 
@@ -61,8 +66,8 @@ export default class extends Controller {
   check() {
 
     ajax.check_if_medal_is_awarded(
-      this.accountIdTarget.getAttribute('data-value'),
-      this.courseIdTarget.getAttribute('data-value')
+      this.accountIdValue,
+      this.courseIdValue
     ).then((response)=> {
 
       if(response){

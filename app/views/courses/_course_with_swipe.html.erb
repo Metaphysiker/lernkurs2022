@@ -14,6 +14,9 @@
   data-course-with-swipe-slide-id-value="<%= slide.id %>"
   data-course-with-swipe-slide-sort-value="<%= slide.sort %>"
   data-course-with-swipe-url-without-sort-value="<%= Rails.application.routes.url_helpers.course_path(course.slug) %>"
+  data-medal-account-id-value="<%= @account.id %>"
+  data-medal-course-id-value="<%= course.id %>"
+
   >
   <%= render "layouts/course_navigation", course: course %>
 
