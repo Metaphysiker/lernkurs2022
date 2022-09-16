@@ -30,7 +30,6 @@
     <% end %>
 
     <div data-controller="quiz"
-        data-action="celebrate@window->celebration#celebrate"
         data-quiz-account-id-value="<%= @account.id %>"
         data-quiz-my-points-value="<%= quiz.point_system.total_possible_points unless quiz.point_system.blank? %>"
         data-quiz-exercise-id-value="<%= quiz.id %>"

@@ -42,19 +42,13 @@ export default class extends Controller {
       var ajax = new Ajax.ajax();
       ajax.updateExerciseHistoryOfAccount(this.accountIdValue, this.exerciseClassValue, this.exerciseIdValue, this.myPointsValue)
       .then(() => {
-        const custom_event = new CustomEvent('correct-answer', {
-          detail: {
-            points: this.myPointsValue
-          }
-        })
-        window.dispatchEvent(custom_event);
 
-        const celebrate_event = new CustomEvent('celebrate', {
+        const finish_exercise = new CustomEvent('finish_exercise', {
           detail: {
             points: this.myPointsValue
           }
         })
-        window.dispatchEvent(celebrate_event);
+        window.dispatchEvent(finish_exercise);
 
       });
 
