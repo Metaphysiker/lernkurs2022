@@ -8,9 +8,18 @@ var ajax;
 
 export default class extends Controller {
   static targets = [ "slide", "name", "exercise", "output", "accountId", "courseId", "slideId","slideSort", "nextSlideId", "previousSlideId", "navigationButtons", "currentSlide", "total_slides_count", "prev_button", "next_button" ]
-
+  static values = {
+    accountId: Number,
+    courseId: Number,
+    slideId: Number,
+    slideSort: Number,
+    urlWithoutSort: String
+  }
 
   connect(){
+
+    console.log("accountIdValue");
+    console.log(this.accountIdValue);
 
     ajax = new Ajax.ajax();
 
@@ -22,11 +31,11 @@ export default class extends Controller {
     import("jquery_with_setup").then(jquery_with_setup => {
       import("keen-slider").then(keen_slider => {
 
-        ajax.updateCourseHistoryOfAccount(this.accountIdTarget.getAttribute('data-value'), this.courseIdTarget.getAttribute('data-value'), this.slideIdTarget.getAttribute('data-value'));
+        ajax.updateCourseHistoryOfAccount(this.accountIdValue, this.courseIdValue, this.slideIdValue);
 
 
         slider = new KeenSlider("#my-keen-slider", {
-          initial: parseInt(self.slideSortTarget.getAttribute('data-value')),
+          initial: parseInt(self.slideSortValue),
           //renderMode: 'custom',
           //slides: {
           //  perView: 1
@@ -36,17 +45,20 @@ export default class extends Controller {
             //self.adjustHeightofSlide();
           },
           slideChanged() {
-            console.log(self);
-            console.log(self.currentSlideTarget);
+            self.slideSortValue = slider.track.details.rel;
             self.currentSlideTarget.textContent = slider.track.details.rel + 1;
+
 
             var slide_id = $(slider.slides[slider.track.details.rel]).find(".slide").attr('data-value');
 
             console.log("slide id: " + slide_id);
 
-            ajax.updateCourseHistoryOfAccount(self.accountIdTarget.getAttribute('data-value'), self.courseIdTarget.getAttribute('data-value'), slide_id);
+            ajax.updateCourseHistoryOfAccount(self.accountIdValue, self.courseIdValue, slide_id);
+            //ajax.updateCourseHistoryOfAccount(self.accountIdTarget.getAttribute('data-value'), self.courseIdTarget.getAttribute('data-value'), slide_id);
 
             self.updateNavigationButtons();
+
+            self.updateUrl();
 
             self.adjustHeightofSlide();
 
@@ -91,9 +103,7 @@ export default class extends Controller {
 
   updateNavigationButtons(){
 
-    console.log(this);
-    console.log("updateNavigationButtons");
-    console.log(slider.track.details.rel);
+
     if((slider.track.details.rel - 1) < 0) {
       this.prev_buttonTarget.classList.add("disabled");
     } else {
@@ -107,6 +117,13 @@ export default class extends Controller {
     }
   }
 
+  updateUrl(){
+    const nextURL = this.urlWithoutSortValue + "/" + this.slideSortValue;
+    const nextTitle = 'My new page title';
+    const nextState = { additionalInformation: 'Updated the URL with JS' };
+    window.history.replaceState(nextState, null, nextURL);
+  }
+
   prev() {
     slider.prev();
   }
@@ -116,7 +133,7 @@ export default class extends Controller {
   }
 
   waitForVariableToBeDefined(variable, callback){
-    console.log("WAIT!");
+    //console.log("WAIT!");
       if(typeof variable !== "undefined"){
         console.log("defined!");
 

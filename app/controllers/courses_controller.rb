@@ -8,8 +8,14 @@ class CoursesController < ApplicationController
 
   # GET /courses/1 or /courses/1.json
   def show
-    if params[:slide_id].present? && !Slide.where(id: params[:slide_id]).empty?
-      @slide = Slide.find(params[:slide_id])
+    #if params[:slide_id].present? && !Slide.where(id: params[:slide_id]).empty?
+    #  @slide = Slide.find(params[:slide_id])
+    #else
+    #  @slide = @course.slides.order(:sort).first
+    #end
+
+    if params[:sort].present? && !Slide.where(sort: params[:sort]).empty?
+      @slide = Slide.where(sort: params[:sort]).first
     else
       @slide = @course.slides.order(:sort).first
     end
@@ -85,7 +91,7 @@ class CoursesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def course_params
-      params.require(:course).permit(:name, :course_id, :description, :image, :medal_image, :group)
+      params.require(:course).permit(:name, :course_id, :description, :image, :medal_image, :group, :slug)
     end
 
 end

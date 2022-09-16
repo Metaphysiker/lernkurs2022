@@ -43,6 +43,7 @@ Rails.application.routes.draw do
         get 'show_with_swipe'
       end
     end
+    get "/courses/:id/:sort", to: "courses#show", as: "course_with_sort"
   end
   resources :slides do
     collection do

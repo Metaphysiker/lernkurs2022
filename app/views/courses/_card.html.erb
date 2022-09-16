@@ -17,7 +17,8 @@
 
     <% if @account.courses.key?(course.id.to_s) %>
     <% current_slide_id = @account.courses[course.id.to_s]["history"][-1] %>
-      <%= link_to "Weitermachen!", course_path(course, slide_id: current_slide_id ), class: "action-button-i-color" %>
+    <% current_sort_of_slide = Slide.find(current_slide_id).sort %>
+      <%= link_to "Weitermachen!", course_with_sort_path(course, current_sort_of_slide), class: "action-button-i-color" %>
       <hr>
       <p>
         <strong>Dein Fortschritt:</strong>
