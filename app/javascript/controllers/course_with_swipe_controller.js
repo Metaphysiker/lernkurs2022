@@ -7,7 +7,7 @@ var slider;
 var ajax;
 
 export default class extends Controller {
-  static targets = [ "slide", "name", "exercise", "output", "accountId", "courseId", "slideId","slideSort", "nextSlideId", "previousSlideId", "navigationButtons", "currentSlide", "total_slides_count", "prev_button", "next_button" ]
+  static targets = [ "slide", "name", "exercise", "output", "accountId", "courseId", "slideId","slideSort", "nextSlideId", "previousSlideId", "navigationButtons", "currentSlide", "total_slides_count", "prev_button", "next_button", "loader", "keenSlider", "testicus" ]
   static values = {
     accountId: Number,
     courseId: Number,
@@ -41,7 +41,20 @@ export default class extends Controller {
           //  perView: 1
           //},
           created() {
-            console.log("created");
+            console.log("keen slider created");
+
+            $(self.testicusTarget).fadeIn(2999);
+
+            setTimeout(function() {
+              $(self.keenSliderTarget).fadeIn( 2000 );
+            }, 2000);
+
+
+
+
+            self.loaderTarget.textContent =
+              ``;
+
             //self.adjustHeightofSlide();
           },
           slideChanged() {

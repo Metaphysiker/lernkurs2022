@@ -43,14 +43,35 @@
   <div data-course-with-swipe-target="slideId" data-slides-target="slideId" data-navigation-target="slideId" data-value="<%= slide.id %>" >
   </div>
 
+  <div data-course-with-swipe-target="loader" class="loader">
+    <div class="text-center">
+      <p>
+        Der Kurs wird geladen - einen Moment bitte
+      </p>
+      <br />
+    </div>
 
-  <div id="my-keen-slider" class="keen-slider mt-4">
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
+
+  <div data-course-with-swipe-target="testicus" style="display: none;">
+    yolo ipsum
+
+
+
+
+  <div data-course-with-swipe-target="keenSlider" id="my-keen-slider" class="keen-slider mt-4">
     <% course.slides.order(:sort).each_with_index do |slide, index| %>
     <div class="keen-slider__slide number-slide<%= slide.id %>">
       <%= render "slides/slide_with_exercise", slide: slide %>
     </div>
     <% end %>
 
+  </div>
   </div>
   <hr>
   <div data-hello-target="output">
