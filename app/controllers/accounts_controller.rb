@@ -47,6 +47,24 @@ class AccountsController < ApplicationController
     end
   end
 
+  def update_course_status
+    course_id = params[:course_id]
+    slide_id = params[:slide_id]
+    status = params[:status]
+
+    courses = @account.courses
+
+    if courses.key?(course_id)
+      courses[course_id]["status"] = status
+    else
+      courses[course_id] = {status: status}
+    end
+
+    @account.update(courses: courses)
+
+    head :ok
+  end
+
   def update_course_history
     course_id = params[:course_id]
     slide_id = params[:slide_id]

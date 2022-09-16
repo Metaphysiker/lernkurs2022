@@ -1,6 +1,16 @@
 import $ from "jquery"
 
 export function ajax() {
+  this.updateCourseStatusOfAccount = function(account_id, course_id, status) {
+    $.ajax({
+      url: "/accounts/" + account_id + "/update_course_status",
+      type: "PUT",
+      headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
+      data: {course_id: course_id, slide_id: slide_id, status: status},
+    }).done(function(response) {
+      console.log(response);
+    });
+  },
   this.updateCourseHistoryOfAccount = function(account_id, course_id, slide_id) {
     $.ajax({
       url: "/accounts/" + account_id + "/update_course_history",
