@@ -6,13 +6,13 @@
   <div class="form-inputs">
     <%= f.input :content, label: "Kommentar" %>
     <div class="invisible">
-      <%= f.input :commentable_id %>
-      <%= f.input :commentable_type %>
+      <%= f.input :commentable_id, as: :hidden %>
+      <%= f.input :commentable_type, as: :hidden %>
     </div>
 
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Kommentar erstellen", class: "btn btn-primary" %>
+    <%= f.button :submit, "Kommentar erstellen", class: "btn btn-primary mt-2" %>
   </div>
 <% end %>
