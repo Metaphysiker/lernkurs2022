@@ -7,13 +7,21 @@ var pointsDeductionForMistake = 1;
 
 export default class extends Controller {
   static targets = [ "button", "name", "output", "accountId", "exerciseId", "exerciseClass", "totalPossiblePoints", "pointsDeductionForMistake" ]
+  static values = {
+    accountId: Number,
+    totalPossiblePoints: Number,
+    pointsDeductionForMistake: Number,
+    exerciseId: Number,
+    exerciseClass: String,
+    myPoints: Number
+  }
 
   connect(){
     import("jquery_with_setup").then(jquery_with_setup => {
-      myPoints = this.totalPossiblePointsTarget.getAttribute('data-value')
-      pointsDeductionForMistake = this.pointsDeductionForMistakeTarget.getAttribute('data-value')
-      console.log("myPoints");
-      console.log(myPoints);
+      //myPoints = //this.totalPossiblePointsTarget.getAttribute('data-value')
+      //pointsDeductionForMistake = this.pointsDeductionForMistakeTarget.getAttribute('data-value')
+      //console.log("myPoints");
+      //console.log(myPoints);
     });
 
   }
@@ -32,24 +40,21 @@ export default class extends Controller {
       $(event.target).addClass("correct-answer");
 
       var ajax = new Ajax.ajax();
-      ajax.updateExerciseHistoryOfAccount(this.accountIdTarget.getAttribute('data-value'), this.exerciseClassTarget.getAttribute('data-value'), this.exerciseIdTarget.getAttribute('data-value'), myPoints)
+      ajax.updateExerciseHistoryOfAccount(this.accountIdValue, this.exerciseClassValue, this.exerciseIdValue, this.myPointsValue)
       .then(() => {
         const custom_event = new CustomEvent('correct-answer', {
           detail: {
-            points: myPoints
+            points: this.myPointsValue
           }
         })
         window.dispatchEvent(custom_event);
 
         const celebrate_event = new CustomEvent('celebrate', {
           detail: {
-            points: myPoints
+            points: this.myPointsValue
           }
         })
         window.dispatchEvent(celebrate_event);
-
-        console.log(celebrate_event);
-
 
       });
 
@@ -57,10 +62,10 @@ export default class extends Controller {
         $(event.target).prop("disabled", true);
         $(event.target).addClass( "disabled" );
         $(event.target).addClass("false-answer");
-        if((myPoints - pointsDeductionForMistake) < 0){
-          myPoints = 0
+        if((this.myPointsValue - this.pointsDeductionForMistakeValue) < 0){
+          this.myPointsValue = 0
         } else {
-          myPoints = myPoints - pointsDeductionForMistake
+          this.myPointsValue = this.myPointsValue - this.pointsDeductionForMistakeValue
         }
     }
 
