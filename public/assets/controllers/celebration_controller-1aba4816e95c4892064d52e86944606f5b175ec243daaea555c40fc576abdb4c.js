@@ -1,1 +1,0 @@
-import{Controller}from"@hotwired/stimulus";var modal;export default class extends Controller{static targets=["name","output","points"];connect(){import("bootstrap").then((t=>{modal=new t.Modal(document.getElementById("exampleModal"),{keyboard:!1})}))}celebrate({detail:{points:t}}){this.pointsTarget.innerHTML=t,modal.show(),setTimeout((function(){modal.hide()}),2500)}}

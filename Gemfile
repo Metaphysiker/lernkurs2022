@@ -57,7 +57,7 @@ gem "bootsnap", require: false
  gem "sassc-rails"
 
  #gem "terser"
- gem 'mini_racer'
+ #gem 'mini_racer'
  #gem "yui-compressor"
  #gem "closure-compiler"
 
