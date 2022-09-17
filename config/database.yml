@@ -82,5 +82,5 @@ test:
 production:
   <<: *default
   database: lernkurs2022_production
-  username: lernkurs2022
+  username: sandro
   password: <%= ENV["LERNKURS2022_DATABASE_PASSWORD"] %>
