@@ -8,23 +8,37 @@
     <p class="card-text">
       <%= course.description %>
     </p>
+    <!--
     <hr>
     <p class="card-text">
       <strong>Dauer: </strong>20 Minuten
     </p>
+    -->
   </div>
   <div class="card-footer border-top bg-light text-center">
 
-    <% if @account.courses.key?(course.id.to_s) %>
+    <%# if @account.courses.key?(course.id.to_s) %>
+    <% course_status = @account.course_status(course.id.to_s) %>
+    <% if course_status == "started" %>
+
     <% current_slide_id = @account.courses[course.id.to_s]["history"][-1] %>
     <% current_sort_of_slide = Slide.find(current_slide_id).sort %>
-      <%= link_to "Weitermachen!", course_with_sort_path(course, current_sort_of_slide), class: "action-button-i-color" %>
-      <hr>
+
       <p>
         <strong>Dein Fortschritt:</strong>
       </p>
 
       <%= render "courses/progress", current_slide_id: current_slide_id, course: course %>
+      <%= link_to "Weitermachen!", course_with_sort_path(course, current_sort_of_slide), class: "action-button-i-color mt-4" %>
+
+    <% elsif course_status == "completed" %>
+    <p>
+      <strong>Kurs abgeschlossen!</strong>
+    </p>
+    <% if @account.check_if_medal_is_awarded(course.id) %>
+      <%= render "courses/medal_congratulation", course: course %>
+    <% end %>
+      <%= link_to "Erneut anfangen", course_with_sort_path(course, 0), class: "action-button-green-color" %>
     <% else %>
       <%= link_to "Loslegen!", course_path(course), class: "action-button-green-color" %>
     <% end %>

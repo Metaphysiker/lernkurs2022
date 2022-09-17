@@ -1,0 +1,8 @@
+<p>
+  <strong>
+    Glückwunsch! Du hast einen Orden bekommen!
+  </strong>
+</p>
+<% if course.medal_image.attached? %>
+  <%= image_tag slide.course.medal_image, class: "img-fluid" %>
+<% end %>

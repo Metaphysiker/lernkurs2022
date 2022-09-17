@@ -1,6 +1,8 @@
 import { Controller } from "@hotwired/stimulus"
 import * as Ajax from "ajax"
 
+import { useIntersection, useResize } from "stimulus-use"
+
 export default class extends Controller {
   static targets = [ "name", "output", "courseComplete"]
   static values = {
@@ -10,30 +12,28 @@ export default class extends Controller {
   }
 
   connect(){
+
+    useIntersection(this)
+    useResize(this)
     console.log("connect");
 
-    let options = {
-      root: document.body,
-      rootMargin: '0px',
-      threshold: 1.0
-    }
+  }
 
-    let callback = () => {
-      this.complete_course()
-    };
+  appear(entry) {
+    console.log("course_completion - appear");
 
-    let observer = new IntersectionObserver(callback, options);
-
-    observer.observe(this.medalImageTarget);
+    this.complete_course();
   }
 
   complete_course(){
 
-    var ajax = new Ajax.ajax();
-    ajax.updateCourseStatusOfAccount(this.accountIdValue, this.courseIdValue, "completed")
-    .then(() => {
+    var self = this;
 
-    });
+    console.log(self.accountIdValue);
+    console.log(self.courseIdValue);
+
+    var ajax = new Ajax.ajax();
+    ajax.updateCourseStatusOfAccount(self.accountIdValue, self.courseIdValue, "completed");
 
   }
 

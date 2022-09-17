@@ -3,7 +3,6 @@
 </p>
 
 
-
 <!--HTML from anywhere
 <div data-controller="medal">
 -->
@@ -13,14 +12,7 @@
 
   <hr>
   <div data-medal-target="medalImage" class="text-center border rounded p-4">
-    <p>
-      <strong>
-        Glückwunsch! Du hast einen Orden bekommen!
-      </strong>
-    </p>
-    <% if slide.course.medal_image.attached? %>
-      <%= image_tag slide.course.medal_image, class: "img-fluid" %>
-    <% end %>
+    <%= render "courses/medal_congratulation", course: slide.course %>
   </div>
 
   <!--HTML from anywhere

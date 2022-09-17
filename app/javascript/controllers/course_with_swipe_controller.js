@@ -59,11 +59,13 @@ export default class extends Controller {
 
 
             var slide_id = $(slider.slides[slider.track.details.rel]).find(".slide").attr('data-value');
-
-            console.log("slide id: " + slide_id);
-
             ajax.updateCourseHistoryOfAccount(self.accountIdValue, self.courseIdValue, slide_id);
-            //ajax.updateCourseHistoryOfAccount(self.accountIdTarget.getAttribute('data-value'), self.courseIdTarget.getAttribute('data-value'), slide_id);
+
+            var complete_course = $(slider.slides[slider.track.details.rel]).find(".slide").attr('data-complete_course');
+            if(complete_course === "true"){
+              console.log("course completed");
+              ajax.updateCourseStatusOfAccount(self.accountIdValue, self.courseIdValue, "completed");
+            }
 
             self.updateNavigationButtons();
 
@@ -71,7 +73,6 @@ export default class extends Controller {
 
             self.adjustHeightofSlide();
 
-            console.log('slide changed');
 
           },
         });
@@ -98,14 +99,13 @@ export default class extends Controller {
   }
 
   adjustHeightofSlide(){
-    console.log("adjust");
 
     var height_of_current_slide = $(slider.slides[slider.track.details.rel]).find(".container").first().height();
 
     if (height_of_current_slide < $(window).height() * 0.333){
       height_of_current_slide = $(window).height() * 0.333;
     }
-    console.log(height_of_current_slide);
+
     slider.container.style.height = height_of_current_slide + 10 + "px";
 
   }

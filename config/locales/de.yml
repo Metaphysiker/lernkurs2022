@@ -40,6 +40,8 @@ de:
   course_overview: "Kurs-Übersicht"
   update_order: "Reihenfolge anpassen"
   my_account: "Mein Konto"
+  completed: "abgeschlossen"
+  started: "angefangen"
   routes:
     courses: "kurse"
   models:

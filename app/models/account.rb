@@ -15,12 +15,24 @@ class Account < ApplicationRecord
 
   end
 
+  def course_status(course_id)
+
+    if !self.courses.key?(course_id.to_s)
+      return "unvisited"
+    elsif self.courses[course_id.to_s]["status"] == "completed"
+      return "completed"
+    else
+      return "started"
+    end
+
+  end
+
   def check_if_medal_is_awarded(course_id)
 
     points = self.course_points(course_id)
     total_possible_points =  self.total_possible_course_points(course_id)
 
-    medal_awarded = points > (total_possible_points.to_f/100 * 80)
+    medal_awarded = points > (total_possible_points.to_f/100 * 70)
 
   end
 

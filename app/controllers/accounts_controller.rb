@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-  before_action :set_account, only: %i[ show edit update destroy update_course_history update_excercise_history get_points_from_course save_progress check_if_medal_is_awarded]
+  before_action :set_account, only: %i[ show edit update destroy update_course_history update_excercise_history update_course_status get_points_from_course save_progress check_if_medal_is_awarded]
 
   # GET /accounts or /accounts.json
   def index
@@ -61,7 +61,6 @@ class AccountsController < ApplicationController
     end
 
     @account.update(courses: courses)
-
     head :ok
   end
 
