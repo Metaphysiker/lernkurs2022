@@ -43,13 +43,9 @@ export default class extends Controller {
           created() {
             console.log("keen slider created");
 
-            $(self.testicusTarget).fadeIn(2999);
+            //$(self.testicusTarget).fadeIn(2999);
 
-            setTimeout(function() {
-              $(self.keenSliderTarget).fadeIn( 2000 );
-            }, 2000);
-
-
+              $(self.keenSliderTarget).css('visibility', 'visible');
 
 
             self.loaderTarget.textContent =

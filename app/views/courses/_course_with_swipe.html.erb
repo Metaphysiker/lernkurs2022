@@ -64,7 +64,7 @@
 
 
 
-  <div data-course-with-swipe-target="keenSlider" id="my-keen-slider" class="keen-slider mt-4">
+  <div data-course-with-swipe-target="keenSlider" id="my-keen-slider" class="keen-slider mt-4" style="visibility: hidden">
     <% course.slides.order(:sort).each_with_index do |slide, index| %>
     <div class="keen-slider__slide number-slide<%= slide.id %>">
       <%= render "slides/slide_with_exercise", slide: slide %>
