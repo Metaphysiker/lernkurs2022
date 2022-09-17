@@ -55,9 +55,9 @@ gem "bootsnap", require: false
 
 # Use Sass to process CSS
  gem "sassc-rails"
+ gem 'mini_racer'
+ gem "terser"
 
- #gem "terser"
- #gem 'mini_racer'
  #gem "yui-compressor"
  #gem "closure-compiler"
 
