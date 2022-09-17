@@ -2,18 +2,24 @@ import { Controller } from "@hotwired/stimulus"
 
 import * as Ajax from "ajax"
 
-var myPoints = 3;
-var pointsDeductionForMistake = 1;
 var solution = [];
 
 export default class extends Controller {
   static targets = [ "button", "name", "output", "accountId", "exerciseId", "exerciseClass", "totalPossiblePoints", "pointsDeductionForMistake", "checkboxClass", "solution" ]
+  static values = {
+    accountId: Number,
+    totalPossiblePoints: Number,
+    pointsDeductionForMistake: Number,
+    exerciseId: Number,
+    exerciseClass: String,
+    myPoints: Number,
+    solution: Array
+  }
 
   connect(){
+    console.log(this.solutionValue);
     import("jquery_with_setup").then(jquery_with_setup => {
-      myPoints = this.totalPossiblePointsTarget.getAttribute('data-value')
-      pointsDeductionForMistake = this.pointsDeductionForMistakeTarget.getAttribute('data-value')
-      solution = this.solutionTarget.getAttribute('data-value').split(',').map ( Number )
+
     });
 
   }
@@ -23,9 +29,10 @@ export default class extends Controller {
   }
 
   check() {
-    console.log(myPoints);
+    var self = this;
+    console.log(this.myPointsValue);
 
-    var missing_answers = [...solution];
+    var missing_answers = [...this.solutionValue];
     var wrong_answers = [];
     //var checkedVals = $("." + this.checkboxClassTarget.getAttribute('data-value') +":checkbox:checked").map(function() {
     //    return {value: this.value, id: this.id};
@@ -34,7 +41,7 @@ export default class extends Controller {
      $("." + this.checkboxClassTarget.getAttribute('data-value') +":checkbox:checked").map(function() {
        var checkbox_value = parseInt(this.value);
 
-       if(solution.includes(checkbox_value)){
+       if(self.solutionValue.includes(checkbox_value)){
 
          $("#" + this.id).prop("disabled", true);
 
@@ -48,25 +55,27 @@ export default class extends Controller {
 
     //check if all correct answers are present and whether there are no wrong answers present
     if((missing_answers.length === 0) && (wrong_answers.length === 0)){
+      console.log("all answers correct");
 
       var ajax = new Ajax.ajax();
-      ajax.updateExerciseHistoryOfAccount(this.accountIdTarget.getAttribute('data-value'), this.exerciseClassTarget.getAttribute('data-value'), this.exerciseIdTarget.getAttribute('data-value'), myPoints)
+      ajax.updateExerciseHistoryOfAccount(this.accountIdValue, this.exerciseClassValue, this.exerciseIdValue, this.myPointsValue)
       .then(() => {
-        const custom_event = new CustomEvent('correct-answer', {
+
+        const finish_exercise = new CustomEvent('finish_exercise', {
           detail: {
-            points: myPoints
+            points: this.myPointsValue
           }
         })
-        window.dispatchEvent(custom_event);
+        window.dispatchEvent(finish_exercise);
 
       });
 
 
     } else {
-      if((myPoints - pointsDeductionForMistake) < 0){
-        myPoints = 0
+      if((this.myPointsValue - this.pointsDeductionForMistakeValue) < 0){
+        this.myPointsValue = 0
       } else {
-        myPoints = myPoints - pointsDeductionForMistake
+        this.myPointsValue = this.myPointsValue - this.pointsDeductionForMistakeValue
       }
     }
 

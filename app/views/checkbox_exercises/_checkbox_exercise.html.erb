@@ -1,7 +1,17 @@
 <div class="container">
 <div id="<%= dom_id checkbox_exercise %>">
 
-  <div data-controller="checkbox-exercise">
+  <div data-controller="checkbox-exercise"
+
+  data-checkbox-exercise-account-id-value="<%= @account.id %>"
+  data-checkbox-exercise-my-points-value="<%= checkbox_exercise.point_system.total_possible_points unless checkbox_exercise.point_system.blank? %>"
+  data-checkbox-exercise-exercise-id-value="<%= checkbox_exercise.id %>"
+  data-checkbox-exercise-exercise-class-value="<%= checkbox_exercise.class.name %>"
+  data-checkbox-exercise-total-possible-points-value="<%= checkbox_exercise.point_system.total_possible_points unless checkbox_exercise.point_system.blank? %>"
+  data-checkbox-exercise-points-deduction-for-mistake-value="<%= checkbox_exercise.point_system.points_deduction_for_mistake unless checkbox_exercise.point_system.blank? %>"
+  data-checkbox-exercise-solution-value="<%= checkbox_exercise.checkboxes.where(correct_answer: "yes").pluck(:id) %>"
+
+  >
     <div data-checkbox-exercise-target="accountId" data-value="<%= @account.id %>" >
     </div>
     <div data-checkbox-exercise-target="exerciseId" data-value="<%= checkbox_exercise.id %>" >
@@ -22,22 +32,25 @@
           <%= raw checkbox_exercise.content %>
         </legend>
 
-
+        <div class="row">
         <% checkbox_exercise.checkboxes.each do |checkbox| %>
-        <div>
-            <input type="checkbox" class="<%= "#{dom_id(checkbox_exercise)}-checkboxes" %> mr-2" id="<%= "#{dom_id(checkbox_exercise)}-checkboxes-checkbox-#{checkbox.id}" %>" value="<%= checkbox.id %>" name="<%= checkbox.content %>">
-            <label for="scales" class="">
-              &nbsp; &nbsp; <%= checkbox.content %>
-            </label>
-
+            <div class="col-1 d-flex align-items-center mb-2">
+              <input type="checkbox" class="<%= "#{dom_id(checkbox_exercise)}-checkboxes" %> mr-2" id="<%= "#{dom_id(checkbox_exercise)}-checkboxes-checkbox-#{checkbox.id}" %>" value="<%= checkbox.id %>" name="<%= checkbox.content %>">
+            </div>
+            <div class="col-11 mb-2">
+              <label for="scales" class="">
+                <%= checkbox.content %>
+              </label>
+            </div>
+            <hr />
         <% end %>
-
+        </div>
 
     </fieldset>
 
 
     <div class="d-grid gap-2">
-      <button data-checkbox-exercise-target="button" data-action="click->checkbox-exercise#check" data type="button" class="checkbox-exercise">Antwort prüfen</button>
+      <button data-checkbox-exercise-target="button" data-action="click->checkbox-exercise#check" data type="button" class="btn btn-primary my-3">Antwort prüfen</button>
     </div>
 
 

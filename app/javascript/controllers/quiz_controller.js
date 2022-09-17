@@ -2,9 +2,6 @@ import { Controller } from "@hotwired/stimulus"
 
 import * as Ajax from "ajax"
 
-var myPoints = 3;
-var pointsDeductionForMistake = 1;
-
 export default class extends Controller {
   static targets = [ "button", "name", "output", "accountId", "exerciseId", "exerciseClass", "totalPossiblePoints", "pointsDeductionForMistake" ]
   static values = {
