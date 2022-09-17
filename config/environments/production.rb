@@ -1,7 +1,7 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.action_mailer.default_url_options = { :host => "https://lernkurs2022.herokuapp.com" }
+  config.action_mailer.default_url_options = { :host => "https://courses.philosophie.ch" }
 
   # Settings specified here will take precedence over those in config/application.rb.
 
