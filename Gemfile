@@ -58,8 +58,8 @@ gem "bootsnap", require: false
 
  gem "terser"
  gem 'mini_racer'
- gem "yui-compressor"
- gem "closure-compiler"
+ #gem "yui-compressor"
+ #gem "closure-compiler"
 
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
