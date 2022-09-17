@@ -8,6 +8,7 @@ git push origin main
 
 ssh sandro@159.65.120.231 << EOF
   cd lernkurs2022
+  git stash
   git pull origin main
   bundle config set --local without 'development test'
   bundle install
