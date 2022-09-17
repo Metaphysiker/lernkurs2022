@@ -100,8 +100,8 @@ Rails.application.configure do
     port:                 587,
     #domain:               'gmail.com',
     user_name:             'lernkurs@philosophie.ch',
-    password:               ENV['ORIENTED_PASSWORD'],
-    #password:              Rails.application.credentials.oriented_password,
+    #password:               ENV['ORIENTED_PASSWORD'],
+    password:              Rails.application.credentials.oriented_password,
     authentication:       'plain',
     enable_starttls_auto: true }
 
