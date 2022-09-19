@@ -30,7 +30,7 @@ export default class extends Controller {
   check() {
 
     if(event.params.quizQuestionCorrectAnswer === "yes"){
-      console.log(myPoints);
+      //console.log(myPoints);
 
       $(this.buttonTargets).prop("disabled", true);
       $(this.buttonTargets).addClass( "disabled" );
