@@ -3,21 +3,6 @@ require 'open3'
 class Transformer
   def compress(string)
 
-    test = <<-EOM
-
-    // example.js
-    var x = {
-        baz_: 0,
-        foo_: 1,
-        calc: function() {
-            return this.foo_ + this.baz_;
-        }
-    };
-    x.bar_ = 2;
-    x["baz_"] = 3;
-    console.log(x.calc());
-    EOM
-
     file = Tempfile.new('javascript_file_to_be_compressed')
     file.path      # => A unique filename in the OS's temp directory,
                    #    e.g.: "/tmp/foo.24722.0"
