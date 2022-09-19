@@ -1,4 +1,5 @@
 require "active_support/core_ext/integer/time"
+require_relative "../../app/models/transformer"
 
 Rails.application.configure do
   config.action_mailer.default_url_options = { :host => "https://courses.philosophie.ch" }
@@ -28,7 +29,9 @@ Rails.application.configure do
 
   # Compress CSS using a preprocessor.
   config.assets.css_compressor = :sass
-  config.assets.js_compressor = :terser
+  #config.assets.js_compressor = :terser
+  config.assets.js_compressor = Transformer.new
+
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false

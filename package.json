@@ -1,0 +1,12 @@
+{
+  "name": "lernkurs2022",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Metaphysiker/lernkurs2022.git",
+  "author": "Metaphysiker <s.raess@me.com>",
+  "license": "MIT",
+  "dependencies": {
+    "terser": "^5.15.0",
+    "uglify-js": "^3.17.0"
+  }
+}

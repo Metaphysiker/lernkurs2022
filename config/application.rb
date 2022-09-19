@@ -1,4 +1,5 @@
 require_relative "boot"
+#require_relative "../app/models/transformer"
 
 require "rails/all"
 
@@ -12,6 +13,8 @@ module Lernkurs2022
     config.load_defaults 7.0
 
     config.i18n.default_locale = :de
+
+    #config.assets.js_compressor = Transformer.new
 
     # Configuration for the application, engines, and railties goes here.
     #
