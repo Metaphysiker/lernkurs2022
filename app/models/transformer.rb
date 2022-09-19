@@ -13,7 +13,6 @@ class Transformer
 
 
     output = ""
-    puts "compressing!"
     #puts string
     Open3.popen3("yarn run terser #{file.path } --compress --mangle") do |stdin, stdout, stderr, wait_thr|
     #Open3.popen3("/usr/bin/pandoc -s -f markdown -t pdf #{dir}/basic_markdown_editor.md") do |stdin, stdout, stderr, wait_thr|
