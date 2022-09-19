@@ -12,6 +12,7 @@ ssh sandro@159.65.120.231 << EOF
   git pull origin main
   bundle config set --local without 'development test'
   bundle install
+  yarn install
   RAILS_ENV=production rails db:migrate
   RAILS_ENV=production rails assets:clobber
   RAILS_ENV=production rails assets:precompile
