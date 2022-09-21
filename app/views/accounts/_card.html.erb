@@ -5,11 +5,11 @@
       Erstellt: <%= l(account.created_at) %>
     </p>
     <p class="card-text">
-      Name: <%= account.first_name %>
+      Vorname: <%= account.first_name %>
     </p>
 
     <% account.courses.each do |course_array| %>
-    
+
       <% course = Course.find(course_array[0].to_i) %>
         <%= render "courses/overview_card", account: account, course: course %>
       <% end %>

@@ -1,6 +1,9 @@
 <div class="card my-3">
   <div class="card-body">
     <h2><%= course.name %></h2>
+    <p>
+      <strong>Status: </strong><%= t(@account.course_status(course.id.to_s)) %>
+    </p>
 
     <%= render "courses/progress", current_slide_id: account.courses[course.id.to_s]["history"][-1], course: course %>
 
