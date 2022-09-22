@@ -61,4 +61,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  get '/static_pages/preparer', to: "static_pages#preparer", as: 'preparer'
+  post '/static_pages/preparer/', to: "static_pages#preparer"
 end
