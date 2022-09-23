@@ -35,12 +35,8 @@
     <p>
       <strong>Kurs abgeschlossen!</strong>
     </p>
-    <% unless @account.course_completion_date(course.id.to_s).blank? %>
-      <p>
-        <%= l(@account.course_completion_date(course.id.to_s)) %>
-      </p>
-    <% end %>
     <% if @account.check_if_medal_is_awarded(course.id) %>
+    <hr />
       <%= render "courses/medal_congratulation", course: course %>
     <% end %>
       <%= link_to "Erneut anfangen", course_with_sort_path(course, 0), class: "action-button-green-color" %>

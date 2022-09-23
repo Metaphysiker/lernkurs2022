@@ -9,9 +9,11 @@
   <p class="alert"><%= alert %></p>
 
       <h2 class="text-center my-3">Ethik-Kurse</h2>
-      <%= render "courses/courses_by_group", courses: Course.where(group: "ethik") %>
-      <h2 class="text-center my-3">Klima-Gerechtigkeit</h2>
-      <%= render "courses/courses_by_group", courses: Course.where(group: "klimagerechtigkeit").order(:sort) %>
+      <%= render "courses/courses_by_group", courses: Course.where(group: "ethik").order(:sort) %>
+      <% if false %>
+        <h2 class="text-center my-3">Klima-Gerechtigkeit</h2>
+        <%= render "courses/courses_by_group", courses: Course.where(group: "klimagerechtigkeit").order(:sort) %>
+      <% end %>
 
       <% if false %>
         <hr>
