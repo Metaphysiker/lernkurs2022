@@ -31,6 +31,16 @@ class Account < ApplicationRecord
 
   end
 
+  def course_completion_date(course_id)
+
+    if !self.courses.key?(course_id.to_s)
+      return ""
+    else
+      return Date.parse(self.courses[course_id.to_s]["completion_date"])
+    end
+
+  end
+
   def check_if_medal_is_awarded(course_id)
 
     points = self.course_points(course_id)

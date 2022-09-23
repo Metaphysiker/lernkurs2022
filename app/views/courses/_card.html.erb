@@ -35,6 +35,11 @@
     <p>
       <strong>Kurs abgeschlossen!</strong>
     </p>
+    <% unless @account.course_completion_date(course.id.to_s).blank? %>
+      <p>
+        <%= l(@account.course_completion_date(course.id.to_s)) %>
+      </p>
+    <% end %>
     <% if @account.check_if_medal_is_awarded(course.id) %>
       <%= render "courses/medal_congratulation", course: course %>
     <% end %>
