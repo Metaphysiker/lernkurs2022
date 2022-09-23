@@ -60,6 +60,10 @@ class AccountsController < ApplicationController
       courses[course_id] = {status: status}
     end
 
+    if status == Account.course_status_completed
+      courses[course_id]["completion_date"] = Date.today.to_s
+    end
+
     @account.update(courses: courses)
     head :ok
   end

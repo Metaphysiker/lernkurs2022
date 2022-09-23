@@ -1,6 +1,10 @@
 class Account < ApplicationRecord
   belongs_to :user, optional: true
 
+  def self.course_status_completed
+    "completed"
+  end
+
   def course_points(course_id)
 
     points = 0
