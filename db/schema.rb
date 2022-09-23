@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_03_190750) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_23_060340) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -105,6 +105,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_03_190750) do
     t.text "description", default: ""
     t.string "group", default: ""
     t.string "slug"
+    t.integer "sort", default: 0
     t.index ["slug"], name: "index_courses_on_slug", unique: true
   end
 

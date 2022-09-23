@@ -1,6 +1,7 @@
 <%= simple_form_for course do |f| %>
   <%= f.input :name %>
   <%= f.input :slug %>
+  <%= f.input :sort %>
   <%= f.input :group, collection: Course.options.map {|option| [option, option]}, selected: course.group %>
   <%= f.input :description, input_html: { rows: 5 } %>
   <p>

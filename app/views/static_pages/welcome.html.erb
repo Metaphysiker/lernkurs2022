@@ -11,7 +11,7 @@
       <h2 class="text-center my-3">Ethik-Kurse</h2>
       <%= render "courses/courses_by_group", courses: Course.where(group: "ethik") %>
       <h2 class="text-center my-3">Klima-Gerechtigkeit</h2>
-      <%= render "courses/courses_by_group", courses: Course.where(group: "klimagerechtigkeit") %>
+      <%= render "courses/courses_by_group", courses: Course.where(group: "klimagerechtigkeit").order(:sort) %>
 
       <% if false %>
         <hr>
