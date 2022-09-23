@@ -19,6 +19,7 @@ export default class extends Controller {
       //pointsDeductionForMistake = this.pointsDeductionForMistakeTarget.getAttribute('data-value')
       //console.log("myPoints");
       //console.log(myPoints);
+      //
     });
 
   }
