@@ -4,10 +4,10 @@
 <h1>Accounts</h1>
 
 <div id="accounts">
-  <% @accounts.each do |account| %>
+  <% @accounts.order(created_at: :desc).each do |account| %>
     <%#= render account %>
     <p>
-      <%= link_to "#{account.id}", account %>
+      <%= link_to "#{account.id}", account %> - <%= l(account.created_at) %> - <%= account.visited_courses_count %>
     </p>
   <% end %>
 </div>

@@ -5,6 +5,10 @@ class Account < ApplicationRecord
     "completed"
   end
 
+  def visited_courses_count
+    courses.keys.count
+  end
+
   def course_points(course_id)
 
     points = 0
