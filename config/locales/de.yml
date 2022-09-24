@@ -44,6 +44,8 @@ de:
   completed: "abgeschlossen"
   started: "angefangen"
   save: "Speichern"
+  magic_link: "Zugangslink"
+  receive_magic_link: "Zugangslink per e-Mail erhalten"
   routes:
     courses: "kurse"
   models:

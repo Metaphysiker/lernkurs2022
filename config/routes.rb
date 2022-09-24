@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   end
 
   post "/users/check_if_email_is_taken", to: "users#check_if_email_is_taken", as: "users_check_if_email_is_taken"
-
+  get "users/successfully_signed_in", to: "users#successfully_signed_in", as: "users_successfully_signed_in"
 
   resources :quiz_questions
   resources :quizzes
