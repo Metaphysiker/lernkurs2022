@@ -34,6 +34,8 @@ Rails.application.routes.draw do
       as: "send_magic_link_to_user"
   end
 
+  post "/users/check_if_email_is_taken", to: "users#check_if_email_is_taken", as: "users_check_if_email_is_taken"
+
 
   resources :quiz_questions
   resources :quizzes

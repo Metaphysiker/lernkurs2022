@@ -43,6 +43,7 @@ de:
   delete_account: "Konto löschen"
   completed: "abgeschlossen"
   started: "angefangen"
+  save: "Speichern"
   routes:
     courses: "kurse"
   models:

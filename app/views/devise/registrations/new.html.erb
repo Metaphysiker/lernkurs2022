@@ -1,5 +1,9 @@
 <%= render "layouts/navigation" %>
 
+<div class="container">
+  <h1 class="my-3"><%= t("helpers.submit.create", model: User.model_name.human) %></h1>
+</div>
+
 <%= render "users/user_sign_up" %>
 
 

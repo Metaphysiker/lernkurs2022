@@ -90,4 +90,17 @@ export function ajax() {
   })
   }
 
+  this.usersCheckIfEmailIsTaken = function(email) {
+    return new Promise(function(resolve, reject) {
+    $.ajax({
+      url: "/users/check_if_email_is_taken",
+      type: "POST",
+      headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
+      data: {email: email },
+    }).done(function(response) {
+      resolve(response);
+    });
+  })
+  }
+
 }
