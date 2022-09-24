@@ -20,3 +20,5 @@ ssh root@159.65.120.231 << EOF
   cd /home/sandro/lernkurs2022/
   sudo service nginx restart
 EOF
+
+rails assets:clobber
