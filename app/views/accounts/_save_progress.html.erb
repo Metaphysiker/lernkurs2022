@@ -1,30 +1,8 @@
 <% unless user_signed_in? %>
-<div data-controller="save-progress">
-  <div data-save-progress-target="accountId" data-value="<%= @account.id %>" >
-  </div>
-  <p>
-    Möchtest du deinen Fortschritt speichern?
+  <p class="text-center">
+    Möchtest du deine Fortschritte speichern?
   </p>
-  <div class="input-group mb-3">
-    <span class="input-group-text text-center" id="basic-first-name" style="min-width: 200px;">Vorname: </span>
-    <input type="text" class="form-control" placeholder="Max, Julia ..." aria-label="name" aria-describedby="basic-first-name" data-save-progress-target="firstName">
-  </div>
-
-  <div class="input-group mb-3">
-    <span class="input-group-text text-center" id="basic-email" style="min-width: 200px;">e-Mail: </span>
-    <input type="text" class="form-control" placeholder="max.muster@email.com" aria-label="name" aria-describedby="basic-email" data-save-progress-target="email">
-  </div>
-
-  <div data-save-progress-target="output">
-  </div>
-
-  <button data-action="click->save-progress#save_progress" class="btn btn-primary">
-    Fortschritt speichern
-  </button>
-  <p class="my-5">
-    &nbsp;
-  </p>
-</div>
+  <%= render "users/user_sign_up" %>
 <% else %>
 <div class="border rounded p-2 text-center">
   <p>

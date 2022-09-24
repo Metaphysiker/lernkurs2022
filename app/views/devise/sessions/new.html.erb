@@ -30,16 +30,26 @@
 <hr>
 <% end %>
 <% if true %>
-<h1 class="my-3">Login</h1>
-<%= form_for(resource, as: resource_name, url: send_magic_link_to_user_path(resource_name), method: :get, data: { turbo: false }) do |form| %>
-  <%= form.label :email %>
-  <br>
-  <%= form.text_field :email %>
-  <br>
-  <%= form.submit t("receive_magic_link"), class: "btn btn-primary my-3" %>
-<% end %>
+  <h1 class="my-3">Login</h1>
+  <%= form_for(resource, as: resource_name, url: send_magic_link_to_user_path(resource_name), method: :get, data: { turbo: false }) do |form| %>
+
+    <p>
+      <strong><%= form.label :email %></strong>
+    </p>
+    <div class="input-group mb-4">
+      <%= form.text_field :email, class: "form-control", placeholder: "max.muster@email.com" %>
+    </div>
+
+    <%= form.submit t("receive_magic_link"), class: "btn btn-primary mb-3" %>
+  <% end %>
+  <hr>
+  <p>
+    <%= t("no_account_yet") %>
+    <br>
+    <%= link_to t('signup'), new_user_registration_path, class: "action-button-green-color"  %>
+  </p>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%#= render "devise/shared/links" %>
   </div>
   <%= render "layouts/footer" %>

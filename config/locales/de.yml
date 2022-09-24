@@ -40,6 +40,8 @@ de:
   course_overview: "Kurs-Übersicht"
   update_order: "Reihenfolge anpassen"
   my_account: "Mein Konto"
+  no_account_yet: "Noch nicht registriert?"
+  do_you_already_have_an_account: "Bist du bereits registriert?"
   delete_account: "Konto löschen"
   completed: "abgeschlossen"
   started: "angefangen"
