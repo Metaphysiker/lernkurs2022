@@ -156,7 +156,7 @@ class AccountsController < ApplicationController
 
     else
 
-      @user = User.new(user_params)
+      @user = User.new(email: params[:email], password: params[:password], password_confirmation: params[:params_confirmation])
 
       #new_user = User.create(email: params[:email], password: params[:password], password_confirmation: params[:password])
       if @user.save
@@ -187,7 +187,4 @@ class AccountsController < ApplicationController
       params.require(:account).permit(:user_id, :first_name)
     end
 
-    def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
-    end
 end

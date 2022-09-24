@@ -64,13 +64,13 @@ export function ajax() {
   })
   }
 
-  this.saveProgress = function(account_id, first_name, email, password) {
+  this.saveProgress = function(account_id, first_name, email) {
     return new Promise(function(resolve, reject) {
     $.ajax({
       url: "/accounts/" + account_id + "/save_progress",
       type: "POST",
       headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
-      data: {id: account_id, first_name: first_name, email: email, password: password },
+      data: {id: account_id, first_name: first_name, email: email },
     }).done(function(response) {
       resolve(response);
     });

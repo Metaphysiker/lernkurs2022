@@ -10,7 +10,19 @@
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
 
+  #https://betterprogramming.pub/devise-auth-setup-in-rails-7-44240aaed4be
+  config.parent_controller = 'TurboDeviseController'
   config.navigational_formats = ['*/*', :html, :turbo_stream]
+
+  config.warden do |manager|
+    manager.failure_app = TurboFailureApp
+  #   manager.intercept_401 = false
+  #   manager.default_strategies(scope: :user).unshift :some_external_strategy
+  end
+
+
+  config.navigational_formats = ['*/*', :html, :turbo_stream]
+
 
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
@@ -331,4 +343,22 @@ Devise.setup do |config|
   # generated before the user's current sign in time to be expired. In other words,
   # each time you sign in, all existing magic links will be considered invalid.
   # config.passwordless_expire_old_tokens_on_sign_in = false
+
+  # https://betterprogramming.pub/devise-auth-setup-in-rails-7-44240aaed4be
+
+
+end
+
+class TurboFailureApp < Devise::FailureApp
+  def respond
+    if request_format == :turbo_stream
+      redirect
+    else
+      super
+    end
+  end
+
+  def skip_format?
+    %w(html turbo_stream */*).include? request_format.to_s
+  end
 end

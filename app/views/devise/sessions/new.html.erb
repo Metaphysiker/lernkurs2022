@@ -1,6 +1,7 @@
 <%= render "layouts/navigation" %>
 <div class="container">
 
+  <% if false %>
 
 <h2>Log in</h2>
 
@@ -27,12 +28,16 @@
   </div>
 <% end %>
 <hr>
+<% end %>
+<% if true %>
+<h1 class="my-3">Login</h1>
 <%= form_for(resource, as: resource_name, url: send_magic_link_to_user_path(resource_name), method: :get, data: { turbo: false }) do |form| %>
-  <%= form.label :email, "Login ohne Passwort" %>
+  <%= form.label :email %>
   <br>
   <%= form.text_field :email %>
   <br>
-  <%= form.submit "Zugangslink per e-Mail erhalten" %>
+  <%= form.submit "Zugangslink per e-Mail erhalten", class: "btn btn-primary my-3" %>
+<% end %>
 <% end %>
 
 <%= render "devise/shared/links" %>
