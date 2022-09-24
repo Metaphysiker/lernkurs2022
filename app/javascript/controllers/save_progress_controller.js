@@ -34,9 +34,6 @@ export default class extends Controller {
         `${error_string}!`
     }
 
-
-
-
   }
 
 
