@@ -36,8 +36,8 @@ export default class extends Controller {
       this.firstNameTarget.value)
     .then((response) => {
       console.log(response);
-      if(response == "success"){
-        //window.location.href = "/";
+      if(response.status == "success"){
+        window.location.href = "/";
       } else {
         console.log("ERROR!");
       }

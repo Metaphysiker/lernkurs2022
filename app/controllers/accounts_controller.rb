@@ -148,18 +148,17 @@ class AccountsController < ApplicationController
   end
 
   def users_sign_up
-    unless user_signed_in?
       @user = User.new(email: params[:email])
       if @user.save
         @account.update(user_id: @user.id, first_name: params[:first_name])
         sign_in @user
         CourseMailer.welcome_mail(params[:email]).deliver_later
+        render json: {status: "success"}
       else
-        #render json: @user.errors
+        render json: {status: "error"}.merge(@user.errors)
       end
-    end
 
-    render json: "success"
+    #render json: "success"
   end
 
   def save_progress
