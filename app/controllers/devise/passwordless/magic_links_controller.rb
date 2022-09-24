@@ -10,7 +10,10 @@ class Devise::Passwordless::MagicLinksController < DeviseController
     unless user.blank?
       user.send_magic_link(true)
     end
-    head :ok
+
+    flash[:success] = "e-Mail wurde versandt! Bitte schau in deiner Mailbox nach."
+
+    redirect_to root_path
   end
 
   def show
