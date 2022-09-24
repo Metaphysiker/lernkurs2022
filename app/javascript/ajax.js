@@ -103,4 +103,19 @@ export function ajax() {
   })
   }
 
+  this.usersSignUp = function(account_id, email, first_name){
+    return new Promise(function(resolve, reject) {
+    $.ajax({
+      url: "/accounts/" + account_id + "/users_sign_up",
+      type: "POST",
+      headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
+      data: {account_id: account_id, email: email, first_name: first_name},
+    }).done(function(response) {
+      console.log("inside ajax");
+      console.log(response);
+      resolve(response);
+    });
+  })
+  }
+
 }

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get 'get_points_from_course'
       get 'check_if_medal_is_awarded'
       post 'send_results_to'
+      post 'users_sign_up'
       post 'save_progress'
     end
     collection do

@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-  before_action :set_account, only: %i[ show edit update destroy update_course_history update_excercise_history update_course_status get_points_from_course save_progress check_if_medal_is_awarded]
+  before_action :set_account, only: %i[ show edit update destroy update_course_history update_excercise_history update_course_status get_points_from_course save_progress check_if_medal_is_awarded users_sign_up]
 
   # GET /accounts or /accounts.json
   def index
@@ -145,6 +145,21 @@ class AccountsController < ApplicationController
   def send_results_to
     CourseCompletionMailer.send_results_to_email(params[:account_id], params[:course_id], params[:email1], params[:email2]).deliver_later
     head :ok
+  end
+
+  def users_sign_up
+    unless user_signed_in?
+      @user = User.new(email: params[:email])
+      if @user.save
+        @account.update(user_id: @user.id, first_name: params[:first_name])
+        sign_in @user
+        CourseMailer.welcome_mail(params[:email]).deliver_later
+      else
+        #render json: @user.errors
+      end
+    end
+
+    render json: "success"
   end
 
   def save_progress

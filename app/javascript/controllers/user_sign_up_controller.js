@@ -4,6 +4,9 @@ import * as Ajax from "ajax"
 
 export default class extends Controller {
   static targets = [ "name", "output", "email", "firstName" ]
+  static values = {
+    accountId: Number,
+  }
 
   connect(){
     //const email_input_field = document.getElementById('form');
@@ -23,17 +26,20 @@ export default class extends Controller {
   }
 
   signup(){
+    console.log("signup")
     var self = this;
 
     var ajax = new Ajax.ajax();
     ajax.usersSignUp(
+      this.accountIdValue,
       this.emailTarget.value,
       this.firstNameTarget.value)
     .then((response) => {
-      if(response){
-        self.emailTarget.style.background = 'pink';
+      console.log(response);
+      if(response == "success"){
+        //window.location.href = "/";
       } else {
-        self.emailTarget.style.background = 'lightGreen';
+        console.log("ERROR!");
       }
     });
 

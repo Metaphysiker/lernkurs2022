@@ -1,7 +1,9 @@
 <div class="container">
 
 <% unless user_signed_in? %>
-<div data-controller="user-sign-up">
+<div data-controller="user-sign-up"
+data-user-sign-up-account-id-value="<%= @account.id %>"
+>
 
   <p>
     <strong>Vorname</strong>
