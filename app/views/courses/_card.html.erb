@@ -1,4 +1,6 @@
-<div class="card h-100">
+<% course_status = @account.course_status(course.id.to_s) %>
+
+<div class="card h-100 <%= "bg-lightgreen-color" if course_status == "completed" %>">
   <% if course.image.attached? %>
     <%= image_tag course.image, class: "card-img-top", width: 300, height: 250, style: "object-fit: cover"  %>
   <% end %>
@@ -15,10 +17,9 @@
     </p>
     -->
   </div>
-  <div class="card-footer border-top bg-light text-center">
+  <div class="card-footer border-top text-center">
 
     <%# if @account.courses.key?(course.id.to_s) %>
-    <% course_status = @account.course_status(course.id.to_s) %>
     <% if course_status == "started" %>
 
     <% current_slide_id = @account.courses[course.id.to_s]["history"][-1] %>
