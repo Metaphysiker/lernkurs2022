@@ -148,18 +148,28 @@ class AccountsController < ApplicationController
   end
 
   def save_progress
+
     @account.update(first_name: params[:first_name]) unless params[:first_name].blank?
+
 
     if user_signed_in?
 
     else
-      new_user = User.create(email: params[:email], password: params[:password], password_confirmation: params[:password])
-      @account.update(user_id: new_user.id)
-      sign_in new_user
-      CourseMailer.welcome_mail(params[:email]).deliver_later
+
+      @user = User.new(user_params)
+
+      #new_user = User.create(email: params[:email], password: params[:password], password_confirmation: params[:password])
+      if @user.save
+        @account.update(user_id: @user.id)
+        sign_in @user
+        CourseMailer.welcome_mail(params[:email]).deliver_later
+        render json: @user
+      else
+        render json: @user.errors
+      end
+
     end
 
-    head :ok
   end
 
   def dashboard
