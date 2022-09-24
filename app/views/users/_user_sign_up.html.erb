@@ -1,0 +1,40 @@
+<div class="container">
+
+
+<% unless user_signed_in? %>
+<div data-controller="user-sign-up">
+  <h1 class="my-3"><%= t("helpers.submit.create", model: User.model_name.human) %></h1>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text text-center" id="basic-first-name" style="min-width: 200px;">Vorname: </span>
+    <input type="text" class="form-control" placeholder="Max, Julia ..." aria-label="name" aria-describedby="basic-first-name" data-user-sign-up-target="firstName">
+  </div>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text text-center" id="basic-email" style="min-width: 200px;">e-Mail: </span>
+    <input type="text" class="form-control" placeholder="max.muster@email.com" aria-label="name" aria-describedby="basic-email" data-user-sign-up-target="email">
+  </div>
+
+  <div data-user-sign-up-target="output">
+  </div>
+
+  <button data-action="click->user-sign-up#signup" class="btn btn-primary">
+    Fortschritt speichern
+  </button>
+  <p class="my-5">
+    &nbsp;
+  </p>
+</div>
+<% else %>
+
+<div class="border rounded p-2 text-center">
+  <p>
+    <strong>Du bist angemeldet!</strong>
+  </p>
+  <p>
+    Deine Fortschritte werden laufend gespeichert.
+  </p>
+</div>
+
+<% end %>
+</div>
