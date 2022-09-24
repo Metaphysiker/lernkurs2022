@@ -7,9 +7,22 @@
   <div class="card-body">
     <h4 class="card-title"><%= course.name %></h4>
     <hr>
+    <% if course_status == "completed" %>
+      <p class="text-center">
+        <strong>Kurs abgeschlossen!</strong>
+        <br>
+        <%= l(@account.course_completion_date(course.id)) %>
+
+      </p>
+        <% if @account.check_if_medal_is_awarded(course.id) %>
+          <hr />
+          <%= render "courses/medal_congratulation", course: course %>
+        <% end %>
+    <% else %>
     <p class="card-text">
       <%= course.description %>
     </p>
+    <% end %>
     <!--
     <hr>
     <p class="card-text">
@@ -33,13 +46,6 @@
       <%= link_to "Weitermachen!", course_with_sort_path(course, current_sort_of_slide), class: "action-button-i-color mt-4" %>
 
     <% elsif course_status == "completed" %>
-    <p>
-      <strong>Kurs abgeschlossen!</strong>
-    </p>
-    <% if @account.check_if_medal_is_awarded(course.id) %>
-    <hr />
-      <%= render "courses/medal_congratulation", course: course %>
-    <% end %>
       <%= link_to "Erneut anfangen", course_with_sort_path(course, 0), class: "action-button-green-color" %>
     <% else %>
       <%= link_to "Loslegen!", course_path(course), class: "action-button-green-color" %>
