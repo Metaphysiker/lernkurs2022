@@ -5,15 +5,17 @@
     <%= image_tag course.image, class: "card-img-top", width: 300, height: 250, style: "object-fit: cover"  %>
   <% end %>
   <div class="card-body">
-    <h4 class="card-title"><%= course.name %></h4>
+    <h4 class="card-title text-center"><%= course.name %></h4>
     <hr>
     <% if course_status == "completed" %>
+    <p class="text-center">
+      <strong>Kurs abgeschlossen!</strong>
+    </p>
       <p class="text-center">
-        <strong>Kurs abgeschlossen!</strong>
-        <br>
-        <%= l(@account.course_completion_date(course.id)) %>
-        <br>
         <%= @account.course_points(course.id) %> von <%= @account.total_possible_course_points(course.id) %> Punkten gesammelt.
+      </p>
+      <p class="text-center">
+        <%= l(@account.course_completion_date(course.id)) %>
       </p>
       <div class="text-center">
         <% if @account.check_if_medal_is_awarded(course.id) %>
