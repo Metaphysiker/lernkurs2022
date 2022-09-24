@@ -7,7 +7,8 @@ export default class extends Controller {
   static values = {
     accountId: Number,
     firstNameCorrect: Boolean,
-    emailCorrect: Boolean
+    emailCorrect: Boolean,
+    redirectAfterSignUp: Boolean
   }
 
   connect(){
@@ -38,7 +39,15 @@ export default class extends Controller {
     .then((response) => {
       console.log(response);
       if(response.status == "success"){
-        window.location.href = "/users/successfully_signed_in";
+
+        if(self.redirectAfterSignUpValue){
+          window.location.href = "/users/successfully_signed_in";
+        } else {
+          self.showTarget(self.outputTarget);
+          self.hideTarget(this.saveButtonTarget);
+          //this.saveButtonTarget.disabled = false;
+          //self.outputTarget.textContent = "Registrierung war erfolgreich!"
+        }
       } else {
         console.log("ERROR!");
       }
@@ -49,14 +58,20 @@ export default class extends Controller {
   mainCheck(){
     console.log("maincheck");
     if(this.emailCorrectValue && this.firstNameCorrectValue){
-      this.showTarget(this.saveButtonTarget);
+      //this.showTarget(this.saveButtonTarget);
+      this.saveButtonTarget.disabled = false;
     } else {
-      this.hideTarget(this.saveButtonTarget);
+      this.saveButtonTarget.disabled = true;
+      //this.hideTarget(this.saveButtonTarget);
     }
   }
 
   changeBackgroundOfTarget(target, color){
     target.style.background = color;
+  }
+
+  disableButton(target, boolean){
+    target.disabled = boolean
   }
 
 

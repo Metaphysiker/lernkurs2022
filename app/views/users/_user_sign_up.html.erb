@@ -1,10 +1,17 @@
+<% if local_assigns.has_key? :redirect_after_sign_up %>
+    <% redirect_after_sign_up = redirect_after_sign_up %>
+  <% else %>
+    <% redirect_after_sign_up = "1" %>
+<% end %>
+<%#= redirect_after_sign_up %>
 <div class="container">
 
 <% unless user_signed_in? %>
 <div data-controller="user-sign-up"
 data-user-sign-up-account-id-value="<%= @account.id %>"
-data-user-sign-up-first-name-correct="0"
-data-user-sign-up-email-correct="0"
+data-user-sign-up-first-name-correct-value="0"
+data-user-sign-up-email-correct-value="0"
+data-user-sign-up-redirect-after-sign-up-value="<%= raw redirect_after_sign_up %>"
 >
 
   <p>
@@ -24,11 +31,12 @@ data-user-sign-up-email-correct="0"
     e-Mail ist bereits vergeben.
   </div>
 
-  <div data-user-sign-up-target="output">
+  <div class="my-4 alert alert-success" data-user-sign-up-target="output" style="display: none;">
+    Registrierung war erfolgreich!
   </div>
 
-  <div class="" style="display: none;" data-user-sign-up-target="saveButton">
-    <button data-action="click->user-sign-up#signup" class="btn btn-primary">
+  <div class="" >
+    <button data-user-sign-up-target="saveButton" disabled data-action="click->user-sign-up#signup" class="btn btn-primary">
       <%= t("save") %>
     </button>
   </div>

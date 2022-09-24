@@ -2,7 +2,7 @@
   <p class="text-center">
     Möchtest du deine Fortschritte speichern?
   </p>
-  <%= render "users/user_sign_up" %>
+  <%= render "users/user_sign_up", redirect_after_sign_up: "0" %>
 <% else %>
 <div class="border rounded p-2 text-center">
   <p>
