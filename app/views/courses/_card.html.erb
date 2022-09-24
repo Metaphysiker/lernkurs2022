@@ -12,7 +12,8 @@
         <strong>Kurs abgeschlossen!</strong>
         <br>
         <%= l(@account.course_completion_date(course.id)) %>
-
+        <br>
+        <%= @account.course_points(course.id) %> von <%= @account.total_possible_course_points(course.id) %> Punkten gesammelt.
       </p>
       <div class="text-center">
         <% if @account.check_if_medal_is_awarded(course.id) %>
