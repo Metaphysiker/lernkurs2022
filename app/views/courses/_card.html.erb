@@ -14,10 +14,12 @@
         <%= l(@account.course_completion_date(course.id)) %>
 
       </p>
+      <div class="text-center">
         <% if @account.check_if_medal_is_awarded(course.id) %>
           <hr />
           <%= render "courses/medal_congratulation", course: course %>
         <% end %>
+      </div>
     <% else %>
     <p class="card-text">
       <%= course.description %>
