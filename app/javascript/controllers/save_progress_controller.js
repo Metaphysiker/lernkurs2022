@@ -9,7 +9,7 @@ export default class extends Controller {
   }
 
   save_progress(){
-    console.log("save_progress")
+    //console.log("save_progress")
     var error_string = "";
     var problems_count = 0;
 
