@@ -26,10 +26,10 @@
     </div>
     <div data-checkbox-exercise-target="solution" data-value="<%= checkbox_exercise.checkboxes.where(correct_answer: "yes").pluck(:id).join(",") %>" >
     </div>
+    <%= raw checkbox_exercise.content %>
 
     <fieldset>
         <legend>
-          <%= raw checkbox_exercise.content %>
         </legend>
 
         <div class="row">
