@@ -29,4 +29,15 @@ export default class extends Controller {
   }, 2500);
 
   }
+
+  save_answer({ detail: { text } }) {
+    this.textTarget.innerHTML = text;
+    //this.greet();
+    modal.show();
+
+    setTimeout(function(){
+      modal.hide();
+  }, 2500);
+
+  }
 }
