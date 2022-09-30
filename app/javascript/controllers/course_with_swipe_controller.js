@@ -33,6 +33,7 @@ export default class extends Controller {
 
         slider = new KeenSlider("#my-keen-slider", {
           initial: parseInt(self.slideSortValue),
+          disabled: false,
           //renderMode: 'custom',
           //slides: {
           //  perView: 1
@@ -63,6 +64,13 @@ export default class extends Controller {
             if(complete_course === "true"){
               console.log("course completed");
               ajax.updateCourseStatusOfAccount(self.accountIdValue, self.courseIdValue, "completed");
+            }
+
+            var sorting_exercise = $(slider.slides[slider.track.details.rel]).find(".slide").attr('data-sorting_exercise');
+            if(sorting_exercise === "true"){
+              console.log("sorting_exercise");
+              //ajax.updateCourseStatusOfAccount(self.accountIdValue, self.courseIdValue, "completed");
+              //slider.disabled = true;
             }
 
             self.updateNavigationButtons();

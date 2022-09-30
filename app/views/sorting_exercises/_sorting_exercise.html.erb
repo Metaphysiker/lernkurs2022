@@ -15,10 +15,10 @@
 
     >
 
-    <div data-sorting-exercise-target="sortable" data-keen-slider-clickable="true">
+    <div data-sorting-exercise-target="sortable">
 
       <% sorting_exercise.solution.split("\n").shuffle.each_with_index do |element, index| %>
-        <div data-id="<%= element %>" class="border p-1 my-0">
+        <div data-id="<%= element %>" class="border p-1 my-0" style="z-index: 500;" data-keen-slider-clickable="true">
           <div data-id="<%= element %>">
             <div class="row">
               <div class="col-1 border-end text-center">

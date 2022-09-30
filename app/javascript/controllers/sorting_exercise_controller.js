@@ -24,7 +24,7 @@ export default class extends Controller {
       console.log("let's goo!");
 
         sortable = sortablejs.Sortable.create(self.sortableTarget);
-
+        //self.sortableTarget.style.zIndex = "500";
 
 
     })
