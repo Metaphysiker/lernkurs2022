@@ -44,12 +44,14 @@ export default class extends Controller {
        if(self.solutionValue.includes(checkbox_value)){
 
          $("#" + this.id).prop("disabled", true);
+         $("#" + this.id + "-associated-div").addClass("bg-correct-color rounded");
 
 
          missing_answers.splice(missing_answers.indexOf(checkbox_value),1);
        } else {
          $("#" + this.id).prop( "checked", false );
          $("#" + this.id).prop("disabled", true);
+         $("#" + this.id + "-associated-div").addClass("bg-wrong-color rounded");
          wrong_answers.push(checkbox_value);
        }
     })

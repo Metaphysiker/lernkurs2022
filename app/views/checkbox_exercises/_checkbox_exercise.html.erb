@@ -37,7 +37,7 @@
             <div class="col-1 d-flex align-items-center mb-2">
               <input type="checkbox" class="<%= "#{dom_id(checkbox_exercise)}-checkboxes" %> mr-2" id="<%= "#{dom_id(checkbox_exercise)}-checkboxes-checkbox-#{checkbox.id}" %>" value="<%= checkbox.id %>" name="<%= checkbox.content %>">
             </div>
-            <div class="col-11 mb-2">
+            <div class="col-11 mb-2" id="<%= "#{dom_id(checkbox_exercise)}-checkboxes-checkbox-#{checkbox.id}-associated-div" %>">
               <label for="scales" class="">
                 <%= checkbox.content %>
               </label>
