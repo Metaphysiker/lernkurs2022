@@ -1,0 +1,44 @@
+<div class="container">
+  <div id="<%= dom_id sorting_exercise %>">
+    <p>
+      <%= raw sorting_exercise.content %>
+    </p>
+
+    <div data-controller="sorting-exercise"
+    data-sorting-exercise-account-id-value="<%= @account.id %>"
+    data-sorting-exercise-my-points-value="<%= sorting_exercise.point_system.total_possible_points unless sorting_exercise.point_system.blank? %>"
+    data-sorting-exercise-exercise-id-value="<%= sorting_exercise.id %>"
+    data-sorting-exercise-exercise-class-value="<%= sorting_exercise.class.name %>"
+    data-sorting-exercise-total-possible-points-value="<%= sorting_exercise.point_system.total_possible_points unless sorting_exercise.point_system.blank? %>"
+    data-sorting-exercise-points-deduction-for-mistake-value="<%= sorting_exercise.point_system.points_deduction_for_mistake unless sorting_exercise.point_system.blank? %>"
+    data-sorting-exercise-solution-value="<%= sorting_exercise.solution.split("\n") %>"
+
+    >
+
+    <div data-sorting-exercise-target="sortable" data-keen-slider-clickable="true">
+
+      <% sorting_exercise.solution.split("\n").shuffle.each_with_index do |element, index| %>
+        <div data-id="<%= element %>" class="border p-1 my-0">
+          <div data-id="<%= element %>">
+            <div class="row">
+              <div class="col-1 border-end text-center">
+                <i class="bi bi-chevron-expand"></i>
+              </div>
+              <div class="col-11">
+                <%= element %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+
+    </div>
+    <div class="d-grid gap-2">
+      <button data-action="click->sorting-exercise#check" class="action-button-green-color"><%= t("check-answer") %></button>
+    </div>
+
+    </div>
+
+  </div>
+</div>

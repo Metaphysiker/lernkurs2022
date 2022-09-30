@@ -5,6 +5,7 @@ class Slide < ApplicationRecord
   has_many :open_questions
   has_many :clozes
   has_many :cost_benefit_analyses
+  has_many :sorting_exercises
   has_many :comments, as: :commentable
 
   after_create :set_sort
@@ -39,6 +40,8 @@ class Slide < ApplicationRecord
       return self.clozes.first
     elsif self.cost_benefit_analyses.present?
       return self.cost_benefit_analyses.first
+    elsif self.sorting_exercises.present?
+      return self.sorting_exercises.first
     else
       return nil
     end

@@ -18,9 +18,6 @@ export default class extends Controller {
 
   connect(){
 
-    console.log("accountIdValue");
-    console.log(this.accountIdValue);
-
     ajax = new Ajax.ajax();
 
     var self = this;
@@ -46,6 +43,7 @@ export default class extends Controller {
             //$(self.testicusTarget).fadeIn(2999);
 
               $(self.keenSliderTarget).css('visibility', 'visible');
+              //$(self.keenSliderTarget).css("zIndex", -50);
 
 
             self.loaderTarget.textContent =

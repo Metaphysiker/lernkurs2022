@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :sorting_exercises
   resources :comments
   resources :cost_benefit_analyses
   resources :clozes

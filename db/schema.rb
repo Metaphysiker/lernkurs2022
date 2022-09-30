@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_23_060340) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_30_123201) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -180,6 +180,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_23_060340) do
     t.index ["course_id"], name: "index_slides_on_course_id"
   end
 
+  create_table "sorting_exercises", force: :cascade do |t|
+    t.text "content", default: ""
+    t.text "solution", default: ""
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "slide_id"
+    t.index ["slide_id"], name: "index_sorting_exercises_on_slide_id"
+  end
+
   create_table "user_roles", force: :cascade do |t|
     t.bigint "role_id"
     t.bigint "user_id"
@@ -212,4 +221,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_23_060340) do
   add_foreign_key "quiz_questions", "quizzes"
   add_foreign_key "quizzes", "slides"
   add_foreign_key "slides", "courses"
+  add_foreign_key "sorting_exercises", "slides"
 end

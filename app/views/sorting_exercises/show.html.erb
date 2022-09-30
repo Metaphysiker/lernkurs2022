@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @sorting_exercise %>
+
+<div>
+  <%= link_to "Edit this sorting exercise", edit_sorting_exercise_path(@sorting_exercise) %> |
+  <%= link_to "Back to sorting exercises", sorting_exercises_path %>
+
+  <%= button_to "Destroy this sorting exercise", @sorting_exercise, method: :delete %>
+</div>

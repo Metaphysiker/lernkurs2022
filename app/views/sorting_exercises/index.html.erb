@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Sorting exercises</h1>
+
+<div id="sorting_exercises">
+  <% @sorting_exercises.each do |sorting_exercise| %>
+    <%= render sorting_exercise %>
+    <p>
+      <%= link_to "Show this sorting exercise", sorting_exercise %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New sorting exercise", new_sorting_exercise_path %>

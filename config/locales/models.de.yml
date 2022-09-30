@@ -25,3 +25,6 @@ de:
       cost_benefit_analysis:
         one: Kosten-Nutzen-Übung
         other: Kosten-Nutzen-Übungen
+      sorting_exercise:
+        one: Sortier-Übung
+        other: Sortier-Übungen
