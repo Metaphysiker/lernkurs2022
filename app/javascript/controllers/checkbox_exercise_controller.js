@@ -17,7 +17,6 @@ export default class extends Controller {
   }
 
   connect(){
-    console.log(this.solutionValue);
     import("jquery_with_setup").then(jquery_with_setup => {
 
     });
@@ -29,6 +28,7 @@ export default class extends Controller {
   }
 
   check() {
+    console.log("check")
     var self = this;
     console.log(this.myPointsValue);
 
@@ -45,6 +45,7 @@ export default class extends Controller {
 
          $("#" + this.id).prop("disabled", true);
 
+
          missing_answers.splice(missing_answers.indexOf(checkbox_value),1);
        } else {
          $("#" + this.id).prop( "checked", false );
@@ -54,8 +55,16 @@ export default class extends Controller {
     })
 
     //check if all correct answers are present and whether there are no wrong answers present
-    if((missing_answers.length === 0) && (wrong_answers.length === 0)){
-      console.log("all answers correct");
+    if(missing_answers.length === 0){
+      //console.log("all answers correct");
+
+      for (let i = 0; i < wrong_answers.length; i++) {
+        //console.log("punishing inside loop");
+
+        self.punishForMistake();
+
+        //console.log(self.myPointsValue);
+      }
 
       var ajax = new Ajax.ajax();
       ajax.updateExerciseHistoryOfAccount(this.accountIdValue, this.exerciseClassValue, this.exerciseIdValue, this.myPointsValue)
@@ -72,13 +81,17 @@ export default class extends Controller {
 
 
     } else {
-      if((this.myPointsValue - this.pointsDeductionForMistakeValue) < 0){
-        this.myPointsValue = 0
-      } else {
-        this.myPointsValue = this.myPointsValue - this.pointsDeductionForMistakeValue
-      }
+      self.punishForMistake();
     }
 
-
   }
+
+  punishForMistake(){
+    if((this.myPointsValue - this.pointsDeductionForMistakeValue) < 0){
+      this.myPointsValue = 0
+    } else {
+      this.myPointsValue = this.myPointsValue - this.pointsDeductionForMistakeValue
+    }
+  }
+
 }
