@@ -5,6 +5,7 @@ import * as Ajax from "ajax"
 
 var slider;
 var ajax;
+var slider_options;
 
 export default class extends Controller {
   static targets = [ "slide", "name", "exercise", "output", "accountId", "courseId", "slideId","slideSort", "nextSlideId", "previousSlideId", "navigationButtons", "currentSlide", "total_slides_count", "prev_button", "next_button", "loader", "keenSlider", "testicus" ]
@@ -30,7 +31,7 @@ export default class extends Controller {
 
         ajax.updateCourseHistoryOfAccount(this.accountIdValue, this.courseIdValue, this.slideIdValue);
 
-        var slider_options = {
+        slider_options = {
           initial: parseInt(self.slideSortValue),
           drag: true,
           //renderMode: 'custom',
@@ -38,7 +39,7 @@ export default class extends Controller {
           //  perView: 1
           //},
           created() {
-            console.log("keen slider created");
+            //console.log("keen slider created");
 
             //$(self.testicusTarget).fadeIn(2999);
 
@@ -50,9 +51,6 @@ export default class extends Controller {
               ``;
 
             //self.adjustHeightofSlide();
-          },
-          updated(){
-            console.log("updated");
           },
           slideChanged() {
 
@@ -77,34 +75,12 @@ export default class extends Controller {
 
             self.adjustHeightofSlide();
 
-
               var disable_drag = $(slider.slides[slider.track.details.rel]).find(".slide").attr('data-disable_drag');
-              console.log(disable_drag);
               if(disable_drag === "yes"){
-                setTimeout(function(){
-                  console.log("boom");
-                  console.log("disable_drag yes");
-                  if(slider_options["drag"] == true){
-                    slider_options["drag"] = false;
-                    slider.update(slider_options);
-                  }
-
-                }, 100)
-
+                self.updateSlider(false);
               } else {
-                setTimeout(function(){
-                  console.log("boom");
-                  console.log("disable_drag yes");
-                  if(slider_options["drag"] == false){
-                    slider_options["drag"] = true;
-                    slider.update(slider_options);
-                  }
-
-                }, 100)
+                self.updateSlider(true);
               }
-
-
-
           },
         }
 
@@ -164,6 +140,18 @@ export default class extends Controller {
     const nextTitle = 'My new page title';
     const nextState = { additionalInformation: 'Updated the URL with JS' };
     window.history.replaceState(nextState, null, nextURL);
+  }
+
+  updateSlider(drag){
+    setTimeout(function(){
+      console.log("boom");
+      console.log("disable_drag yes");
+      if(slider_options["drag"] == !drag){
+        slider_options["drag"] = drag;
+        slider.update(slider_options);
+      }
+
+    }, 300)
   }
 
   prev() {
