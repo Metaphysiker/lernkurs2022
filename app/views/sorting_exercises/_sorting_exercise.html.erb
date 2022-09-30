@@ -11,15 +11,15 @@
     data-sorting-exercise-exercise-class-value="<%= sorting_exercise.class.name %>"
     data-sorting-exercise-total-possible-points-value="<%= sorting_exercise.point_system.total_possible_points unless sorting_exercise.point_system.blank? %>"
     data-sorting-exercise-points-deduction-for-mistake-value="<%= sorting_exercise.point_system.points_deduction_for_mistake unless sorting_exercise.point_system.blank? %>"
-    data-sorting-exercise-solution-value="<%= sorting_exercise.solution.split("\n") %>"
+    data-sorting-exercise-solution-value="<%= sorting_exercise.solution.split("\n").map { |line| line.to_s.parameterize } %>"
 
     >
 
     <div data-sorting-exercise-target="sortable">
 
       <% sorting_exercise.solution.split("\n").shuffle.each_with_index do |element, index| %>
-        <div data-id="<%= element %>" class="border p-1 my-0">
-          <div data-id="<%= element %>">
+        <div data-id="<%= element.parameterize %>" class="border p-1 my-0">
+          <div>
             <div class="row">
               <div class="col-1 border-end text-center">
                 <i class="bi bi-chevron-expand"></i>

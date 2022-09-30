@@ -21,7 +21,6 @@ export default class extends Controller {
 
     //import("jquery_with_setup");
     import("sortablejs").then(sortablejs => {
-      console.log("let's goo!");
 
         sortable = sortablejs.Sortable.create(self.sortableTarget);
         //self.sortableTarget.style.zIndex = "500";
@@ -43,6 +42,7 @@ export default class extends Controller {
         error_count++;
         document.querySelector('[data-id="' + this.solutionValue[i] +'"]').classList.add("bg-wrong-color");
       } else {
+        document.querySelector('[data-id="' + this.solutionValue[i] +'"]').classList.remove("bg-wrong-color");
         document.querySelector('[data-id="' + this.solutionValue[i] +'"]').classList.add("bg-correct-color");
       }
     }
