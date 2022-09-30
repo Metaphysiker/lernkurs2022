@@ -1,4 +1,9 @@
 <div class="container slide slide_id_<%= slide.id %>" data-value="<%= slide.id %>" data-complete_course="<%= slide.course_complete %>" >
+  <div class="row">
+    <div class="col-12 offset-md-3 col-md-8 offset-lg-3 col-lg-6">
+
+
+
 <%= raw slide.content %>
 
 <% if slide.exercise %>
@@ -79,4 +84,6 @@
       <% end %>
   </div>
 <% end %>
+    </div>
+  </div>
 </div>
