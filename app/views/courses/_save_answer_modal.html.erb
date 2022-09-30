@@ -1,15 +1,13 @@
-<!--
-<div data-controller="celebration">
-//-->
+
 
 
   <!-- Modal -->
-  <div class="modal fade" id="celebrationModal" tabindex="-1" aria-labelledby="celebrationModalLabel" aria-hidden="true">
+  <div class="modal fade" id="saveAnswerModal" tabindex="-1" aria-labelledby="saveAnswerModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="celebrationModalLabel">Richtige Antwort!</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Schliessen"></button>
+          <h5 class="modal-title" id="saveAnswerModalLabel">Gespeichert!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="success-checkmark">
@@ -22,9 +20,9 @@
           </div>
 
           <div class="text-center">
-            <span data-celebration-target="points">
-              0
-            </span> Punkte erhalten!
+            <span data-celebration-target="message">
+              Antwort wurde gespeichert!
+            </span>
           </div>
 
         </div>

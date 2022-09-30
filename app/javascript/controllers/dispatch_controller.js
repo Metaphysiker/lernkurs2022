@@ -9,8 +9,18 @@ export default class extends Controller {
       `Hello, ${this.nameTarget.value}!`
   }
 
+  save_answer({ detail: { message} }){
+    console.log("save_answer");
+    const save_answer_event = new CustomEvent('save-answer', {
+      detail: {
+        message: message
+      }
+    })
+    window.dispatchEvent(save_answer_event);
+  }
+
   finish_exercise({ detail: { points } }){
-    console.log("finish_exercise");
+    //console.log("finish_exercise");
     const custom_event = new CustomEvent('correct-answer', {
       detail: {
         points: points

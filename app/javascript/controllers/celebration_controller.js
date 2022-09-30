@@ -1,16 +1,22 @@
 // celebration_controller.js
 import { Controller } from "@hotwired/stimulus"
 
-var modal;
+var celebration_modal;
+var save_answer_modal;
 
 export default class extends Controller {
-  static targets = [ "name", "output", "points" ]
+  static targets = [ "name", "output", "points", "message" ]
 
   connect(){
 
     import("bootstrap").then(bootstrap => {
 
-      modal = new bootstrap.Modal(document.getElementById('exampleModal'),
+      celebration_modal = new bootstrap.Modal(document.getElementById('celebrationModal'),
+      {
+        keyboard: false
+      });
+
+      save_answer_modal = new bootstrap.Modal(document.getElementById('saveAnswerModal'),
       {
         keyboard: false
       });
@@ -22,21 +28,26 @@ export default class extends Controller {
   celebrate({ detail: { points } }) {
     this.pointsTarget.innerHTML = points;
     //this.greet();
-    modal.show();
+    celebration_modal.show();
 
     setTimeout(function(){
-      modal.hide();
+      celebration_modal.hide();
   }, 2500);
 
   }
 
-  save_answer({ detail: { text } }) {
-    this.textTarget.innerHTML = text;
+  save_answer({ detail: { message } }) {
+
+    if (message == null || message === 'undefined') {
+      message = "Deine Antwort wurde gespeichert!";
+    }
+
+    this.messageTarget.innerHTML = message;
     //this.greet();
-    modal.show();
+    save_answer_modal.show();
 
     setTimeout(function(){
-      modal.hide();
+      save_answer_modal.hide();
   }, 2500);
 
   }

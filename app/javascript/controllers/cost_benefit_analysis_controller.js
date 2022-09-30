@@ -89,12 +89,14 @@ export default class extends Controller {
     var ajax = new Ajax.ajax();
     ajax.updateExerciseHistoryOfAccount(this.accountIdTarget.getAttribute('data-value'), this.exerciseClassTarget.getAttribute('data-value'), this.exerciseIdTarget.getAttribute('data-value'), 0, this.fullTableTarget.outerHTML)
     .then(() => {
-      const custom_event = new CustomEvent('correct-answer', {
+
+      const save_answer = new CustomEvent('save_answer', {
         detail: {
-          points: 0
+          message: "Deine Antwort wurde gespeichert!"
         }
       })
-      window.dispatchEvent(custom_event);
+      window.dispatchEvent(save_answer);
+
     });
 
 

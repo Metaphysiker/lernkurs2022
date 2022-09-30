@@ -8,7 +8,8 @@
   data-action="
   finish_exercise@window->dispatch#finish_exercise
   correct-answer@window->points#updateCounter
-  celebrate@window->celebration#celebrate"
+  celebrate@window->celebration#celebrate
+  save_answer@window->celebration#save_answer"
   data-course-with-swipe-account-id-value="<%= @account.id %>"
   data-course-with-swipe-course-id-value="<%= course.id %>"
   data-course-with-swipe-slide-id-value="<%= slide.id %>"
@@ -127,6 +128,7 @@
   </div>
 
 <%= render "courses/celebration_modal" %>
+<%= render "courses/save_answer_modal" %>
 
 <% if policy(Slide.new(course_id: course.id)).create? %>
   <div class="container">

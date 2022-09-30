@@ -10,8 +10,6 @@ export default class extends Controller {
     var ajax = new Ajax.ajax();
     ajax.getPointsFromCourse(this.accountIdTarget.getAttribute('data-value'), this.courseIdTarget.getAttribute('data-value'))
     .then((response) => {
-      console.log("getPointsFromCourse");
-      console.log(response);
       this.incrementallyUpdate(this.outputTarget, response);
     });
 
@@ -22,22 +20,15 @@ export default class extends Controller {
 
   incrementallyUpdate(element, points){
 
-    console.log("incrementallyUpdate")
-    console.log(this.outputTarget.innerHTML);
     var current_value = parseInt(this.outputTarget.innerHTML);
     var target_value = points;
-    console.log("current value: " + current_value);
-    console.log("target value: " + target_value);
-
-    console.log(this.outputTargets);
 
     //var current_value = parseInt(this.outputTarget.innerHTML);
 
     var myPromise = async (milli_seconds = 1000) => new Promise(resolve => setTimeout(resolve, milli_seconds));
 
     while (current_value != target_value) {
-      console.log("current value: " + current_value);
-      console.log("target value: " + target_value);
+
       if(current_value < target_value){
         current_value = parseInt(this.outputTarget.innerHTML) + 1;
 
