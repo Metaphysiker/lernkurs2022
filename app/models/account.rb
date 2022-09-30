@@ -70,4 +70,12 @@ class Account < ApplicationRecord
 
   end
 
+  def all_points
+    points = 0
+    courses.keys.each do |key|
+      points += course_points(key.to_i) if key.to_i.is_a? Integer
+    end
+    points
+  end
+
 end

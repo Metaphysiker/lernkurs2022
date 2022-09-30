@@ -16,21 +16,33 @@
       <p class="text-center">
           <%= raw cost_benefit_analysis.content %>
       </p>
-      <div class="border rounded p-2 my-2">
-        <p class="text-center">
-          <strong>Anleitung</strong>
+      <div class="mb-3 border rounded p-3">
+        <p>
+          <strong>Anleitung: </strong>
         </p>
         <p>
-          1. <strong>Pro Linie</strong> einen Nutzen oder Kosten angeben
-          <br />
-          2. Dahinter einen Doppelpunkt setzen ":"
-          <br />
-          3. Dann einen Wert angeben, wie "5" oder "-11"
-          <br />
-          <strong>Beispiel: </strong> Weniger Selbstbestimmung : -9
+          Überlege dir die Nutzen und Schäden und weise ihnen einen Wert zu.
+        </p>
+        <p>
+          1. Pro Linie kannst du einen Eintrag machen.
+        </p>
+        <p>
+          2. Mach am Ende einen Doppelpunkt ":" und schreib den Wert hin.
+        </p>
+        <p>
+          <strong> Zum Beispiel: </strong><br>
+          Mehr Gesundheit dank Krankenkassen : 12
+        </p>
+        <p>
+          Mehr Frustration wegen höheren Steuern : -5
+        </p>
+        <p>
+          3. Neue Linie für den nächsten Eintrag machen.
+        </p>
+        <p>
+          4. Wenn du fertig bist, auf "Antwort speichern" drücken.
         </p>
       </div>
-
       <div class="mb-3">
         <label for="" class="form-label">Nutzen</label>
         <textarea class="form-control" data-cost-benefit-analysis-target="benefitInput" type="text" rows="5" placeholder="Nutzen 1 : 5 &#10;Nutzen 2 : 3 &#10;Nutzen 3 : 8 &#10;Nutzen 4 : 12"></textarea>
@@ -51,15 +63,13 @@
 
         </tbody>
       </table>
-      <p>
 
+
+      <p>
         <button data-action="click->cost-benefit-analysis#save" class="btn btn-primary">
           <%= t('save_answer') %>
         </button>
       </p>
-      <div style="min-height: 500px;">
-
-      </div>
 
     </div>
 

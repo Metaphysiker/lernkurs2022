@@ -40,7 +40,6 @@ export default class extends Controller {
 
   convertInputToTable(){
 
-    console.log(this.benefitInputTarget);
     var benefit_rows = this.benefitInputTarget.value.split(/\r?\n/);
     var cost_rows = this.costInputTarget.value.split(/\r?\n/);
 
@@ -72,8 +71,8 @@ export default class extends Controller {
 
     var last_tr = `
     <tr>
-      <td>Total: </td>
-      <td>${total_value}</td>
+      <td><strong>Total: </strong></td>
+      <td><strong>${total_value}</strong></td>
     </tr>
     `;
 

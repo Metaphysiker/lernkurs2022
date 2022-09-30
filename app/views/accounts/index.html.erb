@@ -7,7 +7,7 @@
   <% @accounts.order(created_at: :desc).each do |account| %>
     <%#= render account %>
     <p>
-      <%= link_to "#{account.id}", account %> - <%= l(account.created_at) %> - <%= account.visited_courses_count %>
+      <%= link_to "#{account.id}", account %> - <%= l(account.created_at) %> - <%= account.visited_courses_count %> - <%= account.all_points %> - <%= account.first_name %>
     </p>
   <% end %>
 </div>
