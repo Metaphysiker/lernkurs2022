@@ -30,10 +30,9 @@ export default class extends Controller {
 
         ajax.updateCourseHistoryOfAccount(this.accountIdValue, this.courseIdValue, this.slideIdValue);
 
-
-        slider = new KeenSlider("#my-keen-slider", {
+        var slider_options = {
           initial: parseInt(self.slideSortValue),
-          disabled: false,
+          drag: true,
           //renderMode: 'custom',
           //slides: {
           //  perView: 1
@@ -52,7 +51,11 @@ export default class extends Controller {
 
             //self.adjustHeightofSlide();
           },
+          updated(){
+            console.log("updated");
+          },
           slideChanged() {
+
             self.slideSortValue = slider.track.details.rel;
             self.currentSlideTarget.textContent = slider.track.details.rel + 1;
 
@@ -66,12 +69,7 @@ export default class extends Controller {
               ajax.updateCourseStatusOfAccount(self.accountIdValue, self.courseIdValue, "completed");
             }
 
-            var sorting_exercise = $(slider.slides[slider.track.details.rel]).find(".slide").attr('data-sorting_exercise');
-            if(sorting_exercise === "true"){
-              console.log("sorting_exercise");
-              //ajax.updateCourseStatusOfAccount(self.accountIdValue, self.courseIdValue, "completed");
-              //slider.disabled = true;
-            }
+
 
             self.updateNavigationButtons();
 
@@ -80,8 +78,37 @@ export default class extends Controller {
             self.adjustHeightofSlide();
 
 
+              var disable_drag = $(slider.slides[slider.track.details.rel]).find(".slide").attr('data-disable_drag');
+              console.log(disable_drag);
+              if(disable_drag === "yes"){
+                setTimeout(function(){
+                  console.log("boom");
+                  console.log("disable_drag yes");
+                  if(slider_options["drag"] == true){
+                    slider_options["drag"] = false;
+                    slider.update(slider_options);
+                  }
+
+                }, 100)
+
+              } else {
+                setTimeout(function(){
+                  console.log("boom");
+                  console.log("disable_drag yes");
+                  if(slider_options["drag"] == false){
+                    slider_options["drag"] = true;
+                    slider.update(slider_options);
+                  }
+
+                }, 100)
+              }
+
+
+
           },
-        });
+        }
+
+        slider = new KeenSlider("#my-keen-slider", slider_options);
 
         this.waitForVariableToBeDefined(slider, self.adjustHeightofSlide);
         //this.waitForVariableToBeDefined(slider, self.updateNavigationButtons);

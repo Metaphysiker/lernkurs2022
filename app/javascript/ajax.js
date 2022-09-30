@@ -8,7 +8,7 @@ export function ajax() {
       headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
       data: {course_id: course_id, status: status},
     }).done(function(response) {
-      console.log(response);
+      //console.log(response);
     });
   },
   this.updateCourseHistoryOfAccount = function(account_id, course_id, slide_id) {
@@ -18,7 +18,7 @@ export function ajax() {
       headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
       data: {course_id: course_id, slide_id: slide_id},
     }).done(function(response) {
-      console.log(response);
+      //console.log(response);
     });
   },
   this.updateExerciseHistoryOfAccount = function(account_id, exercise_class, exercise_id, points, answer = "") {

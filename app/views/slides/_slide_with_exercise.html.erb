@@ -1,11 +1,11 @@
-<div class="container slide slide_id_<%= slide.id %>" data-value="<%= slide.id %>" data-complete_course="<%= slide.course_complete %>" >
+<div class="container slide slide_id_<%= slide.id %>" data-value="<%= slide.id %>" data-complete_course="<%= slide.course_complete %>" data-disable_drag="<%= slide.exercise.present? && slide.exercise.model_name.singular == "sorting_exercise" ? "yes":"no" %>" >
   <div class="row">
-    <div class="col-12 offset-md-3 col-md-8 offset-lg-3 col-lg-6">
+    <div class="col-12 offset-md-1 col-md-10 offset-lg-3 col-lg-6">
 
 <%= raw slide.content %>
 
 <% if slide.exercise %>
-  <%= render "#{slide.exercise.model_name.collection}/#{slide.exercise.model_name.element}", {"#{slide.exercise.model_name.element}": slide.exercise } %>
+    <%= render "#{slide.exercise.model_name.collection}/#{slide.exercise.model_name.element}", {"#{slide.exercise.model_name.element}": slide.exercise } %>
 <% end %>
 <%#= render "quizzes/quiz", quiz: slide.quizzes.first unless slide.quizzes.empty?  %>
 
