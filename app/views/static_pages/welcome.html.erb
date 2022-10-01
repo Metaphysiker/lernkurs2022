@@ -4,7 +4,7 @@
 <div class="container">
   <%= render "layouts/flash_messages" %>
 
-      <h2 class="text-center my-3">Ethik-Kurse</h2>
+      <h1 class="text-center my-3"><%= @page_title %></h1>
       <%= render "courses/courses_by_group", courses: Course.where(group: "ethik").order(:sort) %>
       <% if false %>
         <h2 class="text-center my-3">Klima-Gerechtigkeit</h2>

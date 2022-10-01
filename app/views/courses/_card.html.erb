@@ -5,7 +5,7 @@
     <%= image_tag course.image, class: "card-img-top", width: 300, height: 250, style: "object-fit: cover"  %>
   <% end %>
   <div class="card-body">
-    <h4 class="card-title text-center"><%= course.name %></h4>
+    <h2 class="card-title text-center" style="font-size: 1.5rem;"><%= course.name %></h2>
     <hr>
     <% if course_status == "completed" %>
     <p class="text-center">
