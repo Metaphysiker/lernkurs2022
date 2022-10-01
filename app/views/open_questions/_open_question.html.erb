@@ -15,10 +15,10 @@
     <p>
       <%= raw open_question.content %>
     </p>
+    <div class="text-center my-3">
+      <input data-open-question-target="input" class="form-control form-control-lg" type="text" placeholder="Antwort eingeben" aria-label=".form-control-lg">
+    </div>
 
-    <p>
-      <input data-open-question-target="input" type="text">
-    </p>
     <p>
       <button data-action="click->open-question#check" class="action-button-green-color">
         <%= t("check-answer") %>

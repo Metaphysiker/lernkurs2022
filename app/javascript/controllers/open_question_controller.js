@@ -11,7 +11,7 @@ export default class extends Controller {
     exerciseId: Number,
     exerciseClass: String,
     myPoints: Number,
-    solution: String
+    solution: Array
   }
 
   connect(){
@@ -26,23 +26,35 @@ export default class extends Controller {
   }
 
   check() {
-    console.log(this.solutionValue);
-    console.log(this.inputTarget.value.toLowerCase().replace(/\s/g,''));
-    if(this.solutionValue.includes(this.inputTarget.value.toLowerCase().replace(/\s/g,''))){
+    var self = this;
+    var correct_answers = 0;
+    var answer = this.inputTarget.value.toLowerCase().replace(/\s/g,'');
+    for (let i = 0; i < this.solutionValue.length; i++) {
+      if(this.solutionValue[i]===answer){
+        correct_answers++;
+      }
+    }
 
-        var ajax = new Ajax.ajax();
-        ajax.updateExerciseHistoryOfAccount(this.accountIdValue, this.exerciseClassValue, this.exerciseIdValue, this.myPointsValue)
-        .then(() => {
-          const finish_exercise = new CustomEvent('finish_exercise', {
-            detail: {
-              points: this.myPointsValue
-            }
-          })
-          window.dispatchEvent(finish_exercise);
-        });
-
+    if(correct_answers>0){
+      this.inputTarget.classList.add("bg-correct-color");
+      var ajax = new Ajax.ajax();
+      ajax.updateExerciseHistoryOfAccount(this.accountIdValue, this.exerciseClassValue, this.exerciseIdValue, this.myPointsValue)
+      .then(() => {
+        const finish_exercise = new CustomEvent('finish_exercise', {
+          detail: {
+            points: this.myPointsValue
+          }
+        })
+        window.dispatchEvent(finish_exercise);
+      });
     } else {
+      this.inputTarget.classList.add("bg-wrong-color");
+      setTimeout(function(){
+        self.inputTarget.classList.remove("bg-wrong-color");
+      }, 1000)
+
       this.punishForMistake();
+      this.inputTarget.value = "";
     }
 
   }
