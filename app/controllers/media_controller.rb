@@ -4,26 +4,30 @@ class MediaController < ApplicationController
 
   # GET /media or /media.json
   def index
+    authorize Medium
     @media = Medium.all
   end
 
   # GET /media/1 or /media/1.json
   def show
+    authorize @medium
   end
 
   # GET /media/new
   def new
     @medium = Medium.new
+    authorize @medium
   end
 
   # GET /media/1/edit
   def edit
+    authorize @medium
   end
 
   # POST /media or /media.json
   def create
     @medium = Medium.new(medium_params)
-
+    authorize @medium
     respond_to do |format|
       if @medium.save
         format.html { redirect_to medium_url(@medium), notice: "Medium was successfully created." }
@@ -37,6 +41,7 @@ class MediaController < ApplicationController
 
   # PATCH/PUT /media/1 or /media/1.json
   def update
+    authorize @medium
     respond_to do |format|
       if @medium.update(medium_params)
         format.html { redirect_to medium_url(@medium), notice: "Medium was successfully updated." }
@@ -50,6 +55,7 @@ class MediaController < ApplicationController
 
   # DELETE /media/1 or /media/1.json
   def destroy
+    authorize @medium
     @medium.destroy
 
     respond_to do |format|
