@@ -3,32 +3,25 @@
     <%= raw cloze.content %>
   </p>
 
-  <p>
-    <%= cloze.correct_answer %>
-  </p>
+  <div data-controller="cloze"
+  data-cloze-account-id-value="<%= @account.id %>"
+  data-cloze-my-points-value="<%= cloze.point_system.total_possible_points unless cloze.point_system.blank? %>"
+  data-cloze-exercise-id-value="<%= cloze.id %>"
+  data-cloze-exercise-class-value="<%= cloze.class.name %>"
+  data-cloze-total-possible-points-value="<%= cloze.point_system.total_possible_points unless cloze.point_system.blank? %>"
+  data-cloze-points-deduction-for-mistake-value="<%= cloze.point_system.points_deduction_for_mistake unless cloze.point_system.blank? %>"
+  data-cloze-solution-value="<%= cloze.correct_answer.split("\n") %>"
+  data-cloze-input-class-value=".<%= "input-cloze-#{cloze.id}" %>"
 
-  <div data-controller="cloze">
-    <div data-cloze-target="accountId" data-value="<%= @account.id %>" >
-    </div>
-    <div data-cloze-target="exerciseId" data-value="<%= cloze.id %>" >
-    </div>
-    <div data-cloze-target="exerciseClass" data-value="<%= cloze.class.name %>" >
-    </div>
-    <div data-cloze-target="totalPossiblePoints" data-value="<%= cloze.point_system.total_possible_points unless cloze.point_system.blank? %>" >
-    </div>
-    <div data-cloze-target="pointsDeductionForMistake" data-value="<%= cloze.point_system.points_deduction_for_mistake unless cloze.point_system.blank? %>" >
-    </div>
-    <div data-cloze-target="inputClass" data-value=".input-cloze-<%= cloze.id %>" >
-    </div>
-    <div data-cloze-target="solution" data-value="<%= cloze.correct_answer %>" >
-    </div>
+  >
+
 
     <p>
       <%= raw cloze.text_with_input_fields %>
     </p>
 
     <p>
-      <button data-action="click->cloze#check">
+      <button data-action="click->cloze#check" class="action-button-green-color">
         <%= t('check-answer') %>
       </button>
     </p>

@@ -12,9 +12,11 @@ class Cloze < ApplicationRecord
       number = match.scan(/\d+/).first
 
 html_string = <<MARKER
-  <input type="text" class="input-cloze-#{self.id}" data-input-id="#{number}">
-MARKER
+<div class="text-center my-3">
+  <input type="text" class="input-cloze-#{self.id} form-control form-control-lg" placeholder="Antwort eingeben" data-input-id="#{number}">
+</div>
 
+MARKER
 
       new_text = new_text.gsub(/\[#{number}\]/, html_string)
     end
