@@ -1,8 +1,12 @@
 class StaticPagesController < ApplicationController
   after_action :verify_authorized
-  
+
   def welcome
     authorize :static_page
+
+    @page_title = "Was ist Ethik?"
+    @page_description = "Was ist Ethik? Finde es heraus in diesem interaktiven Lernkurs!"
+
   end
 
   def preparer

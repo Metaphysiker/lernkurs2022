@@ -33,10 +33,8 @@ export default class extends Controller {
     var wrong_answers = [];
 
     $(this.inputClassValue).map(function() {
-      console.log("REIGN IN TERROR")
-      console.log(this.value);
 
-      if(self.solutionValue[parseInt(this.getAttribute('data-input-id'))].split(",").includes(this.value)){
+      if(self.solutionValue[parseInt(this.getAttribute('data-input-id'))].split(",").includes(this.value.toLowerCase().replace(/\s/g,''))){
         this.classList.remove("bg-wrong-color");
         this.classList.add("bg-correct-color");
         missing_answers.splice(missing_answers.indexOf(missing_answers[this.getAttribute('data-input-id')]), 1);
@@ -48,7 +46,6 @@ export default class extends Controller {
           input_field.classList.remove("bg-wrong-color");
           input_field.value = '';
         }, 2000)
-        console.log("WRONG!");
         wrong_answers.push(this.value);
       }
 

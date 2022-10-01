@@ -16,6 +16,9 @@ class CoursesController < ApplicationController
     #  @slide = @course.slides.order(:sort).first
     #end
 
+    @page_title = @course.name
+    @page_description = @course.description
+
     if params[:sort].present? && !Slide.where(sort: params[:sort]).empty?
       @slide = Slide.where(sort: params[:sort]).first
     else

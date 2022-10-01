@@ -30,6 +30,7 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 de:
+  application_name: "Lernkurs"
   hello: "Hello world"
   login: "Anmelden"
   signup: "Registrieren"
