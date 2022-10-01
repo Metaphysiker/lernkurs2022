@@ -1,6 +1,6 @@
 <% course_status = @account.course_status(course.id.to_s) %>
 
-<div class="card h-100 <%= "bg-lightgreen-color" if course_status == "completed" %>">
+<div class="card h-100 <%= "bg-lightgreen-color" if course_status == "completed" %> <%= "bg-peach-color" if course_status == "started" %>">
   <% if course.image.attached? %>
     <%= image_tag course.image, class: "card-img-top", width: 300, height: 250, style: "object-fit: cover"  %>
   <% end %>
@@ -48,7 +48,7 @@
       </p>
 
       <%= render "courses/progress", current_slide_id: current_slide_id, course: course %>
-      <%= link_to "Weitermachen!", course_with_sort_path(course, current_sort_of_slide), class: "action-button-i-color mt-4" %>
+      <%= link_to "Weitermachen!", course_with_sort_path(course, current_sort_of_slide), class: "action-button-g-color mt-4" %>
 
     <% elsif course_status == "completed" %>
       <%= link_to "Erneut anfangen", course_with_sort_path(course, 0), class: "action-button-green-color" %>
