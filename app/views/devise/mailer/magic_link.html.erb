@@ -1,7 +1,5 @@
-<p>Hello <%= @resource.email %>!</p>
+<p>Mit diesem Link kannst du dich direkt beim Lernkurs anmelden:</p>
 
-<p>You can login using the link below:</p>
+<p><%= link_to "Zugangslink", send("#{@scope_name.to_s.pluralize}_magic_link_url", Hash[@scope_name, {email: @resource.email, token: @token, remember_me: @remember_me}]) %></p>
 
-<p><%= link_to "Log in to my account", send("#{@scope_name.to_s.pluralize}_magic_link_url", Hash[@scope_name, {email: @resource.email, token: @token, remember_me: @remember_me}]) %></p>
-
-<p>Note that the link will expire in <%= Devise.passwordless_login_within.inspect %>.</p>          
+<p>Der Link ist in 20 Minuten nicht mehr gültig.</p>

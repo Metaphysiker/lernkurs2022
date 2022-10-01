@@ -47,6 +47,7 @@ de:
   started: "angefangen"
   save: "Speichern"
   magic_link: "Zugangslink"
+  back_to_homepage: "Zurück zur Startseite"
   receive_magic_link: "Zugangslink per e-Mail erhalten"
   routes:
     courses: "kurse"

@@ -11,15 +11,22 @@
             Dieser Lernkurs wurde durch die grosszügige Unterstützung der Ernst Göhner Stiftung ermöglicht.
           </p>
           <p class="text-black">
-
+            <%= link_to "https://www.ernst-goehner-stiftung.ch/" do %>
             <%= image_tag "Ernst-Göhner-Stiftung-Logo.webp", class: "img-fluid my-3", width: 300, height: 200 %>
+            <% end %>
           </p>
         </div>
         <div class="col-sm-4 offset-md-1 py-4">
           <h4 class="text-black">Kontakt & Links</h4>
           <ul class="list-unstyled">
             <li>
-              <%= mail_to "sandro.raess@philosophie.ch", "sandro.raess@philosophie.ch", subject: "Lernkurs" %>
+              <%= link_to "philosophie.ch", "https://www.philosophie.ch/" %>
+            </li>
+            <li>
+              <%= link_to "Ernst Göhner Stiftung", "https://www.ernst-goehner-stiftung.ch/" %>
+            </li>
+            <li>
+              <%= mail_to "lernkurs@philosophie.ch", "Kontakt", subject: "Lernkurs" %>
             <% unless @account.blank? %>
               <li>
                 <%= link_to t("my_account"), account_path(@account), class: "text-black" %>

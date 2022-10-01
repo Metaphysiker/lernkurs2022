@@ -59,11 +59,6 @@
     </div>
   </div>
 
-  <div data-course-with-swipe-target="testicus" style="display: none;">
-    yolo ipsum
-  </div>
-
-
 
   <div data-course-with-swipe-target="keenSlider" id="my-keen-slider" class="keen-slider mt-4" style="visibility: hidden; z-index: 0;" >
     <% course.slides.order(:sort).each_with_index do |slide, index| %>
@@ -108,18 +103,28 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="settingsModalLabel">Menü</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Schliessen"></button>
         </div>
         <div class="modal-body">
+          <p><strong><%= course.name %></strong>
+            <p class="card-text">
+              Hast du Fragen? Brauchst du Hilfe? Funktioniert etwas nicht?
 
+            </p>
+            <p class="card-text">
+              <%= mail_to "sandro.raess@philosophie.ch", "Schreibe eine Mail!" %>
+            </p>
           <%#= render "" %>
           <hr>
           <%= render "accounts/save_progress" %>
+          <hr>
+          <p>
+            <%= link_to t("back_to_homepage"), root_path, class: "action-button-green-color" %>
+          </p>
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schliessen</button>
         </div>
       </div>
     </div>
