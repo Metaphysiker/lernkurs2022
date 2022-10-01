@@ -3,26 +3,30 @@ class AccountsController < ApplicationController
 
   # GET /accounts or /accounts.json
   def index
+    authorize Account
     @accounts = Account.all
   end
 
   # GET /accounts/1 or /accounts/1.json
   def show
+    authorize @account
   end
 
   # GET /accounts/new
   def new
     @account = Account.new
+    authorize @account
   end
 
   # GET /accounts/1/edit
   def edit
+    authorize @account
   end
 
   # POST /accounts or /accounts.json
   def create
     @account = Account.new(account_params)
-
+    authorize @account
     respond_to do |format|
       if @account.save
         format.html { redirect_to account_url(@account), notice: "Account was successfully created." }
@@ -36,6 +40,7 @@ class AccountsController < ApplicationController
 
   # PATCH/PUT /accounts/1 or /accounts/1.json
   def update
+    authorize @account
     respond_to do |format|
       if @account.update(account_params)
         format.html { redirect_to account_url(@account), notice: "Account was successfully updated." }
@@ -48,6 +53,7 @@ class AccountsController < ApplicationController
   end
 
   def update_course_status
+    authorize @account
     course_id = params[:course_id]
     slide_id = params[:slide_id]
     status = params[:status]
@@ -69,6 +75,7 @@ class AccountsController < ApplicationController
   end
 
   def update_course_history
+    authorize @account
     course_id = params[:course_id]
     slide_id = params[:slide_id]
 
@@ -85,6 +92,7 @@ class AccountsController < ApplicationController
   end
 
   def update_excercise_history
+    authorize @account
     exercise_class = params[:exercise_class]
     exercise_id = params[:exercise_id]
 
@@ -123,17 +131,19 @@ class AccountsController < ApplicationController
   end
 
   def get_points_from_course
+    authorize @account
     points = @account.course_points(params[:course_id])
     render json: points
   end
 
   def check_if_medal_is_awarded
-
+    authorize @account
     render json: @account.check_if_medal_is_awarded(params[:course_id])
   end
 
   # DELETE /accounts/1 or /accounts/1.json
   def destroy
+    authorize @account
     @account.destroy
 
     respond_to do |format|
@@ -143,11 +153,13 @@ class AccountsController < ApplicationController
   end
 
   def send_results_to
+    authorize @account
     CourseCompletionMailer.send_results_to_email(params[:account_id], params[:course_id], params[:email1], params[:email2]).deliver_later
     head :ok
   end
 
   def users_sign_up
+    authorize Account
       random_hex = SecureRandom.hex
       @user = User.new(email: params[:email], password: random_hex, password_confirmation: random_hex)
       if @user.save
@@ -163,7 +175,7 @@ class AccountsController < ApplicationController
   end
 
   def save_progress
-
+    authorize @account
     @account.update(first_name: params[:first_name]) unless params[:first_name].blank?
 
 
@@ -188,7 +200,7 @@ class AccountsController < ApplicationController
   end
 
   def dashboard
-
+    authorize Account
   end
 
   private

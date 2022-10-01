@@ -3,12 +3,13 @@ class SlidesController < ApplicationController
 
   # GET /slides or /slides.json
   def index
+    authorize Slide
     @slides = Slide.all
   end
 
   # GET /slides/1 or /slides/1.json
   def show
-
+    authorize @slide
   end
 
   # GET /slides/new
@@ -18,15 +19,19 @@ class SlidesController < ApplicationController
     else
       @slide = Slide.new
     end
+    authorize @slide
+
   end
 
   # GET /slides/1/edit
   def edit
+    authorize @slide
   end
 
   # POST /slides or /slides.json
   def create
     @slide = Slide.new(slide_params)
+    authorize @slide
 
     respond_to do |format|
       if @slide.save
@@ -41,6 +46,8 @@ class SlidesController < ApplicationController
 
   # PATCH/PUT /slides/1 or /slides/1.json
   def update
+    authorize @slide
+
     respond_to do |format|
       if @slide.update(slide_params)
         #format.html { redirect_to slide_url(@slide), notice: "Slide was successfully updated." }
@@ -56,6 +63,8 @@ class SlidesController < ApplicationController
 
   # DELETE /slides/1 or /slides/1.json
   def destroy
+    authorize @slide
+
     @slide.destroy
 
     respond_to do |format|
@@ -65,6 +74,7 @@ class SlidesController < ApplicationController
   end
 
   def update_order
+    authorize Slide
     params["order"].each_with_index do |id, index|
       Slide.find(id).update(sort: index)
     end

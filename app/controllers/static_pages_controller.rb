@@ -1,9 +1,10 @@
 class StaticPagesController < ApplicationController
   def welcome
-
+    authorize :static_page
   end
 
   def preparer
+    authorize :static_page
     if params[:search_inputs].present?
       @search_inputs = OpenStruct.new(params[:search_inputs])
     else
