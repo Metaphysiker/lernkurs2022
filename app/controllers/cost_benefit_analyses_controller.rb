@@ -1,13 +1,16 @@
 class CostBenefitAnalysesController < ApplicationController
   before_action :set_cost_benefit_analysis, only: %i[ show edit update destroy ]
+  after_action :verify_authorized
 
   # GET /cost_benefit_analyses or /cost_benefit_analyses.json
   def index
+    authorize CostBenefitAnalysis
     @cost_benefit_analyses = CostBenefitAnalysis.all
   end
 
   # GET /cost_benefit_analyses/1 or /cost_benefit_analyses/1.json
   def show
+    authorize @cost_benefit_analysis
   end
 
   # GET /cost_benefit_analyses/new
@@ -17,17 +20,18 @@ class CostBenefitAnalysesController < ApplicationController
     else
       @cost_benefit_analysis = CostBenefitAnalysis.new
     end
-
+    authorize @cost_benefit_analysis
   end
 
   # GET /cost_benefit_analyses/1/edit
   def edit
+    authorize @cost_benefit_analysis
   end
 
   # POST /cost_benefit_analyses or /cost_benefit_analyses.json
   def create
     @cost_benefit_analysis = CostBenefitAnalysis.new(cost_benefit_analysis_params)
-
+    authorize @cost_benefit_analysis
     respond_to do |format|
       if @cost_benefit_analysis.save
         format.html { redirect_to cost_benefit_analysis_url(@cost_benefit_analysis), notice: "Cost benefit analysis was successfully created." }
@@ -41,6 +45,7 @@ class CostBenefitAnalysesController < ApplicationController
 
   # PATCH/PUT /cost_benefit_analyses/1 or /cost_benefit_analyses/1.json
   def update
+    authorize @cost_benefit_analysis
     respond_to do |format|
       if @cost_benefit_analysis.update(cost_benefit_analysis_params)
         format.html { redirect_to cost_benefit_analysis_url(@cost_benefit_analysis), notice: "Cost benefit analysis was successfully updated." }
@@ -54,6 +59,7 @@ class CostBenefitAnalysesController < ApplicationController
 
   # DELETE /cost_benefit_analyses/1 or /cost_benefit_analyses/1.json
   def destroy
+    authorize @cost_benefit_analysis
     @cost_benefit_analysis.destroy
 
     respond_to do |format|

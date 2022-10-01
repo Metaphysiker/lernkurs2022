@@ -1,5 +1,6 @@
 class SlidesController < ApplicationController
   before_action :set_slide, only: %i[ show edit update destroy navigation_buttons exercise]
+  after_action :verify_authorized
 
   # GET /slides or /slides.json
   def index

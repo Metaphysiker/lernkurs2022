@@ -24,7 +24,9 @@ Rails.application.routes.draw do
     end
   end
   resources :roles
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
   #devise_for :users, controllers: { sessions: "devise/passwordless/sessions" }
   devise_scope :user do
     get "/users/magic_link",

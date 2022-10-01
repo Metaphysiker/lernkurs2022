@@ -1,13 +1,16 @@
 class QuizzesController < ApplicationController
   before_action :set_quiz, only: %i[ show edit update destroy ]
+  after_action :verify_authorized
 
   # GET /quizzes or /quizzes.json
   def index
+    authorize Quiz
     @quizzes = Quiz.all
   end
 
   # GET /quizzes/1 or /quizzes/1.json
   def show
+    authorize @quiz
   end
 
   # GET /quizzes/new
@@ -17,16 +20,18 @@ class QuizzesController < ApplicationController
     else
       @quiz = Quiz.new
     end
+    authorize @quiz
   end
 
   # GET /quizzes/1/edit
   def edit
+    authorize @quiz
   end
 
   # POST /quizzes or /quizzes.json
   def create
     @quiz = Quiz.new(quiz_params)
-
+    authorize @quiz
     respond_to do |format|
       if @quiz.save
         format.html { redirect_to quiz_url(@quiz), notice: "Quiz was successfully created." }
@@ -40,6 +45,7 @@ class QuizzesController < ApplicationController
 
   # PATCH/PUT /quizzes/1 or /quizzes/1.json
   def update
+    authorize @quiz
     respond_to do |format|
       if @quiz.update(quiz_params)
         format.html { redirect_to quiz_url(@quiz), notice: "Quiz was successfully updated." }
@@ -53,6 +59,7 @@ class QuizzesController < ApplicationController
 
   # DELETE /quizzes/1 or /quizzes/1.json
   def destroy
+    authorize @quiz
     @quiz.destroy
 
     respond_to do |format|

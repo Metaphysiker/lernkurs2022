@@ -1,17 +1,21 @@
 class QuizQuestionsController < ApplicationController
   before_action :set_quiz_question, only: %i[ show edit update destroy ]
+  after_action :verify_authorized
 
   # GET /quiz_questions or /quiz_questions.json
   def index
+    authorize QuizQuestion
     @quiz_questions = QuizQuestion.all
   end
 
   # GET /quiz_questions/1 or /quiz_questions/1.json
   def show
+    authorize @quiz_question
   end
 
   # GET /quiz_questions/new
   def new
+    authorize @quiz_question
     if params[:quiz_id].present?
       @quiz_question = QuizQuestion.new(quiz_id: params[:quiz_id])
     else
@@ -21,12 +25,13 @@ class QuizQuestionsController < ApplicationController
 
   # GET /quiz_questions/1/edit
   def edit
+    authorize @quiz_question
   end
 
   # POST /quiz_questions or /quiz_questions.json
   def create
     @quiz_question = QuizQuestion.new(quiz_question_params)
-
+    authorize @quiz_question
     respond_to do |format|
       if @quiz_question.save
         format.html { redirect_to quiz_question_url(@quiz_question), notice: "Quiz question was successfully created." }
@@ -40,6 +45,7 @@ class QuizQuestionsController < ApplicationController
 
   # PATCH/PUT /quiz_questions/1 or /quiz_questions/1.json
   def update
+    authorize @quiz_question
     respond_to do |format|
       if @quiz_question.update(quiz_question_params)
         format.html { redirect_to quiz_question_url(@quiz_question), notice: "Quiz question was successfully updated." }
@@ -53,6 +59,7 @@ class QuizQuestionsController < ApplicationController
 
   # DELETE /quiz_questions/1 or /quiz_questions/1.json
   def destroy
+    authorize @quiz_question
     @quiz_question.destroy
 
     respond_to do |format|

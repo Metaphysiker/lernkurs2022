@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   include Pundit::Authorization
-  after_action :verify_authorized
   before_action :set_account
 
   def set_account

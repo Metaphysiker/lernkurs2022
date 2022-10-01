@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: %i[ show show_with_swipe edit update destroy course_overview show_at_slide]
-
+  after_action :verify_authorized
   # GET /courses or /courses.json
   def index
     authorize Course

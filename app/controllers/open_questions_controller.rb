@@ -1,19 +1,22 @@
 class OpenQuestionsController < ApplicationController
   before_action :set_open_question, only: %i[ show edit update destroy ]
+  after_action :verify_authorized
 
   # GET /open_questions or /open_questions.json
   def index
+    authorize OpenQuestion
     @open_questions = OpenQuestion.all
   end
 
   # GET /open_questions/1 or /open_questions/1.json
   def show
+    authorize @open_question
   end
 
   # GET /open_questions/new
   def new
     @open_question = OpenQuestion.new
-
+    authorize @open_question
     if params[:slide_id].present?
       @open_question = OpenQuestion.new(slide_id: params[:slide_id])
     else
@@ -23,12 +26,13 @@ class OpenQuestionsController < ApplicationController
 
   # GET /open_questions/1/edit
   def edit
+    authorize @open_question
   end
 
   # POST /open_questions or /open_questions.json
   def create
     @open_question = OpenQuestion.new(open_question_params)
-
+    authorize @open_question
     respond_to do |format|
       if @open_question.save
         format.html { redirect_to open_question_url(@open_question), notice: "Open question was successfully created." }
@@ -42,6 +46,7 @@ class OpenQuestionsController < ApplicationController
 
   # PATCH/PUT /open_questions/1 or /open_questions/1.json
   def update
+    authorize @open_question
     respond_to do |format|
       if @open_question.update(open_question_params)
         format.html { redirect_to open_question_url(@open_question), notice: "Open question was successfully updated." }
@@ -55,6 +60,7 @@ class OpenQuestionsController < ApplicationController
 
   # DELETE /open_questions/1 or /open_questions/1.json
   def destroy
+    authorize @open_question
     @open_question.destroy
 
     respond_to do |format|

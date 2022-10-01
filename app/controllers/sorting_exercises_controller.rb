@@ -1,5 +1,6 @@
 class SortingExercisesController < ApplicationController
   before_action :set_sorting_exercise, only: %i[ show edit update destroy ]
+  after_action :verify_authorized
 
   # GET /sorting_exercises or /sorting_exercises.json
   def index

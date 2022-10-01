@@ -1,6 +1,6 @@
 class AccountsController < ApplicationController
   before_action :set_account, only: %i[ show edit update destroy update_course_history update_excercise_history update_course_status get_points_from_course save_progress check_if_medal_is_awarded users_sign_up]
-
+  after_action :verify_authorized
   # GET /accounts or /accounts.json
   def index
     authorize Account
@@ -152,11 +152,11 @@ class AccountsController < ApplicationController
     end
   end
 
-  def send_results_to
-    authorize @account
-    CourseCompletionMailer.send_results_to_email(params[:account_id], params[:course_id], params[:email1], params[:email2]).deliver_later
-    head :ok
-  end
+  #def send_results_to
+  #  authorize Account
+  #  CourseCompletionMailer.send_results_to_email(params[:account_id], params[:course_id], params[:email1], params[:email2]).deliver_later
+  #  head :ok
+  #end
 
   def users_sign_up
     authorize Account

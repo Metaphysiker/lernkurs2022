@@ -1,19 +1,22 @@
 class ClozesController < ApplicationController
   before_action :set_cloze, only: %i[ show edit update destroy ]
+  after_action :verify_authorized
 
   # GET /clozes or /clozes.json
   def index
+    authorize Cloze
     @clozes = Cloze.all
   end
 
   # GET /clozes/1 or /clozes/1.json
   def show
+    authorize @cloze
   end
 
   # GET /clozes/new
   def new
     @cloze = Cloze.new
-
+    authorize @cloze
     if params[:slide_id].present?
       @cloze = Cloze.new(slide_id: params[:slide_id])
     else
@@ -23,12 +26,13 @@ class ClozesController < ApplicationController
 
   # GET /clozes/1/edit
   def edit
+    authorize @cloze
   end
 
   # POST /clozes or /clozes.json
   def create
     @cloze = Cloze.new(cloze_params)
-
+    authorize @cloze
     respond_to do |format|
       if @cloze.save
         format.html { redirect_to cloze_url(@cloze), notice: "Cloze was successfully created." }
@@ -42,6 +46,7 @@ class ClozesController < ApplicationController
 
   # PATCH/PUT /clozes/1 or /clozes/1.json
   def update
+    authorize @cloze
     respond_to do |format|
       if @cloze.update(cloze_params)
         format.html { redirect_to cloze_url(@cloze), notice: "Cloze was successfully updated." }
@@ -55,6 +60,7 @@ class ClozesController < ApplicationController
 
   # DELETE /clozes/1 or /clozes/1.json
   def destroy
+    authorize @cloze
     @cloze.destroy
 
     respond_to do |format|

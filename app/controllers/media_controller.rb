@@ -1,5 +1,6 @@
 class MediaController < ApplicationController
   before_action :set_medium, only: %i[ show edit update destroy ]
+  after_action :verify_authorized
 
   # GET /media or /media.json
   def index
