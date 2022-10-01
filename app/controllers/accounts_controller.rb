@@ -148,7 +148,8 @@ class AccountsController < ApplicationController
   end
 
   def users_sign_up
-      @user = User.new(email: params[:email])
+      random_hex = SecureRandom.hex
+      @user = User.new(email: params[:email], password: random_hex, password_confirmation: random_hex)
       if @user.save
         @account.update(user_id: @user.id, first_name: params[:first_name])
         sign_in @user
