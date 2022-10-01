@@ -10,7 +10,7 @@
   </p>
 
   <p>
-    <%= link_to "Back to course", course_path(quiz_question.quiz.slide.course, slide_id: quiz_question.quiz.slide) %>
+    <%= link_to "Back to course", course_with_sort_url(quiz_question.quiz.slide.course, quiz_question.quiz.slide.sort) %>
   </p>
 
 </div>
