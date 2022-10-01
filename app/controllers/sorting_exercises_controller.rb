@@ -4,11 +4,13 @@ class SortingExercisesController < ApplicationController
 
   # GET /sorting_exercises or /sorting_exercises.json
   def index
+    authorize SortingExercise
     @sorting_exercises = SortingExercise.all
   end
 
   # GET /sorting_exercises/1 or /sorting_exercises/1.json
   def show
+    authorize @sorting_exercise
   end
 
   # GET /sorting_exercises/new
@@ -18,16 +20,18 @@ class SortingExercisesController < ApplicationController
     else
       @sorting_exercise = SortingExercise.new
     end
+    authorize @sorting_exercise
   end
 
   # GET /sorting_exercises/1/edit
   def edit
+    authorize @sorting_exercise
   end
 
   # POST /sorting_exercises or /sorting_exercises.json
   def create
     @sorting_exercise = SortingExercise.new(sorting_exercise_params)
-
+    authorize @sorting_exercise
     respond_to do |format|
       if @sorting_exercise.save
         format.html { redirect_to sorting_exercise_url(@sorting_exercise), notice: "Sorting exercise was successfully created." }
@@ -41,6 +45,7 @@ class SortingExercisesController < ApplicationController
 
   # PATCH/PUT /sorting_exercises/1 or /sorting_exercises/1.json
   def update
+    authorize @sorting_exercise
     respond_to do |format|
       if @sorting_exercise.update(sorting_exercise_params)
         format.html { redirect_to sorting_exercise_url(@sorting_exercise), notice: "Sorting exercise was successfully updated." }
@@ -54,6 +59,7 @@ class SortingExercisesController < ApplicationController
 
   # DELETE /sorting_exercises/1 or /sorting_exercises/1.json
   def destroy
+    authorize @sorting_exercise
     @sorting_exercise.destroy
 
     respond_to do |format|
