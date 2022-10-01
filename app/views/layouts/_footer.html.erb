@@ -5,7 +5,7 @@
       <p class="text-center text-muted">Angemeldet mit <strong><%= current_user.email %></strong>
       </p>
       <div class="text-center">
-        <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-link" %>
+        <%= button_to 'Logout', destroy_user_session_path, method: :delete, class: "action-button-b-color" %>
 
       </div>
     <% else %>
@@ -14,6 +14,7 @@
         <%= link_to t('signup'), new_user_registration_path, class: "action-button-green-color"  %>
       </p>
     <% end %>
+    <% if false %>
     <hr>
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
       <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
@@ -22,5 +23,6 @@
       <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
       <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
     </ul>
+    <% end %>
   </div>
 </footer>

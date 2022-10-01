@@ -49,6 +49,17 @@ de:
   magic_link: "Zugangslink"
   back_to_homepage: "Zurück zur Startseite"
   receive_magic_link: "Zugangslink per e-Mail erhalten"
+  passwordless:
+    sessions:
+      create:
+        session_expired: 'Deine Session ist abgelaufen. Bitte melde dich wieder an.'
+        email_sent_if_record_found: "Wenn wir dich gefunden haben, dann wurde dir eine Mail geschickt."
+        token_claimed: "Dieser Link wurde bereits verwendet. Versuch es nochmals."
+      new:
+        submit: 'Zugangslink senden'
+    mailer:
+      subject: "Zugangslink für Lernkurs - philosophie.ch"
+      magic_link: "Hier ist dein Link: %{link}"
   routes:
     courses: "kurse"
   models:
