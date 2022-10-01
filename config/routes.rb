@@ -69,5 +69,6 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   get '/static_pages/preparer', to: "static_pages#preparer", as: 'preparer'
+  get '/static_pages/test_seite', to: "static_pages#test_seite"
   post '/static_pages/preparer/', to: "static_pages#preparer"
 end

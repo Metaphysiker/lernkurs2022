@@ -9,6 +9,10 @@ class StaticPagesController < ApplicationController
 
   end
 
+  def test_seite
+    authorize :static_page
+  end
+
   def preparer
     authorize :static_page
     if params[:search_inputs].present?

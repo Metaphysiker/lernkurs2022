@@ -14,4 +14,8 @@ class StaticPagePolicy < ApplicationPolicy
     true
   end
 
+  def test_seite?
+    true
+  end
+
 end
