@@ -11,6 +11,7 @@ class StaticPagesController < ApplicationController
 
   def test_seite
     authorize :static_page
+    render layout: "application_test"
   end
 
   def preparer
