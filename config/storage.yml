@@ -13,6 +13,8 @@ amazon:
    secret_access_key: <%= Rails.application.credentials.dig(:aws_secret_access_key) %>
    region: eu-central-1
    bucket: lernkurs2022
+   upload:
+     cache_control: 'private, max-age=31536000'
    #access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
    #secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
 
