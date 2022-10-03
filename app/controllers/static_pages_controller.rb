@@ -7,6 +7,7 @@ class StaticPagesController < ApplicationController
     @page_title = "Was ist Ethik?"
     @page_description = "Was ist Ethik? Finde es heraus in diesem interaktiven Lernkurs!"
 
+    @ethic_courses = Course.where(group: "ethik").order(:sort)
     render layout: "application_welcome"
   end
 

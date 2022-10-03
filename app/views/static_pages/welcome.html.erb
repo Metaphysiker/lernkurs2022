@@ -1,6 +1,5 @@
 <%= render "layouts/navigation" %>
 
-
 <div class="container">
   <%= render "layouts/flash_messages" %>
 
@@ -8,17 +7,8 @@
       <p class="text-center my-3">
         Finde es heraus in diesem interaktiven Lernkurs!
       </p>
-      <%= render "courses/courses_by_group", courses: Course.where(group: "ethik").order(:sort) %>
-      <% if false %>
-        <h2 class="text-center my-3">Klima-Gerechtigkeit</h2>
-        <%= render "courses/courses_by_group", courses: Course.where(group: "klimagerechtigkeit").order(:sort) %>
-      <% end %>
+      <%= render "courses/courses_by_group", courses: @ethic_courses %>
 
-      <% if false %>
-        <hr>
-        <%= render "courses/courses_by_group", courses: Course.all %>
-      <% end %>
 </div>
-
 
 <%= render "layouts/footer" %>
