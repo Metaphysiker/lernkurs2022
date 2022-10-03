@@ -7,7 +7,12 @@ class StaticPagesController < ApplicationController
     @page_title = "Was ist Ethik?"
     @page_description = "Was ist Ethik? Finde es heraus in diesem interaktiven Lernkurs!"
 
-    @ethic_courses = Course.where(group: "ethik").order(:sort)
+    course_ids = Rails.cache.fetch("welcome_course_ids", expires_in: 24.hours) do
+      Course.where(group: "ethik").order(:sort).pluck(:id)
+    end
+    @ethic_courses = Course.where(id: course_ids)
+
+    #@ethic_courses = Course.where(group: "ethik").order(:sort)
     render layout: "application_welcome"
   end
 
