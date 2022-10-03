@@ -13,7 +13,7 @@
 
       &:hover{
         transform: scale(1.05);
-        color: white;
+        color: white !important;
         @extend .border-0 !optional;
         background-color: darken($hex, 10%) !important;
       }
