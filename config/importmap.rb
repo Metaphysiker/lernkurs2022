@@ -5,7 +5,6 @@ pin "@hotwired/turbo-rails", to: "turbo.min.js", preload: true
 pin "@hotwired/stimulus", to: "https://ga.jspm.io/npm:@hotwired/stimulus@3.1.0/dist/stimulus.js"
 pin "@hotwired/stimulus-loading", to: "stimulus-loading.js", preload: true
 pin_all_from "app/javascript/controllers", under: "controllers"
-pin_all_from "app/javascript/course_controllers", under: "course_controllers"
 pin "jquery", to: "https://ga.jspm.io/npm:jquery@3.6.0/dist/jquery.js"
 pin "jquery_with_setup", to: "jquery_with_setup.js"
 pin "ajax", to: "ajax.js"
@@ -53,3 +52,4 @@ pin "keen-slider", to: "https://cdn.jsdelivr.net/npm/keen-slider@6.7.0/keen-slid
 pin "stimulus-use", to: "https://ga.jspm.io/npm:stimulus-use@0.50.0/dist/index.js"
 pin "hotkeys-js", to: "https://ga.jspm.io/npm:hotkeys-js@3.9.5/dist/hotkeys.esm.js"
 pin "intersection-observer", to: "https://ga.jspm.io/npm:intersection-observer@0.12.2/intersection-observer.js"
+pin "hello-world", to: "hello-world.js"

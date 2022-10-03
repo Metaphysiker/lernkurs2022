@@ -1,3 +1,8 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag "application-test", "data-turbo-track": "reload" %>
+  <%= javascript_import_module_tag "bootstrap" %>
+<% end %>
+
 <%= render "layouts/navigation" %>
 
 
