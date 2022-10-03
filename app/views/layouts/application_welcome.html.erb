@@ -7,11 +7,11 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application_welcome", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <%= javascript_import_module_tag "controllers" %>
+    <%#= javascript_import_module_tag "controllers" %>
     <%= javascript_import_module_tag "bootstrap" %>
-    <%= javascript_import_module_tag "@popperjs/core" %>
+    <%#= javascript_import_module_tag "@popperjs/core" %>
 
     <%= yield(:head) %>
 

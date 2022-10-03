@@ -7,6 +7,7 @@ class StaticPagesController < ApplicationController
     @page_title = "Was ist Ethik?"
     @page_description = "Was ist Ethik? Finde es heraus in diesem interaktiven Lernkurs!"
 
+    render layout: "application_welcome"
   end
 
   def test_seite
