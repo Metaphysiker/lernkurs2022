@@ -1,17 +1,7 @@
 <!DOCTYPE html>
 <html class="h-100" lang="<%= I18n.locale %>">
   <head>
-    <% if Rails.env.production? %>
-      <!-- Google tag (gtag.js) -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-9EGCFZ6YGB"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
 
-        gtag('config', 'G-9EGCFZ6YGB');
-      </script>
-    <% end %>
     <%= display_meta_tags site: t('application_name'), reverse: true %>
     <title>Lernkurs2022</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -32,5 +22,18 @@
 
   <body class="d-flex flex-column h-100">
     <%= yield %>
+
+    <% if Rails.env.production? %>
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-9EGCFZ6YGB"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-9EGCFZ6YGB');
+      </script>
+    <% end %>
+
   </body>
 </html>
