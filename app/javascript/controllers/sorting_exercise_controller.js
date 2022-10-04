@@ -71,7 +71,6 @@ export default class extends Controller {
 
 
   punishForMistake(){
-    console.log("punish!");
     if((this.myPointsValue - this.pointsDeductionForMistakeValue) < 0){
       this.myPointsValue = 0
     } else {
