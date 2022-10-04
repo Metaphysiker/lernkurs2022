@@ -13,6 +13,8 @@
     <%= javascript_importmap_tags %>
     <%= yield(:head) %>
 
+    <%= favicon_link_tag asset_path('favicon-32x32.png') %>
+
     <% if Rails.env.production? %>
       <!-- Google tag (gtag.js) -->
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-9EGCFZ6YGB"></script>
