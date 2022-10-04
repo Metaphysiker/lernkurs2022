@@ -35,6 +35,7 @@ export default class extends Controller {
   }
 
   check(){
+    var self = this;
     var answer_array = sortable.toArray();
     var error_count = 0;
     for (let i = 0; i < this.solutionValue.length; i++) {
@@ -48,7 +49,7 @@ export default class extends Controller {
     }
 
     if(error_count > 0){
-      this.punishForMistake;
+      self.punishForMistake();
     } else {
 
       var ajax = new Ajax.ajax();
@@ -70,6 +71,7 @@ export default class extends Controller {
 
 
   punishForMistake(){
+    console.log("punish!");
     if((this.myPointsValue - this.pointsDeductionForMistakeValue) < 0){
       this.myPointsValue = 0
     } else {
