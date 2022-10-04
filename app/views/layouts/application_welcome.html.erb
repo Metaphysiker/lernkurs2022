@@ -18,11 +18,6 @@
 
     <%= favicon_link_tag asset_path('favicon-32x32.png') %>
 
-  </head>
-
-  <body class="d-flex flex-column h-100">
-    <%= yield %>
-
     <% if Rails.env.production? %>
       <!-- Google tag (gtag.js) -->
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-9EGCFZ6YGB"></script>
@@ -35,5 +30,9 @@
       </script>
     <% end %>
 
+  </head>
+
+  <body class="d-flex flex-column h-100">
+    <%= yield %>
   </body>
 </html>
