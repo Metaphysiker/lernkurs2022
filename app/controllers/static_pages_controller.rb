@@ -16,6 +16,21 @@ class StaticPagesController < ApplicationController
     render layout: "application_welcome"
   end
 
+  def climate_justice
+    authorize :static_page
+
+    @page_title = "Was ist Klimagerechtigkeit?"
+    @page_description = "Was ist Ethik? Finde es heraus in diesem interaktiven Lernkurs!"
+
+    #course_ids = Rails.cache.fetch("welcome_course_ids", expires_in: 24.hours) do
+    #  Course.where(group: "ethik").order(:sort).pluck(:id)
+    #end
+    #@ethic_courses = Course.where(id: course_ids)
+
+    @ethic_courses = Course.where(group: "klimagerechtigkeit").order(:sort)
+    render layout: "application_welcome"
+  end
+
   def test_seite
     authorize :static_page
     render layout: "application_test"

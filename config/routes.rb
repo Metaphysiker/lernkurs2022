@@ -63,6 +63,8 @@ Rails.application.routes.draw do
   end
   root "static_pages#welcome"
   get 'static_pages/welcome'
+  get 'static_pages/climate_justice'
+  get 'klima-gerechtigkeit', to: "static_pages#climate_justice"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

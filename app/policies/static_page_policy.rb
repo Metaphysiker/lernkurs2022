@@ -10,6 +10,10 @@ class StaticPagePolicy < ApplicationPolicy
     true
   end
 
+  def climate_justice?
+    true
+  end
+
   def preparer?
     true
   end
