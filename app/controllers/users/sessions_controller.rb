@@ -14,9 +14,12 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+   def destroy
+     super
+
+     @account = Account.create
+     cookies.permanent["philosophie-lernkurs-account-id"] = @account.id
+   end
 
   # protected
 
