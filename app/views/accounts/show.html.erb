@@ -1,14 +1,22 @@
 <%= render "layouts/navigation" %>
 
 <div class="container">
-<p style="color: green"><%= notice %></p>
+<%= render "layouts/flash_messages" %>
 
 <%= render @account %>
 
 <div>
-  <%= link_to t("helpers.submit.update", model: Account.model_name.human), edit_account_path(@account) %>
 
-  <%= button_to t("delete_account"), @account, method: :delete, class: "btn btn-danger" %>
+  <% if false #policy(@account).update? %>
+  <%= link_to t("helpers.submit.update", model: Account.model_name.human), edit_account_path(@account), class: "btn btn-primary mb-3" %>
+
+    <%#= link_to "Edit post", edit_post_path(@post) %>
+  <% end %>
+
+
+  <% if policy(@account).destroy? %>
+    <%= button_to t("delete_account"), @account, method: :delete, class: "btn btn-danger mb-2", form: { data: { turbo_confirm: "Bist du sicher?"}}, data: {confirm: "Bist du sicher?"}  %>
+  <% end %>
 </div>
 </div>
 <%= render "layouts/footer" %>

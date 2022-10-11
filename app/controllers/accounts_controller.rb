@@ -146,8 +146,14 @@ class AccountsController < ApplicationController
     authorize @account
     @account.destroy
 
+    if @account.user.present?
+      @account.user.destroy
+    end
+
+
+
     respond_to do |format|
-      format.html { redirect_to accounts_url, notice: "Account was successfully destroyed." }
+      format.html { redirect_to root_url, notice: "Konto wurde gelöscht." }
       format.json { head :no_content }
     end
   end
