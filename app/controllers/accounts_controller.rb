@@ -150,7 +150,8 @@ class AccountsController < ApplicationController
       @account.user.destroy
     end
 
-
+    @account = Account.create
+    cookies.permanent["philosophie-lernkurs-account-id"] = @account.id
 
     respond_to do |format|
       format.html { redirect_to root_url, notice: "Konto wurde gelöscht." }
