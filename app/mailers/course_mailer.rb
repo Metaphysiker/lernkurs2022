@@ -1,3 +1,5 @@
+include Rails.application.routes.url_helpers
+
 class CourseMailer < ApplicationMailer
   default from: "lernkurs@philosophie.ch"
 

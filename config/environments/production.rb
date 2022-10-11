@@ -2,7 +2,7 @@ require "active_support/core_ext/integer/time"
 require_relative "../../app/models/transformer"
 
 Rails.application.configure do
-  config.action_mailer.default_url_options = { :host => "https://courses.philosophie.ch" }
+  config.action_mailer.default_url_options = { :host => "https://lernkurs.philosophie.ch" }
 
   # Settings specified here will take precedence over those in config/application.rb.
 
