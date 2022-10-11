@@ -171,7 +171,7 @@ class AccountsController < ApplicationController
       if @user.save
         @account.update(user_id: @user.id, first_name: params[:first_name])
         sign_in @user
-        CourseMailer.welcome_mail(params[:email]).deliver_later
+        CourseMailer.welcome_mail(params[:email], @account).deliver_later
         render json: {status: "success"}
       else
         render json: {status: "error"}.merge(@user.errors)
@@ -195,7 +195,7 @@ class AccountsController < ApplicationController
       if @user.save
         @account.update(user_id: @user.id)
         sign_in @user
-        CourseMailer.welcome_mail(params[:email]).deliver_later
+        CourseMailer.welcome_mail(params[:email], @account).deliver_later
         render json: @user
       else
         render json: @user.errors

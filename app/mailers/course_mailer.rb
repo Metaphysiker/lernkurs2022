@@ -3,8 +3,9 @@
 class CourseMailer < ApplicationMailer
   default from: "lernkurs@philosophie.ch"
 
-  def welcome_mail(email)
+  def welcome_mail(email, account)
     @email = email
+    @account = account
     mail(to: email, bcc: "lernkurs@philosophie.ch", subject: 'Anmeldung erfolgreich - Lernkurs philosophie.ch')
   end
 
