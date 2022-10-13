@@ -27,7 +27,7 @@ class StaticPagesController < ApplicationController
     #end
     #@ethic_courses = Course.where(id: course_ids)
 
-    @ethic_courses = Course.where(group: "klimagerechtigkeit").order(:sort)
+    @ethic_courses = Course.where(group: "klimagerechtigkeit").public_true.order(:sort)
     render layout: "application_welcome"
   end
 
