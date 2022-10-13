@@ -8,7 +8,7 @@
 <div id="accounts">
   <% @accounts.order(created_at: :desc).each do |account| %>
     <%#= render account %>
-    <%= if account.all_points > 0 %>
+    <% if account.all_points > 0 %>
       <p>
         <%= link_to "#{account.id}", account %> - <%= l(account.created_at) %> - <%= account.visited_courses_count %> - <%= account.all_points %> - <%= account.first_name %>
       </p>
