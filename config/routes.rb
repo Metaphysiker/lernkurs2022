@@ -45,6 +45,9 @@ Rails.application.routes.draw do
   resources :quizzes
   localized do
     resources :courses do
+      collection do
+        get 'index_admin'
+      end
       member do
         get 'course_overview'
         get 'show_with_swipe'

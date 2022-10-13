@@ -4,7 +4,11 @@ class CoursesController < ApplicationController
   # GET /courses or /courses.json
   def index
     authorize Course
-    @courses = Course.all
+    #wird nicht angezeigt @courses = Course.all.public_true.order(:sort)
+  end
+
+  def index_admin
+    authorize Course
   end
 
   # GET /courses/1 or /courses/1.json
@@ -100,7 +104,7 @@ class CoursesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def course_params
-      params.require(:course).permit(:name, :course_id, :description, :image, :medal_image, :group, :slug, :sort)
+      params.require(:course).permit(:name, :course_id, :description, :image, :medal_image, :group, :slug, :sort, :public)
     end
 
 end

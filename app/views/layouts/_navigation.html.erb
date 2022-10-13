@@ -50,7 +50,10 @@
             </li>
 
             <% end %>
-
+            <% if policy(Course).index_admin? %>
+              <hr>
+              <%= link_to "index_admin_courses", index_admin_courses_path %>
+            <% end %>
 
           </ul>
         </div>

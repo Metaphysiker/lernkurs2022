@@ -2,8 +2,8 @@
 
 <div class="container">
 
-      <h1 class="text-center my-3">Alle Lernkurse von philosophie.ch</h1>
-      <%= render "courses/courses_by_group", courses: Course.public_true %>
+      <h1 class="text-center my-3">Alle unveröffentlichte Lernkurse von philosophie.ch</h1>
+      <%= render "courses/courses_by_group", courses: Course.public_false %>
 
 
       <% if policy(Course).create? %>

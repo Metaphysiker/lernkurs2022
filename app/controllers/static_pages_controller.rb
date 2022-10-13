@@ -12,7 +12,7 @@ class StaticPagesController < ApplicationController
     #end
     #@ethic_courses = Course.where(id: course_ids)
 
-    @ethic_courses = Course.where(group: "ethik").order(:sort)
+    @ethic_courses = Course.where(group: "ethik").public_true.order(:sort)
     render layout: "application_welcome"
   end
 

@@ -26,7 +26,11 @@ class CoursePolicy < ApplicationPolicy
     user.present? && user.admin?
   end
 
-  def course_overview
+  def course_overview?
+    user.present? && user.admin?
+  end
+
+  def index_admin?
     user.present? && user.admin?
   end
 

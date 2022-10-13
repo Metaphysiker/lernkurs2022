@@ -2,6 +2,7 @@
   <%= f.input :name %>
   <%= f.input :slug %>
   <%= f.input :sort %>
+  <%= f.input :public, collection: Course.public_options.map {|option| [option, option]}, selected: course.public %>
   <%= f.input :group, collection: Course.options.map {|option| [option, option]}, selected: course.group %>
   <%= f.input :description, input_html: { rows: 5 } %>
   <p>

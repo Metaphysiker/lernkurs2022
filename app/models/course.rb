@@ -16,6 +16,14 @@ class Course < ApplicationRecord
     ["ethik", "klimagerechtigkeit"]
   end
 
+  def self.public_options
+    ["false", "true"]
+  end
+
+  scope :public_true, -> { where(public: "true") }
+  scope :public_false, -> { where(public: "false") }
+
+
   private
 
   def create_slide
