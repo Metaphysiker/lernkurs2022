@@ -15,12 +15,12 @@ class QuizQuestionsController < ApplicationController
 
   # GET /quiz_questions/new
   def new
-    authorize @quiz_question
     if params[:quiz_id].present?
       @quiz_question = QuizQuestion.new(quiz_id: params[:quiz_id])
     else
       @quiz_question = QuizQuestion.new
     end
+    authorize @quiz_question
   end
 
   # GET /quiz_questions/1/edit
