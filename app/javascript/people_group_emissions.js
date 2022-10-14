@@ -41,10 +41,10 @@ export function peopleGroupEmissions() {
    var emission_text = add_text(emission_text_position, "Klicke oben auf eine Bevölkerungsgruppe!");
 
     //add people groups
-    add_people_group(people_group_position, 0, "1%", "Die allerreichsten Menschen verursachen 15 Prozent aller Emissionen.", JSON.stringify({a: 15, b: 85}));
-    add_people_group(people_group_position, 25, "10%", "Die reichen Menschen verursachen 37 Prozent aller Emissionen.", JSON.stringify({a: 17, b: 83}));
-    add_people_group(people_group_position, 50, "40%", "Die Mittelschicht verursacht 41 Prozent aller Emissionen.", JSON.stringify({a: 41, b: 59}));
-    add_people_group(people_group_position, 75, "50%", "Die ärmsten Menschen 7 Prozent aller Emissionen.", JSON.stringify({a: 7, b: 93}));
+    add_people_group(people_group_position, 0, "1%", "Die allerreichsten Menschen (1%) verursachen 15 Prozent aller Emissionen.", JSON.stringify({a: 15, b: 85}));
+    add_people_group(people_group_position, 25, "10%", "Die reichen Menschen (10%) verursachen 37 Prozent aller Emissionen.", JSON.stringify({a: 17, b: 83}));
+    add_people_group(people_group_position, 50, "40%", "Die Mittelschicht (40%) verursacht 41 Prozent aller Emissionen.", JSON.stringify({a: 41, b: 59}));
+    add_people_group(people_group_position, 75, "50%", "Die ärmsten Menschen (50%) verursachen 7 Prozent aller Emissionen.", JSON.stringify({a: 7, b: 93}));
 
     //add pie
     //add_pie(pie_position, data1);
