@@ -26,9 +26,9 @@
     Kommentare:
   </strong>
   </p>
-  <% if slide.comments.count > 0 %>
+  <div id="comments_of_slide_id_<%= slide.id %>">
     <%= render partial: "comments/comment", collection: slide.comments, as: :comment %>
-  <% end %>
+  </div>
 
   <%= render "comments/form", comment: Comment.new(commentable_id: slide.id, commentable_type: Slide.to_s) %>
 <% end %>

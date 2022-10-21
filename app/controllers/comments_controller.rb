@@ -25,6 +25,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
+        format.turbo_stream
         format.html { redirect_to comment_url(@comment), notice: "Comment was successfully created." }
         format.json { render :show, status: :created, location: @comment }
       else
@@ -52,6 +53,7 @@ class CommentsController < ApplicationController
     @comment.destroy
 
     respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.remove("#{helpers.dom_id(@comment)}_item") }
       format.html { redirect_to comments_url, notice: "Comment was successfully destroyed." }
       format.json { head :no_content }
     end
