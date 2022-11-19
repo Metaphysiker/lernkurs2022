@@ -144,8 +144,8 @@ export default class extends Controller {
 
   updateSlider(drag){
     setTimeout(function(){
-      console.log("boom");
-      console.log("disable_drag yes");
+      //console.log("boom");
+      //console.log("disable_drag yes");
       if(slider_options["drag"] == !drag){
         slider_options["drag"] = drag;
         slider.update(slider_options);
