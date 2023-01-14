@@ -41,7 +41,8 @@
     <% if course_status == "started" %>
 
     <% current_slide_id = @account.courses[course.id.to_s]["history"][-1] %>
-    <% current_sort_of_slide = Slide.find(current_slide_id).sort %>
+    <% current_sort_of_slide = Slide.exists?(current_slide_id) ? Slide.find(current_slide_id).sort : 0 %>
+    <%# current_sort_of_slide = Slide.find(current_slide_id).sort if Slide.exists?(current_slide_id) %>
 
       <p>
         <strong>Dein Fortschritt:</strong>
