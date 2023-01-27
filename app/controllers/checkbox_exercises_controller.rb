@@ -15,7 +15,7 @@ class CheckboxExercisesController < ApplicationController
 
   # GET /checkbox_exercises/new
   def new
-    authorize @checkbox_exercise
+    authorize CheckboxExercise
     if params[:slide_id].present?
       @checkbox_exercise = CheckboxExercise.new(slide_id: params[:slide_id])
     else
