@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "lernkurs@philosophie.ch"
+  default from: "info@philosophie.ch"
   layout "mailer"
 end

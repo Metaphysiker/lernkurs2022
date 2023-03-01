@@ -105,7 +105,7 @@ Rails.application.configure do
     address:              'mail.oriented.net',
     port:                 587,
     #domain:               'gmail.com',
-    user_name:             'lernkurs@philosophie.ch',
+    user_name:             'info@philosophie.ch',
     #password:               ENV['ORIENTED_PASSWORD'],
     password:              Rails.application.credentials.oriented_password,
     authentication:       'plain',
