@@ -6,7 +6,7 @@ class CourseMailer < ApplicationMailer
   def welcome_mail(email, account)
     @email = email
     @account = account
-    mail(to: email, bcc: "s.raess@me.com", subject: 'Anmeldung erfolgreich - Lernkurs philosophie.ch')
+    mail(to: email, subject: 'Anmeldung erfolgreich - Lernkurs philosophie.ch')
   end
 
 end
